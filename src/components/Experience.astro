@@ -4,40 +4,12 @@ import Work from "./ui/Work.astro";
 
 const experiences = await getCollection("works");
 ---
-<div class="p-7 text-2xl">
+<div class="p-7 text-2xl w-[50%] m-auto">
     <h4 class="text-white px-5 py-2 text-2xl">Experiencia Laboral</h4>
-    <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
         <ol class="relative border-s border-gray-200 dark:border-gray-700">
             {experiences.map((work) => (
              <Work time={work.data.Date} company={work.data.Company} description={work.data.Description} stack={work.data.Role} />
             ))
             }
         </ol>
-        <div>
-            <!-- Educacion -->
-            <div>
-                <h4 class="text-white px-5 py-2 text-2xl">Educación</h4>
-                <ol class="relative border-s border-gray-200 dark:border-gray-700 text-white">
-                    <li>
-                        Universidad Jose Antonio Echeverria
-                    </li>
-                    <li>
-                        IPVCE Vladimir Ilich Lenin
-                    </li>
-                </ol>
-            </div>
-            <!-- Idioma -->
-            <div>
-                <h4 class="text-white px-5 py-2 text-2xl">Idiomas</h4>
-                <ol class="relative border-s border-gray-200 dark:border-gray-700 text-white">
-                    <li>
-                        Español - Nativo
-                    </li>
-                    <li>
-                        Inglés - Intermedio
-                    </li>
-                </ol>
-            </div>
-        </div>
-    </div>
 </div>

@@ -3,17 +3,21 @@ import { getCollection } from "astro:content";
 import Card from "./ui/Project.astro";
 
 const works = await getCollection("projects");
+const stacks = works.map((project) => project.data.DevTools);
 ---
 
-<div id="proyectos" class="text-white">
+<div id="proyectos" class="text-white w-[80%] m-auto">
     <h1 class="text-center text-2xl">Proyectos</h1>
+    {stacks.map((stack) => (
+        <p>{stack}</p>
+    ))}
     <div class="text-white grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-8">
         {works.map((project) => (
             <Card
-            title={project.data.Name}
-            description={project.data.Description}
-            link={project.data.Web}
-            stack={project.data.DevTools}
+                title={project.data.Name}
+                description={project.data.Description}
+                link={project.data.Web}
+                stack={project.data.DevTools}
             />
         ))}
     </div>
