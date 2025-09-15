@@ -9,21 +9,39 @@ interface Props {
 const { title, link, description, stack } = Astro.props;
 ---
 
-<div class="relative items-center bg-blue-200 border border-gray-800    rounded-2xl shadow-sm h-[350px] md:flex-row md:max-w-xl hover:bg-blue-300 shrink dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-300">
-    <div class="flex flex-col justify-between p-4 leading-normal">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-center dark:text-white">{title}</h5>
-        <hr />
-        <p class="mb-3 prose font-normal text-gray-900 dark:text-gray-400">{description}</p>
-        <ul class="text-gray-900 flex gap-6 justify-center">
-            {stack.map((s)=>(
-            <li class="bg-blue-900 text-white py-2 px-4 rounded-3xl">{s}</li>
-            ))}
-        </ul>
-    </div>
+<article class="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm backdrop-blur transition-colors duration-300 hover:shadow-md dark:border-gray-700 dark:bg-gray-900/60">
+  <header class="px-5 pt-5">
+    <h3 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white text-center">{title}</h3>
+  </header>
 
-    {link && (
-        <a href={link} target="_blank" rel="noopener noreferrer" class="flex justify-center items-center text-center text-xl" >
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl">Visitar Sitio Web</button>
-        </a>
-    )}
-</div>
+  <div class="px-6 pt-3">
+    <p class="prose max-w-none text-gray-700 dark:prose-invert dark:text-gray-300">{description}</p>
+  </div>
+
+  <div class="px-6 py-4">
+    <ul class="flex flex-wrap items-center justify-center gap-2">
+      {stack.map((s) => (
+        <li class="rounded-full bg-blue-600/90 px-3 py-1 text-sm font-medium text-white shadow-sm ring-1 ring-blue-600/30 transition-colors duration-200 group-hover:bg-blue-600" aria-label={`Tecnología: ${s}`}>{s}</li>
+      ))}
+    </ul>
+  </div>
+
+  {link && (
+    <footer class="px-6 pb-6">
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-2 font-semibold text-white shadow-sm transition-all duration-200 hover:bg-blue-700 hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
+        aria-label="Visitar sitio web del proyecto"
+      >
+        Visitar sitio web
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h8.586L9.293 5.707a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L12.586 11H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </footer>
+  )}
+
+  <span class="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+</article>

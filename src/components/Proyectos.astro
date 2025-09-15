@@ -3,73 +3,21 @@ import { getCollection } from "astro:content";
 import Card from "./ui/Project.astro";
 
 const works = await getCollection("projects");
-
-// Obtenemos todos los stacks sin duplicados
-const allStacks = [
-	...new Set(works.flatMap((project) => project.data.DevTools)),
-];
 ---
 
 <div id="proyectos" class="text-white m-auto mb-8">
     <h2 class="text-center text-2xl font-black ">Proyectos</h2>
-
-    <!-- Botones de filtro -->
-    <div id="filter-buttons" class="relative flex justify-center gap-2 my-4">
-        <button class="filter-btn active bg-blue-500" data-stack="all">Todos</button>
-        {allStacks.map(stack => (
-            <button class="filter-btn bg-blue-500" data-stack={stack}>{stack}</button>
-        ))}
-    </div>
-
     <!-- Contenedor de proyectos -->
-    <div id="projects-container" class="text-white flex flex-wrap justify-center p-4 gap-8">
-        {works.map((project) => (
-            <div class="project-card" data-stacks={project.data.DevTools.join(' ')}>
+    <div id="projects-container" class="text-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-6 gap-8">
+      {works.map((project) => (
+            <div class={`w-full`}>
                 <Card
-                    title={project.data.Name}
-                    description={project.data.Description}
-                    link={project.data.Web}
-                    stack={project.data.DevTools}
+                  title={project.data.Name}
+                  description={project.data.Description}
+                  link={project.data.Web}
+                  stack={project.data.DevTools}
                 />
             </div>
-        ))}
+            ))}
     </div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Manejar la clase 'active'
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                const selectedStack = button.getAttribute('data-stack');
-
-                projectCards.forEach(card => {
-                    const cardStacks = card.getAttribute('data-stacks');
-                    if (selectedStack === 'all' || cardStacks?.includes(selectedStack)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-    });
-</script>
-
-<style>
-    .filter-btn {
-        color: white;
-        padding: 8px 16px;
-        border-radius: 8px;
-        cursor: pointer;
-    }
-    .filter-btn.active {
-        background-color: #59f;
-    }
-</style>

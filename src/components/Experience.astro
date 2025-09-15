@@ -5,15 +5,17 @@ import Work from "./ui/Work.astro";
 const experiences = await getCollection("works");
 ---
 <h4 class="text-white text-center px-5 py-2 text-2xl">Experiencia Laboral</h4>
-    <div class="p-7 text-2xl flex justify-center items-center m-auto gap-5 w-1/2">
-        <ol class="relative border-s border-gray-200 dark:border-gray-700">
+    <div class="mx-auto max-w-3xl p-7">
+        <ol class="relative border-l-2 border-blue-500 dark:border-gray-600">
             {experiences.map((work) => (
              <Work
                 time={work.data.Date}
                 company={work.data.Company}
                 description={work.data.Description}
-                stack={work.data.Role}
+                highlights={work.data.Highlights}
+                role={work.data.Role}
+                stack={work.data.DevTools}
              />
             ))}
         </ol>
-</div>
+    </div>
