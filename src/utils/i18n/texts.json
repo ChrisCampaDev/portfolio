@@ -1,0 +1,132 @@
+{
+  "es": {
+    "nav": {
+      "projects": "Proyectos",
+      "about": "Quién soy",
+      "contact": "Contacto",
+      "switch": "English",
+      "switch_es": "Español"
+    },
+    "hero": {
+      "hello": "Hola, soy",
+      "name": "Christian Campa",
+      "role": "Desarrollador Frontend",
+      "tagline": "apasionado por crear experiencias web excepcionales.",
+      "currentWork": "Actualmente trabajo en la",
+      "company": "Compañía Alsoftpro",
+      "about": "He trabajado en diversos proyectos, estando vinculado a diferentes empresas dedicadas al desarrollo web. Me especializo en crear interfaces modernas y funcionales.",
+      "cta_projects": "Ver mis proyectos",
+      "cta_cv": "Descargar CV",
+      "connect": "Conecta conmigo",
+      "profileAlt": "Christian Campa - Desarrollador Frontend"
+    },
+    "experience": {
+      "title": "Experiencia Laboral",
+      "labels": {
+        "role": "Cargo ocupado",
+        "skills": "Habilidades",
+        "tech_used": "Tecnologías usadas"
+      }
+    },
+    "projects": {
+      "title": "Proyectos",
+      "visit": "Visitar sitio web",
+      "visit_aria": "Visitar sitio web del proyecto",
+      "tech_aria_prefix": "Tecnología"
+    },
+    "contact": {
+      "title": "Contacto",
+      "subtitle": "Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarme.",
+      "labels": {
+        "name": "Nombre",
+        "email": "Email",
+        "message": "Mensaje"
+      },
+      "placeholders": {
+        "name": "Tu nombre",
+        "email": "tu@email.com",
+        "message": "Escribe tu mensaje aquí..."
+      },
+      "buttons": {
+        "sendEmail": "Enviar por Email",
+        "sendWhatsApp": "Enviar por WhatsApp"
+      },
+      "subject": "Contacto desde tu Portafolio",
+      "alertWhatsAppNotConfigured": "El número de WhatsApp no está configurado por el propietario del sitio.",
+      "formatted": {
+        "name": "Nombre",
+        "email": "Email",
+        "message": "Mensaje"
+      }
+    },
+    "footer": {
+      "description": "En esta web podrás ver mis proyectos, experiencia laboral y contactarme. Puedes contactarme por email o WhatsApp para trabajar juntos.",
+      "rights": "Todos los derechos reservados."
+    }
+  },
+  "en": {
+    "nav": {
+      "projects": "Projects",
+      "about": "About me",
+      "contact": "Contact",
+      "switch": "Español",
+      "switch_es": "English"
+    },
+    "hero": {
+      "hello": "Hi, I'm",
+      "name": "Christian Campa",
+      "role": "Frontend Developer",
+      "tagline": "passionate about crafting exceptional web experiences.",
+      "currentWork": "I currently work at",
+      "company": "Alsoftpro Company",
+      "about": "I've worked on a variety of projects for different web development companies. I specialize in building modern, functional interfaces.",
+      "cta_projects": "View my projects",
+      "cta_cv": "Download CV",
+      "connect": "Connect with me",
+      "profileAlt": "Christian Campa - Frontend Developer"
+    },
+    "experience": {
+      "title": "Work Experience",
+      "labels": {
+        "role": "Role",
+        "skills": "Skills",
+        "tech_used": "Technologies used"
+      }
+    },
+    "projects": {
+      "title": "Projects",
+      "visit": "Visit website",
+      "visit_aria": "Visit project website",
+      "tech_aria_prefix": "Technology"
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "If you have any questions or need help, feel free to contact me.",
+      "labels": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Message"
+      },
+      "placeholders": {
+        "name": "Your name",
+        "email": "your@email.com",
+        "message": "Write your message here..."
+      },
+      "buttons": {
+        "sendEmail": "Send via Email",
+        "sendWhatsApp": "Send via WhatsApp"
+      },
+      "subject": "Contact from your Portfolio",
+      "alertWhatsAppNotConfigured": "The WhatsApp number is not configured by the site owner.",
+      "formatted": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Message"
+      }
+    },
+    "footer": {
+      "description": "On this website you can view my projects, work experience, and contact me. You can reach me by email or WhatsApp to work together.",
+      "rights": "All rights reserved."
+    }
+  }
+}

@@ -1,8 +1,4 @@
 ---
-import GitHubIcon from "./GitHubIcon.astro";
-import LinkedInIcon from "./LinkedInIcon.astro";
-import WhatsAppIcon from "./WhatsAppIcon.astro";
-
 interface Props {
 	githubUrl?: string;
 	linkedinUrl?: string;
@@ -11,11 +7,15 @@ interface Props {
 }
 
 const {
-	githubUrl = "https://github.com/christiancampa",
+	githubUrl = "https://github.com/ChristianCampaDev",
 	linkedinUrl = "https://linkedin.com/in/christiancampa",
-	whatsappUrl = "https://wa.me/1234567890",
+	whatsappUrl = "https://wa.me/+5354758835",
 	class: className = "",
 } = Astro.props;
+
+import WhatsAppIcon from './icons/social/WhatsAppIcon.astro';
+import LinkedInIcon from './icons/social/LinkedInIcon.astro';
+import GitHubIcon from './icons/social/GitHubIcon.astro';
 ---
 
 <div class={`flex items-center justify-center gap-4 ${className}`}>

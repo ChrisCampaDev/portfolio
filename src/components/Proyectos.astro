@@ -1,23 +1,30 @@
 ---
 import { getCollection } from "astro:content";
 import Card from "./ui/Project.astro";
+import { getTexts, getLocaleFromAstro } from "@/utils/i18n";
 
 const works = await getCollection("projects");
+const t = getTexts(Astro);
+const locale = getLocaleFromAstro(Astro);
 ---
 
 <div id="proyectos" class="text-white m-auto mb-8">
-    <h2 class="text-center text-2xl font-black ">Proyectos</h2>
+    <h2 class="text-center text-2xl font-black ">{t.projects.title}</h2>
     <!-- Contenedor de proyectos -->
     <div id="projects-container" class="text-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-6 gap-8">
-      {works.map((project) => (
-            <div class={`w-full`}>
-                <Card
-                  title={project.data.Name}
-                  description={project.data.Description}
-                  link={project.data.Web}
-                  stack={project.data.DevTools}
-                />
-            </div>
-            ))}
+      {works.map((project) => {
+            const title = locale === 'en' ? (project.data.Name_en ?? project.data.Name) : project.data.Name;
+            const description = locale === 'en' ? (project.data.Description_en ?? project.data.Description) : project.data.Description;
+            return (
+              <div class={`w-full`}>
+                  <Card
+                    title={title}
+                    description={description}
+                    link={project.data.Web}
+                    stack={project.data.DevTools}
+                  />
+              </div>
+            );
+          })}
     </div>
 </div>

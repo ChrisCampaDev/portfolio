@@ -1,38 +1,40 @@
 ---
 const myEmail = "christiancampa546@gmail.com";
 const myWhatsAppNumber = "5354758835";
+import { getTexts } from "@/utils/i18n";
+const t = getTexts(Astro);
 ---
 
 <div class="relative text-white p-8 bg-gray-800 rounded-lg max-w-2xl mx-auto my-10">
-    <h2 class="text-2xl font-bold mb-4 text-center">Contacto</h2>
-    <p class="text-center mb-6">Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarme.</p>
+    <h2 class="text-2xl font-bold mb-4 text-center">{t.contact.title}</h2>
+    <p class="text-center mb-6">{t.contact.subtitle}</p>
 
     <form id="contact-form" class="space-y-4">
         <div>
-            <label for="name" class="block mb-2 text-sm font-medium">Nombre</label>
-            <input type="text" id="name" name="name" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Tu nombre" required>
+            <label for="name" class="block mb-2 text-sm font-medium">{t.contact.labels.name}</label>
+            <input type="text" id="name" name="name" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder={t.contact.placeholders.name} required>
         </div>
         <div>
-            <label for="email" class="block mb-2 text-sm font-medium">Email</label>
-            <input type="email" id="email" name="email" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="tu@email.com" required>
+            <label for="email" class="block mb-2 text-sm font-medium">{t.contact.labels.email}</label>
+            <input type="email" id="email" name="email" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder={t.contact.placeholders.email} required>
         </div>
         <div>
-            <label for="message" class="block mb-2 text-sm font-medium">Mensaje</label>
-            <textarea id="message" name="message" rows="4" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+            <label for="message" class="block mb-2 text-sm font-medium">{t.contact.labels.message}</label>
+            <textarea id="message" name="message" rows="4" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder={t.contact.placeholders.message} required></textarea>
         </div>
 
         <div class="flex flex-col sm:flex-row gap-4 pt-4">
             <button type="submit" id="send-email" class="contact-btn email-btn">
-                Enviar por Email
+                {t.contact.buttons.sendEmail}
             </button>
             <button type="submit" id="send-whatsapp" class="contact-btn whatsapp-btn">
-                Enviar por WhatsApp
+                {t.contact.buttons.sendWhatsApp}
             </button>
         </div>
     </form>
 </div>
 
-<script define:vars={{ myEmail, myWhatsAppNumber }}>
+<script define:vars={{ myEmail, myWhatsAppNumber, subject: t.contact.subject, alertWhatsAppNotConfigured: t.contact.alertWhatsAppNotConfigured, fName: t.contact.formatted.name, fEmail: t.contact.formatted.email, fMessage: t.contact.formatted.message }}>
     document.addEventListener('DOMContentLoaded', () => {
         const form = document.getElementById('contact-form');
         const nameInput = document.getElementById('name');
@@ -46,7 +48,7 @@ const myWhatsAppNumber = "5354758835";
             const email = emailInput.value;
             const message = messageInput.value;
 
-            return `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`;
+            return `${fName}: ${name}\n${fEmail}: ${email}\n\n${fMessage}:\n${message}`;
         }
 
         sendEmailBtn.addEventListener('click', (e) => {
@@ -56,10 +58,10 @@ const myWhatsAppNumber = "5354758835";
                 return;
             }
 
-            const subject = 'Contacto desde tu Portfolio';
+            const subjectText = subject;
             const body = encodeURIComponent(getFormattedMessage());
 
-            window.location.href = `mailto:${myEmail}?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:${myEmail}?subject=${subjectText}&body=${body}`;
         });
 
         sendWhatsappBtn.addEventListener('click', (e) => {
@@ -70,7 +72,7 @@ const myWhatsAppNumber = "5354758835";
             }
 
             if (myWhatsAppNumber === 'YOUR_PHONE_NUMBER') {
-                alert('El número de WhatsApp no está configurado por el propietario del sitio.');
+                alert(alertWhatsAppNotConfigured);
                 return;
             }
 

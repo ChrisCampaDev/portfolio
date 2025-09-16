@@ -9,7 +9,14 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
+  i18n: {
+    locales: ["es", "en"],
+    defaultLocale: "es",
+  },
+
   integrations: [icon()],
   site: "https://chriscampadev.github.io",
   base: "/portfolio",
 });
+
+

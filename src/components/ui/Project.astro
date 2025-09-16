@@ -7,6 +7,8 @@ interface Props {
 	stack: string[];
 }
 const { title, link, description, stack } = Astro.props;
+import { getTexts } from "@/utils/i18n";
+const t = getTexts(Astro);
 ---
 
 <article class="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm backdrop-blur transition-colors duration-300 hover:shadow-md dark:border-gray-700 dark:bg-gray-900/60">
@@ -21,7 +23,7 @@ const { title, link, description, stack } = Astro.props;
   <div class="px-6 py-4">
     <ul class="flex flex-wrap items-center justify-center gap-2">
       {stack.map((s) => (
-        <li class="rounded-full bg-blue-600/90 px-3 py-1 text-sm font-medium text-white shadow-sm ring-1 ring-blue-600/30 transition-colors duration-200 group-hover:bg-blue-600" aria-label={`Tecnología: ${s}`}>{s}</li>
+        <li class="rounded-full bg-blue-600/90 px-3 py-1 text-sm font-medium text-white shadow-sm ring-1 ring-blue-600/30 transition-colors duration-200 group-hover:bg-blue-600" aria-label={`${t.projects.tech_aria_prefix}: ${s}`}>{s}</li>
       ))}
     </ul>
   </div>
@@ -33,9 +35,9 @@ const { title, link, description, stack } = Astro.props;
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-2 font-semibold text-white shadow-sm transition-all duration-200 hover:bg-blue-700 hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
-        aria-label="Visitar sitio web del proyecto"
+        aria-label={t.projects.visit_aria}
       >
-        Visitar sitio web
+        {t.projects.visit}
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5" aria-hidden="true">
           <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h8.586L9.293 5.707a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L12.586 11H4a1 1 0 01-1-1z" clip-rule="evenodd" />
         </svg>
