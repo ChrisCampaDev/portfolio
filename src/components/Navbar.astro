@@ -1,51 +1,94 @@
 ---
-import { getTexts, getLocaleFromAstro } from "@/utils/i18n";
-import EsFlag from '@/components/ui/icons/flags/es.astro';
-import EnFlag from '@/components/ui/icons/flags/en.astro';
-
-// Determine current locale from the pathname considering the configured base (e.g., "/portfolio")
-const { pathname, hash } = Astro.url;
-
-const currentLocale = getLocaleFromAstro(Astro);
-const isEN = currentLocale === 'en';
-const t = getTexts(Astro);
-
-// Build a switch URL that preserves the current page path and hash
-function buildSwitchHref(targetLocale: 'es' | 'en') {
-  const segs = pathname.split('/').filter(Boolean);
-  // segs[0] is base (e.g., 'portfolio')
-  const base = segs[0] ?? '';
-  const hasLocale = segs[1] === 'en';
-  let rest = hasLocale ? segs.slice(2) : segs.slice(1);
-
-  let newSegs: string[];
-  if (targetLocale === 'en') {
-    newSegs = [base, 'en', ...rest];
-  } else {
-    newSegs = [base, ...rest];
-  }
-  const newPath = '/' + newSegs.filter(Boolean).join('/') + (pathname.endsWith('/') ? '/' : '');
-  return newPath + (hash || '');
-}
-
-const switchLocale = isEN ? 'es' : 'en';
-const switchHref = buildSwitchHref(switchLocale);
-const switchLabel = t.nav.switch;
-const TargetFlag = isEN ? EsFlag : EnFlag;
-const flagTitle = switchLocale === 'es' ? 'Español' : 'English';
-
+import En from "./ui/icons/flags/en.astro";
+import Es from "./ui/icons/flags/es.astro";
 ---
 
-<nav class="hidden bg-gradient-to-r from-black/40 to-transparent text-white p-5 fixed z-10 w-full lg:block">
-  <div class="max-w-6xl mx-auto flex items-center justify-between">
-    <ul class="flex justify-center items-center px-10 py-2 gap-10 text-lg">
-      <a href="#proyectos">{t.nav.projects}</a>
-      <a href="#nosotros">{t.nav.about}</a>
-      <a href="#contacto">{t.nav.contact}</a>
-    </ul>
-    <a href={switchHref} class="px-3 py-1 rounded-md border border-white/40 hover:bg-white/10 transition inline-flex items-center gap-2" aria-label={`Switch language to ${switchLabel}`}>
-      {switchLabel}
-      <TargetFlag width={20} height={15} class="w-5 h-[15px]" title={flagTitle} />
-    </a>
-  </div>
-  </nav>
+<nav
+	class="bg-neutral-primary w-full z-20 top-0 start-0 border-b border-default"
+>
+	<div
+		class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+	>
+		<a
+			href="/portfolio"
+			class="flex items-center space-x-3 rtl:space-x-reverse"
+		>
+			<img
+				class="w-10 h-10 rounded-full"
+				src="/docs/images/people/profile-picture-5.jpg"
+				alt="avatar"
+			/>
+			<span>ChrisCampaDev</span>
+		</a>
+		<div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+			<div class="flex">
+				<button
+					type="button"
+					class="flex bg-black rounded-l-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none"
+				>
+					<En />
+				</button>
+				<button
+					type="button"
+					class="flex bg-black rounded-r-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none"
+				>
+					<Es />
+				</button>
+			</div>
+			<button
+				data-collapse-toggle="navbar-sticky"
+				type="button"
+				class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
+				aria-controls="navbar-sticky"
+				aria-expanded="false"
+			>
+				<span class="sr-only">Open main menu</span>
+				<svg
+					class="w-6 h-6"
+					aria-hidden="true"
+					xmlns="http://www.w3.org/2000/svg"
+					width="24"
+					height="24"
+					fill="none"
+					viewBox="0 0 24 24"
+					><path
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-width="2"
+						d="M5 7h14M5 12h14M5 17h14"></path></svg
+				>
+			</button>
+		</div>
+		<div
+			class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+			id="navbar-sticky"
+		>
+			<ul
+				class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-default rounded-base bg-neutral-secondary-soft md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-neutral-primary"
+			>
+				<li>
+					<a
+						href="/portfolio"
+						class="block py-2 px-3 hover:text-blue-600 text-black bg-brand rounded-sm md:bg-transparent md:text-fg-brand md:p-0"
+						aria-current="page">Inicio</a
+					>
+				</li>
+				<li>
+					<a
+						href="/portfolio/experience"
+						class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+						>Experienca laboral</a
+					>
+				</li>
+
+				<li>
+					<a
+						href="/portfolio/contacto"
+						class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+						>Contacto</a
+					>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
