@@ -15,53 +15,74 @@ interface CardProjectProps {
 
 const CardProject = (props: CardProjectProps) => {
 	const { title, description, imageUrl, stacks, links } = props;
+
 	return (
-		<div className="bg-neutral-primary-soft block max-w-sm border border-default rounded-t-xl shadow-xs">
-			<div className="bg-gray-500 h-50 rounded-t-xl">
-				<img className="rounded-t-xl" src={imageUrl} alt="" />
+		<div className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl dark:border-gray-800 dark:bg-gray-900 dark:hover:shadow-gray-800/60">
+			{/* Image Section */}
+			<div className="relative h-48 w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+				{imageUrl ? (
+					<img
+						src={imageUrl}
+						alt={`Imagen del proyecto ${title}`}
+						className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+					/>
+				) : (
+					<div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-50 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+						<span className="text-lg font-bold text-gray-500 dark:text-gray-400">
+							{title}
+						</span>
+					</div>
+				)}
 			</div>
-			<div className="p-6 text-center pb-2">
-				<h3 className="text-center text-xl">{title}</h3>
-				<div className="flex gap-2 justify-center items-center">
-					{stacks.map((stack, index) => (
+
+			{/* Content Section */}
+			<div className="flex flex-1 flex-col p-6">
+				<h3 className="text-xl font-bold text-gray-900 dark:text-white">
+					{title}
+				</h3>
+				<p className="mt-2 flex-1 text-base text-gray-600 dark:text-gray-300">
+					{description}
+				</p>
+
+				{/* Stacks Section */}
+				<div className="mt-4 flex flex-wrap gap-2">
+					{stacks.map((stack) => (
 						<span
-							key={index}
-							className="inline-flex items-center bg-brand-softer
-							border border-brand-subtle text-fg-brand-strong text-lg font-medium px-2.5 py-1.5
-							rounded-sm bg-blue-900 text-white"
+							key={stack}
+							className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-800 dark:bg-blue-900/50 dark:text-blue-200"
 						>
 							{stack}
 						</span>
 					))}
 				</div>
+			</div>
 
-				<p className="py-3 border-b-2 border-blue-600 font-semibold tracking-tight text-heading">
-					{description}
-				</p>
-
-				<div className="flex gap-5 justify-center items-center p-2">
-					{Array.isArray(links) ? (
-						links.map((link) => {
-							const label = link.site === "GitHub" ? "Repositorio" : "Enlace";
-							return (
-								<div
-									key={link.id ?? link.url}
-									className={` ${link.site === "GitHub" ? "bg-black text-white" : "bg-blue-500 text-white"} px-2 py-1.5 rounded-sm flex gap-2 `}
-								>
-									{link.site === "GitHub" ? <Github /> : <Globe />}
-									<a
-										key={link.id ?? link.url}
-										href={link.url}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										{label}
-									</a>
-								</div>
-							);
-						})
+			{/* Footer Links Section */}
+			<div className="border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900/50">
+				<div className="flex items-center justify-center gap-4">
+					{links && links.length > 0 ? (
+						links.map((link) => (
+							<a
+								key={link.url}
+								href={link.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400"
+							>
+								{link.site === "GitHub" ? (
+									<Github size={18} />
+								) : (
+									<Globe size={18} />
+								)}
+								<span>
+									{link.site === "GitHub" ? "Repositorio" : "Ver Sitio"}
+								</span>
+							</a>
+						))
 					) : (
-						<p className="text-2xl text-red-500 font-semibold">Web Privada</p>
+						<p className="text-sm font-semibold text-gray-500">
+							Proyecto Privado
+						</p>
 					)}
 				</div>
 			</div>
