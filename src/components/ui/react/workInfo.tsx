@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/a11y/useButtonType: <explanation> */
 import { useState } from "react";
 import CardProject from "./cardProject";
 
@@ -25,7 +26,7 @@ const allProjects: Project[] = [
 		description:
 			"Sitio oficial de la empresa D'Concepto. Como parte del equipo de Medialityc, participé en el desarrollo de esta plataforma web corporativa.",
 		stacks: ["Nextjs", "Tailwindcss", "SharcnUI"],
-		links: [{ site: "Google", url: "https://dconcepto.com" }],
+		links: [{ site: "Google", url: "https://dconceptos.com/" }],
 	},
 	{
 		id: 2,
@@ -56,7 +57,7 @@ const allProjects: Project[] = [
 			"Mi portafolio personal donde muestro mis habilidades y proyectos. Diseñado para ser visualmente atractivo, rápido y fácil de navegar.",
 		stacks: ["Astro", "React", "Tailwindcss"],
 		links: [
-			{ site: "GitHub", url: "https://github.com/ChrisCampa/portfolio-astro" },
+			{ site: "GitHub", url: "https://github.com/ChrisCampaDev/portfolio" },
 		],
 	},
 	{
