@@ -1,24 +1,31 @@
 ---
 interface Props {
-  width?: number | string;
-  height?: number | string;
-  class?: string;
-  title?: string;
+	width?: number | string;
+	height?: number | string;
+	class?: string;
+	title?: string;
 }
 
-const { width = 20, height = 15, class: className = "", title } = Astro.props;
+const {
+	width = 20,
+	height = 15,
+	class: className = "",
+	title,
+	...rest
+} = Astro.props;
 ---
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
-  width={width}
-  height={height}
-  viewBox="0 0 64 48"
-  class={className}
-  role="img"
-  aria-label={title}
-  aria-hidden={title ? undefined : 'true'}
+	xmlns="http://www.w3.org/2000/svg"
+	width={width}
+	height={height}
+	viewBox="0 0 64 48"
+	class={className}
+	role="img"
+	aria-label={title}
+	aria-hidden={title ? undefined : "true"}
+	{...rest}
 >
-  <rect width="64" height="48" fill="#AA151B"/>
-  <rect y="16" width="64" height="16" fill="#F1BF00"/>
+	<rect width="64" height="48" fill="#AA151B"></rect>
+	<rect y="16" width="64" height="16" fill="#F1BF00"></rect>
 </svg>

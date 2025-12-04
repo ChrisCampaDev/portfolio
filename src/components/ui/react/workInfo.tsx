@@ -1,5 +1,5 @@
 /** biome-ignore-all lint/a11y/useButtonType: <explanation> */
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import CardProject from "./cardProject";
 
 // Define the type for a project link
@@ -77,34 +77,28 @@ const allStacks = [
 ];
 
 const WorkProject = () => {
-	// State to hold the currently displayed projects
-	const [filteredProjects, setFilteredProjects] =
-		useState<Project[]>(allProjects);
-	// State to track the active filter
 	const [activeFilter, setActiveFilter] = useState<string>("Todos");
 
-	const handleFilterClick = (stack: string) => {
-		setActiveFilter(stack);
-		if (stack === "Todos") {
-			setFilteredProjects(allProjects);
-		} else {
-			const filtered = allProjects.filter((project) =>
-				project.stacks.includes(stack),
-			);
-			setFilteredProjects(filtered);
+	const filteredProjects = useMemo(() => {
+		if (activeFilter === "Todos") {
+			return allProjects;
 		}
+		return allProjects.filter((project) =>
+			project.stacks.includes(activeFilter),
+		);
+	}, [activeFilter]);
+
+	const handleFilterClick = (stack: string) => {
+		console.log(stack);
+		setActiveFilter(stack);
 	};
 
 	return (
-		<section className="w-full max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+		<section className="w-full max-w-8xl mx-auto px-6 py-12 sm:px-6 lg:px-8">
 			<div className="text-center mb-12">
 				<h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
 					Mis Proyectos
 				</h2>
-				<p className="mt-4 max-w-2xl mx-auto text-lg text-gray-500 dark:text-gray-400">
-					Una selección de proyectos en los que he trabajado. Filtra por
-					tecnología para ver más.
-				</p>
 			</div>
 
 			{/* Filter Buttons */}
@@ -126,7 +120,7 @@ const WorkProject = () => {
 			</div>
 
 			{/* Projects Grid */}
-			<div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+			<div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
 				{filteredProjects.map((project) => (
 					<CardProject
 						key={project.id}

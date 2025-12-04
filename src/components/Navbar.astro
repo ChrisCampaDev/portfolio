@@ -1,6 +1,8 @@
 ---
 import En from "./ui/icons/flags/en.astro";
 import Es from "./ui/icons/flags/es.astro";
+import IconMoon from "./ui/icons/IconMoon.astro";
+import IconSun from "./ui/icons/IconSun.astro";
 ---
 
 <nav
@@ -20,21 +22,23 @@ import Es from "./ui/icons/flags/es.astro";
 			/>
 			<span>ChrisCampaDev</span>
 		</a>
-		<div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-			<div class="flex">
-				<button
-					type="button"
-					class="flex bg-black rounded-l-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none"
-				>
-					<En />
-				</button>
-				<button
-					type="button"
-					class="flex bg-black rounded-r-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none"
-				>
-					<Es />
-				</button>
-			</div>
+		<div class="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
+			<button
+				id="lang-toggle"
+				type="button"
+				class="flex items-center bg-black text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-full text-sm px-3 py-2 focus:outline-none"
+			>
+				<En id="lang-toggle-en-icon" class="hidden" />
+				<Es id="lang-toggle-es-icon" />
+			</button>
+			<button
+				id="theme-toggle"
+				type="button"
+				class="text-body hover:bg-neutral-secondary-soft focus:outline-none focus:ring-4 focus:ring-neutral-tertiary rounded-lg text-sm p-2.5"
+			>
+				<IconSun id="theme-toggle-light-icon" class="w-6 h-6" />
+				<IconMoon id="theme-toggle-dark-icon" class="w-6 h-6 hidden" />
+			</button>
 			<button
 				data-collapse-toggle="navbar-sticky"
 				type="button"
@@ -69,15 +73,15 @@ import Es from "./ui/icons/flags/es.astro";
 				<li>
 					<a
 						href="/portfolio"
-						class="block py-2 px-3 hover:text-blue-600 text-black bg-brand rounded-sm md:bg-transparent md:text-fg-brand md:p-0"
-						aria-current="page">Inicio</a
+						class="block py-2 px-3 hover:text-blue-600 bg-brand rounded-sm md:bg-transparent md:text-fg-brand md:p-0"
+						aria-current="page"><span id="nav-home">Inicio</span></a
 					>
 				</li>
 				<li>
 					<a
 						href="/portfolio/experience"
 						class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
-						>Experienca laboral</a
+						><span id="nav-experience">Experienca laboral</span></a
 					>
 				</li>
 
@@ -85,10 +89,92 @@ import Es from "./ui/icons/flags/es.astro";
 					<a
 						href="/portfolio/contacto"
 						class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
-						>Contacto</a
+						><span id="nav-contact">Contacto</span></a
 					>
 				</li>
 			</ul>
 		</div>
 	</div>
 </nav>
+
+<script is:inline>
+	const themeToggleBtn = document.getElementById("theme-toggle");
+	const themeToggleDarkIcon = document.getElementById(
+		"theme-toggle-dark-icon",
+	);
+	const themeToggleLightIcon = document.getElementById(
+		"theme-toggle-light-icon",
+	);
+
+	// Function to set theme
+	const setTheme = (isDark) => {
+		if (isDark) {
+			document.documentElement.classList.add("dark");
+			themeToggleLightIcon.classList.add("hidden");
+			themeToggleDarkIcon.classList.remove("hidden");
+			localStorage.setItem("theme", "dark");
+		} else {
+			document.documentElement.classList.remove("dark");
+			themeToggleLightIcon.classList.remove("hidden");
+			themeToggleDarkIcon.classList.add("hidden");
+			localStorage.setItem("theme", "light");
+		}
+	};
+
+	// Initial theme check
+	const prefersDark = window.matchMedia(
+		"(prefers-color-scheme: dark)",
+	).matches;
+	const savedTheme = localStorage.getItem("theme");
+
+	setTheme(savedTheme === "dark" || (savedTheme === null && prefersDark));
+
+	// Add click listener
+	themeToggleBtn.addEventListener("click", function () {
+		setTheme(!document.documentElement.classList.contains("dark"));
+	});
+
+	// Language switcher logic
+	const translations = {
+		en: {
+			home: "Home",
+			experience: "Work Experience",
+			contact: "Contact",
+		},
+		es: {
+			home: "Inicio",
+			experience: "Experienca laboral",
+			contact: "Contacto",
+		},
+	};
+
+	const langToggleBtn = document.getElementById("lang-toggle");
+	const langToggleEnIcon = document.getElementById("lang-toggle-en-icon");
+	const langToggleEsIcon = document.getElementById("lang-toggle-es-icon");
+	const navHome = document.getElementById("nav-home");
+	const navExperience = document.getElementById("nav-experience");
+	const navContact = document.getElementById("nav-contact");
+
+	const setLanguage = (lang) => {
+		if (lang === "en") {
+			langToggleEnIcon.classList.remove("hidden");
+			langToggleEsIcon.classList.add("hidden");
+		} else {
+			langToggleEnIcon.classList.add("hidden");
+			langToggleEsIcon.classList.remove("hidden");
+		}
+		navHome.textContent = translations[lang].home;
+		navExperience.textContent = translations[lang].experience;
+		navContact.textContent = translations[lang].contact;
+		localStorage.setItem("language", lang);
+	};
+
+	const savedLang = localStorage.getItem("language") || "es";
+	setLanguage(savedLang);
+
+	langToggleBtn.addEventListener("click", function () {
+		const currentLang = localStorage.getItem("language") || "es";
+		const newLang = currentLang === "es" ? "en" : "es";
+		setLanguage(newLang);
+	});
+</script>
