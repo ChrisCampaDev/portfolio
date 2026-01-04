@@ -1,7 +1,6 @@
 // @ts-check
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
 
 import sitemap from "@astrojs/sitemap";
 
@@ -16,7 +15,7 @@ export default defineConfig({
 		defaultLocale: "es",
 	},
 
-	integrations: [react(), sitemap()],
+	integrations: [sitemap()],
 	site: "https://chriscampadev.github.io",
 	base: "/portfolio",
 });
