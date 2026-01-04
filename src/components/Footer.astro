@@ -1,6 +1,5 @@
 ---
 import Image from "astro/components/Image.astro";
-import Form from "./Form.astro";
 
 const date = new Date();
 const avatar = "/public/199186040.jpeg";
@@ -20,21 +19,36 @@ const avatar = "/public/199186040.jpeg";
 			/>
 			<div class="flex flex-col items-start justify-center gap-8">
 				<span class="text-sm text-body sm:text-center">
-					<a href="https://github.com/ChrisCampaDev" class="hover:underline"
-						>ChrisCampaDev-{date.getFullYear().toString()}</a
+					Desarrollado por:
+					<a
+						href="https://github.com/ChrisCampaDev"
+						class="hover:underline"
+						target="_blank">ChrisCampaDev-{date.getFullYear().toString()}</a
 					>
 				</span>
 				<span>
 					Fondo de:
 					<a
 						href="https://codepen.io/riley-pearce/pen/OJWPjZM"
+						target="_blank"
 						class="hover:underline">riley-pearce-CodePen</a
 					>
 				</span>
 			</div>
 		</div>
 		<div>
-			<Form />
+			<p>
+				Para el desarrollo de este sitio web use el framework <span
+					class="hover:text-orange-400 font-bold hover:underline"
+					><a href="https://astro.build/" target="_blank">Astrojs</a></span
+				>, junto a la biblioteca de componentes de <span
+					class="hover:text-gray-400
+						font-bold
+						hover:underline"
+				>
+					<a href="https://starwind.dev/" target="_blank">Starwind UI </a>
+				</span>
+			</p>
 		</div>
 	</div>
 </footer>

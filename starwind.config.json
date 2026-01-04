@@ -38,6 +38,10 @@
     {
       "name": "button",
       "version": "2.2.0"
+    },
+    {
+      "name": "toast",
+      "version": "1.0.0"
     }
   ]
 }
