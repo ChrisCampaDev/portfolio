@@ -1,113 +1,44 @@
 ---
-import En from "./ui/icons/flags/en.astro";
-import Es from "./ui/icons/flags/es.astro";
-import IconMoon from "./ui/icons/IconMoon.astro";
-import IconSun from "./ui/icons/IconSun.astro";
+// import En from "@/components/icons/flags/en.astro";
+// import Es from "@/components/icons/flags/es.astro";
+import IconSun from "@/components/icons/themes/IconSun.astro";
+import IconMoon from "@/components/icons/themes/IconMoon.astro";
+import { Switch } from "@/components/starwind/switch";
 ---
 
 <nav
-	class="bg-neutral-primary w-full z-20 top-0 start-0 border-b border-default"
+	class="dark:bg-black/90 bg-white/90 w-full z-20 start-0 border-b border-default top-0 sticky shadow-2xl shadow-gray-600 dark:shadow-blue-600"
 >
 	<div
-		class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+		class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2"
 	>
 		<a
 			href="/portfolio"
 			class="flex items-center space-x-3 rtl:space-x-reverse"
 		>
-			<img
-				class="w-10 h-10 rounded-full"
-				src="/public/profile.jpeg"
-				alt="avatar"
-			/>
 			<span>ChrisCampaDev</span>
 		</a>
 		<div class="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
-			<button
-				id="lang-toggle"
-				type="button"
-				class="flex items-center bg-black text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-full text-sm px-3 py-2 focus:outline-none"
-			>
-				<En id="lang-toggle-en-icon" class="hidden" />
-				<Es id="lang-toggle-es-icon" />
-			</button>
-			<button
-				id="theme-toggle"
-				type="button"
+			<span
 				class="text-body hover:bg-neutral-secondary-soft focus:outline-none focus:ring-4 focus:ring-neutral-tertiary rounded-lg text-sm p-2.5"
 			>
 				<IconSun id="theme-toggle-light-icon" class="w-6 h-6" />
 				<IconMoon id="theme-toggle-dark-icon" class="w-6 h-6 hidden" />
-			</button>
-			<button
-				data-collapse-toggle="navbar-sticky"
-				type="button"
-				class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
-				aria-controls="navbar-sticky"
-				aria-expanded="false"
-			>
-				<span class="sr-only">Open main menu</span>
-				<svg
-					class="w-6 h-6"
-					aria-hidden="true"
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					fill="none"
-					viewBox="0 0 24 24"
-					><path
-						stroke="currentColor"
-						stroke-linecap="round"
-						stroke-width="2"
-						d="M5 7h14M5 12h14M5 17h14"></path></svg
-				>
-			</button>
-		</div>
-		<div
-			class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-			id="navbar-sticky"
-		>
-			<ul
-				class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-default rounded-base bg-neutral-secondary-soft md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-neutral-primary"
-			>
-				<li>
-					<a
-						href="/portfolio"
-						class="block py-2 px-3 hover:text-blue-600 bg-brand rounded-sm md:bg-transparent md:text-fg-brand md:p-0"
-						aria-current="page"><span id="nav-home">Inicio</span></a
-					>
-				</li>
-				<li>
-					<a
-						href="/portfolio/experience"
-						class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
-						><span id="nav-experience">Experienca laboral</span></a
-					>
-				</li>
-
-				<li>
-					<a
-						href="/portfolio/contacto"
-						class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
-						><span id="nav-contact">Contacto</span></a
-					>
-				</li>
-			</ul>
+			</span>
+			<Switch id="theme-toggle" variant="primary" />
 		</div>
 	</div>
 </nav>
 
 <script is:inline>
 	const themeToggleBtn = document.getElementById("theme-toggle");
-	const themeToggleDarkIcon = document.getElementById(
-		"theme-toggle-dark-icon",
-	);
+	const themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
 	const themeToggleLightIcon = document.getElementById(
-		"theme-toggle-light-icon",
+		"theme-toggle-light-icon"
 	);
 
 	// Function to set theme
-	const setTheme = (isDark) => {
+	const setTheme = isDark => {
 		if (isDark) {
 			document.documentElement.classList.add("dark");
 			themeToggleLightIcon.classList.add("hidden");
@@ -122,59 +53,30 @@ import IconSun from "./ui/icons/IconSun.astro";
 	};
 
 	// Initial theme check
-	const prefersDark = window.matchMedia(
-		"(prefers-color-scheme: dark)",
-	).matches;
+	const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 	const savedTheme = localStorage.getItem("theme");
 
 	setTheme(savedTheme === "dark" || (savedTheme === null && prefersDark));
 
+	// Example of how to toggle the theme manually
+	function toggleTheme(newTheme) {
+		if (newTheme === "dark") {
+			document.documentElement.classList.add("dark");
+		} else if (newTheme === "light") {
+			document.documentElement.classList.remove("dark");
+		} else if (newTheme === "system") {
+			const prefersDark = window.matchMedia(
+				"(prefers-color-scheme: dark)"
+			).matches;
+			document.documentElement.classList.toggle("dark", prefersDark);
+		}
+
+		localStorage.setItem("colorTheme", newTheme);
+	}
+
 	// Add click listener
 	themeToggleBtn.addEventListener("click", function () {
 		setTheme(!document.documentElement.classList.contains("dark"));
-	});
-
-	// Language switcher logic
-	const translations = {
-		en: {
-			home: "Home",
-			experience: "Work Experience",
-			contact: "Contact",
-		},
-		es: {
-			home: "Inicio",
-			experience: "Experienca laboral",
-			contact: "Contacto",
-		},
-	};
-
-	const langToggleBtn = document.getElementById("lang-toggle");
-	const langToggleEnIcon = document.getElementById("lang-toggle-en-icon");
-	const langToggleEsIcon = document.getElementById("lang-toggle-es-icon");
-	const navHome = document.getElementById("nav-home");
-	const navExperience = document.getElementById("nav-experience");
-	const navContact = document.getElementById("nav-contact");
-
-	const setLanguage = (lang) => {
-		if (lang === "en") {
-			langToggleEnIcon.classList.remove("hidden");
-			langToggleEsIcon.classList.add("hidden");
-		} else {
-			langToggleEnIcon.classList.add("hidden");
-			langToggleEsIcon.classList.remove("hidden");
-		}
-		navHome.textContent = translations[lang].home;
-		navExperience.textContent = translations[lang].experience;
-		navContact.textContent = translations[lang].contact;
-		localStorage.setItem("language", lang);
-	};
-
-	const savedLang = localStorage.getItem("language") || "es";
-	setLanguage(savedLang);
-
-	langToggleBtn.addEventListener("click", function () {
-		const currentLang = localStorage.getItem("language") || "es";
-		const newLang = currentLang === "es" ? "en" : "es";
-		setLanguage(newLang);
+		// toggleTheme(savedTheme);
 	});
 </script>

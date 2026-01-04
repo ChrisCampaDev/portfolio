@@ -1,28 +1,41 @@
-<footer
-	class="bg-neutral-primary-soft rounded-base shadow-xs border border-default m-4"
->
-	<div
-		class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
-	>
-		<span class="text-sm text-body sm:text-center"
-			>©2025 <a href="" class="hover:underline">ChrisCampaDev</a>
-		</span>
-		<ul
-			class="flex flex-wrap items-center mt-3 text-sm font-medium text-body sm:mt-0"
-		>
-			<li>
-				<a
-					href="/portfolio/contacto"
-					class="hover:underline me-4 md:me-6">Contacto</a
-				>
-			</li>
+---
+import Image from "astro/components/Image.astro";
+import Form from "./Form.astro";
 
-			<li>
-				<a
-					href="/portfolio/experience"
-					class="hover:underline me-4 md:me-6">Experiencia laboral</a
-				>
-			</li>
-		</ul>
+const date = new Date();
+const avatar = "/public/profile.jpeg";
+---
+
+<footer
+	class="bg-neutral-primary-soft rounded-t-2xl shadow-xs border border-t-blue-900 text-center py-6 mt-6"
+>
+	<div class="flex justify-evenly items-end">
+		<div class="flex gap-4">
+			<Image
+				src={avatar}
+				alt={"Avatar"}
+				width={150}
+				height={150}
+				class="rounded-full"
+			/>
+			<div class="flex flex-col items-start justify-center gap-8">
+				<span class="text-sm text-body sm:text-center"
+					>©{date.getFullYear().toString()}
+					<a href="https://github.com/ChrisCampaDev" class="hover:underline"
+						>ChrisCampaDev</a
+					>
+				</span>
+				<span>
+					Animacion de fondo tomado de:
+					<a
+						href="https://codepen.io/riley-pearce/pen/OJWPjZM"
+						class="hover:underline">riley-pearce</a
+					>
+				</span>
+			</div>
+		</div>
+		<div>
+			<Form />
+		</div>
 	</div>
 </footer>

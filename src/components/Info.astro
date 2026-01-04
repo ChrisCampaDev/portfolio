@@ -1,98 +1,16 @@
 ---
-import GitHubIcon from "./ui/icons/social/GitHubIcon.astro";
-import LinkedInIcon from "./ui/icons/social/LinkedInIcon.astro";
-import WhatsAppIcon from "./ui/icons/social/WhatsAppIcon.astro";
+import PersonalSection from "@/components/sections/PersonalSection.astro";
+import WorkSection from "@/components/sections/WorkSection.astro";
+import AlsoftSection from "@/components/sections/AlsoftSection.astro";
 ---
 
 <section class="bg-neutral-primary">
 	<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
-		<div
-			class="flex gap-8 bg-neutral-secondary-soft border border-default rounded-base p-8 md:p-12 mb-8"
-		>
-			<div>
-				<h1
-					class="text-heading tracking-tighter text-3xl md:text-5xl font-bold my-6"
-				>
-					Soy Christian Campa Suarez, <br />
-					<span class="text-blue-600 font-black"
-						>Desarrollador Frontend</span
-					>
-				</h1>
-				<p class="md:text-lg font-normal text-body mb-6">
-					Como desarrollador, mi objetivo es crear experiencias web
-					atractivas y funcionales para los usuarios. Utilizo
-					tecnologías como HTML, CSS y TypeScript para diseñar y
-					desarrollar interfaces de usuario interactivas y
-					responsivas. Además, tengo experiencia en el uso de
-					frameworks como React y Astro para construir aplicaciones
-					web modernas y escalables.
-				</p>
-				<div>
-					<GitHubIcon href="https://github.com/ChrisCampaDev" />
-					<LinkedInIcon
-						href="https://www.linkedin.com/in/christian-campa-su%C3%A1rez-40551b268/"
-					/>
-					<WhatsAppIcon href="https://wa.me/54758835" />
-				</div>
-			</div>
-		</div>
+		<PersonalSection />
 
 		<div class="grid md:grid-cols-2 gap-8">
-			<div
-				class="bg-neutral-secondary-soft border border-default rounded-base p-8 md:p-12"
-			>
-				<span
-					class="inline-flex items-center bg-brand-softer border border-brand-subtle text-fg-brand-strong text-xs font-medium px-1.5 py-0.5 rounded-sm"
-				>
-					Puesto Actual
-				</span>
-				<h2 class="text-heading text-3xl font-semobild my-4">
-					Desarrollador Frontend y Jefe de Equipo
-				</h2>
-				<p class="font-normal text-body mb-4">
-					Actualmente trabajo en una empresa de desarrollo de
-					software, donde soy responsable de liderar proyectos de
-					desarrollo de software, desde la definición de requisitos
-					hasta la implementación y mantenimiento de las soluciones.
-				</p>
-			</div>
-			<div
-				class="bg-neutral-secondary-soft border border-default rounded-base p-8 md:p-12"
-			>
-				<span
-					class="inline-flex items-center bg-brand-softer border border-brand-subtle text-fg-brand-strong text-xs font-medium px-1.5 py-0.5 rounded-sm"
-				>
-					Empresa Actual
-				</span>
-				<h2 class="text-heading text-3xl font-semobild my-4">
-					Alsoftpro SRL
-				</h2>
-				<p class="font-normal text-body mb-4">
-					Alsoftpro SRL es una empresa de desarrollo de software que
-					se dedica a la creación de soluciones tecnológicas
-					personalizadas para empresas de todo el mundo.
-				</p>
-				<a
-					href="https://www.linkedin.com/company/alsoftpro-s-r-l/"
-					class="text-fg-brand hover:underline font-medium text-lg inline-flex items-center"
-					>Linkendin
-					<svg
-						class="w-6 h-6 rtl:rotate-180 ms-1.5"
-						aria-hidden="true"
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						fill="none"
-						viewBox="0 0 24 24"
-						><path
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M19 12H5m14 0-4 4m4-4-4-4"></path></svg
-					>
-				</a>
-			</div>
+			<WorkSection />
+			<AlsoftSection />
 		</div>
 	</div>
 </section>
