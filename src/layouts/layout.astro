@@ -1,0 +1,80 @@
+---
+import Footer from "@/components/Footer.astro";
+import Navbar from "@/components/Navbar.astro";
+
+interface Props {
+	title: string;
+	desc: string;
+}
+
+const { title, desc } = Astro.props;
+import "@/styles/global.css";
+import "@/styles/starwind.css";
+import Stars from "./Stars.astro";
+import { Toaster } from "@/components/starwind/toast";
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="@/styles/global.css" />
+
+		<meta name="description" content={desc} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Stars />
+		<Navbar />
+		<main class="min-h-screen">
+			<slot />
+			<Toaster position="top-center"  />
+		</main>
+		<Footer />
+	</body>
+	<script is:inline>
+		function initTheme() {
+			const colorTheme = localStorage.getItem("colorTheme");
+			if (!colorTheme) {
+				// if no color theme yet, use the users preferences
+				if (
+					window.matchMedia &&
+					window.matchMedia("(prefers-color-scheme: dark)").matches
+				) {
+					document.documentElement.classList.add("dark");
+					localStorage.setItem("colorTheme", "dark");
+				} else {
+					document.documentElement.classList.remove("dark");
+					localStorage.setItem("colorTheme", "light");
+				}
+			} else {
+				// assign the theme based on the value in local storage
+				if (colorTheme === "dark") {
+					document.documentElement.classList.add("dark");
+				} else if (colorTheme === "light") {
+					document.documentElement.classList.remove("dark");
+				} else if (colorTheme === "system") {
+					// use system preference
+					const prefersDark = window.matchMedia(
+						"(prefers-color-scheme: dark)"
+					).matches;
+					document.documentElement.classList.toggle("dark", prefersDark);
+				}
+			}
+		}
+
+		// runs on initial page load
+		initTheme();
+
+		// runs on view transitions navigation
+		document.addEventListener("astro:after-swap", initTheme);
+	</script>
+</html>

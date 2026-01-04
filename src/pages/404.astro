@@ -1,0 +1,27 @@
+---
+import Button from "@/components/starwind/button";
+import Layout from "@/layouts/layout.astro";
+---
+
+<Layout
+	desc="Página no encontrada. Parece que te has perdido, pero aquí tienes cómo regresar."
+	title="Error 404 - Página no encontrada"
+>
+	<div
+		class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4"
+	>
+		<div class="max-w-md space-y-6">
+			<div class="text-9xl font-bold text-gray-800 dark:text-gray-200">404</div>
+			<h1 class="text-3xl font-bold text-gray-800 dark:text-gray-200">
+				¡Ups! Página no encontrada
+			</h1>
+			<p class="text-lg text-gray-600 dark:text-gray-400">
+				Parece que la página que buscas no existe o ha sido movida. No te
+				preocupes, puedes regresar al inicio fácilmente.
+			</p>
+			<Button variant="primary" class="mt-4">
+				<a href="/portfolio"> Volver al inicio</a>
+			</Button>
+		</div>
+	</div>
+</Layout>

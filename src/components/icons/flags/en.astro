@@ -1,0 +1,42 @@
+---
+interface Props {
+	width?: number | string;
+	height?: number | string;
+	class?: string;
+	title?: string;
+}
+
+const {
+	width = 20,
+	height = 15,
+	class: className = "",
+	title,
+	...rest
+} = Astro.props;
+---
+
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	width={width}
+	height={height}
+	viewBox="0 0 64 48"
+	class={className}
+	role="img"
+	aria-label={title}
+	aria-hidden={title ? undefined : "true"}
+	{...rest}
+>
+	<rect width="64" height="48" fill="#012169"></rect>
+	<g fill="#fff">
+		<path
+			d="M0 0h8l20 15.2L48 0h16v6L39.5 24 64 42v6H48L28 36.8 8 48H0v-6L24.5 24 0 6z"
+		></path>
+		<path d="M26 0h12v48H26zM0 18h64v12H0z"></path>
+	</g>
+	<g fill="#C8102E">
+		<path
+			d="M0 0l24 18H18L0 5.5V0zm64 0v5.5L46 18h-6l24-18zM0 48v-5.5L18 30h6L0 48zm64 0l-24-18h6L64 42.5V48z"
+		></path>
+		<path d="M28 0h8v48h-8zM0 20h64v8H0z"></path>
+	</g>
+</svg>

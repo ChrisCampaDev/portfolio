@@ -1,40 +1,54 @@
 ---
-import { getTexts, getLocaleFromAstro } from "@/utils/i18n";
-import EsFlag from "@/components/ui/icons/flags/es.astro";
-import EnFlag from "@/components/ui/icons/flags/en.astro";
+import Image from "astro/components/Image.astro";
 
-const t = getTexts(Astro);
-const locale = getLocaleFromAstro(Astro);
-const isEN = locale === 'en';
-const { pathname, hash } = Astro.url;
-
-function buildSwitchHref(targetLocale: 'es' | 'en') {
-  const segs = pathname.split('/').filter(Boolean);
-  const base = segs[0] ?? '';
-  const hasLocale = segs[1] === 'en';
-  const rest = hasLocale ? segs.slice(2) : segs.slice(1);
-  const newSegs = targetLocale === 'en' ? [base, 'en', ...rest] : [base, ...rest];
-  const newPath = '/' + newSegs.filter(Boolean).join('/') + (pathname.endsWith('/') ? '/' : '');
-  return newPath + (hash || '');
-}
-
-const switchLocale = isEN ? 'es' : 'en';
-const switchHref = buildSwitchHref(switchLocale);
-const switchLabel = t.nav.switch;
-const TargetFlag = isEN ? EsFlag : EnFlag;
-const flagTitle = switchLocale === 'es' ? 'Español' : 'English';
+const date = new Date();
+const avatar = "/public/199186040.jpeg";
 ---
 
-<footer class="border-t border-border/60 bg-stone-900">
-    <div class="w-full max-w-screen-xl mx-auto px-4 py-8 md:py-10">
-        <div class="flex items-start justify-between gap-4 flex-col md:flex-row">
-            <p class="text-white/90 md:max-w-3xl">{t.footer.description}</p>
-            <a href={switchHref} class="self-start inline-flex items-center gap-2 px-3 py-1 rounded-md border border-white/40 hover:bg-white/10 text-white transition" aria-label={`Switch language to ${switchLabel}`}>
-                {switchLabel}
-                <TargetFlag width={20} height={15} class="w-5 h-[15px]" title={flagTitle} />
-            </a>
-        </div>
-        <hr class="my-6 sm:mx-auto border-border/60 lg:my-8" />
-        <span class="block text-center text-xs text-white">{new Date().getFullYear()} <a href="https://github.com/ChrisCampaDev" class="underline-offset-4 hover:underline text-white">ChrisCampaDev</a>. {t.footer.rights}</span>
-    </div>
+<footer
+	class="bg-neutral-primary-soft rounded-t-2xl shadow-xs border border-t-blue-900 text-center py-6 mt-6"
+>
+	<div class="flex justify-evenly items-center">
+		<div class="flex gap-4">
+			<Image
+				src={avatar}
+				alt={"Avatar"}
+				width={150}
+				height={150}
+				class="rounded-full"
+			/>
+			<div class="flex flex-col items-start justify-center gap-8">
+				<span class="text-sm text-body sm:text-center">
+					Desarrollado por:
+					<a
+						href="https://github.com/ChrisCampaDev"
+						class="hover:underline"
+						target="_blank">ChrisCampaDev-{date.getFullYear().toString()}</a
+					>
+				</span>
+				<span>
+					Fondo de:
+					<a
+						href="https://codepen.io/riley-pearce/pen/OJWPjZM"
+						target="_blank"
+						class="hover:underline">riley-pearce-CodePen</a
+					>
+				</span>
+			</div>
+		</div>
+		<div>
+			<p>
+				Para el desarrollo de este sitio web use el framework <span
+					class="hover:text-orange-400 font-bold hover:underline"
+					><a href="https://astro.build/" target="_blank">Astrojs</a></span
+				>, junto a la biblioteca de componentes de <span
+					class="hover:text-gray-400
+						font-bold
+						hover:underline"
+				>
+					<a href="https://starwind.dev/" target="_blank">Starwind UI </a>
+				</span>
+			</p>
+		</div>
+	</div>
 </footer>

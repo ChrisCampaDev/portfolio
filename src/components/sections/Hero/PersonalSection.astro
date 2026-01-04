@@ -1,0 +1,56 @@
+---
+import GitHubIcon from "@/components/icons/social/GitHubIcon.astro";
+import LinkedInIcon from "@/components/icons/social/LinkedInIcon.astro";
+import WhatsAppIcon from "@/components/icons/social/WhatsAppIcon.astro";
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
+} from "@/components/starwind/tooltip";
+import { telf } from "@/utils/const";
+---
+
+<div
+	class="flex gap-8 bg-neutral-secondary-soft border dark:border-gray-200 border-blue-900 rounded-2xl p-8 md:p-12 mb-8"
+>
+	<div>
+		<h1
+			class="text-heading tracking-tighter text-3xl md:text-5xl font-bold my-6"
+		>
+			Soy Christian Campa Suarez, <br />
+			<span class="text-blue-600 font-black">Desarrollador Frontend</span>
+		</h1>
+		<p class="md:text-lg font-normal text-body mb-6">
+			Como desarrollador, mi objetivo es crear experiencias web atractivas y
+			funcionales para los usuarios. Utilizo tecnologías como HTML, CSS y
+			TypeScript para diseñar y desarrollar interfaces de usuario interactivas y
+			responsivas. Además, tengo experiencia en el uso de frameworks como React
+			y Astro para construir aplicaciones web modernas y escalables.
+		</p>
+		<div>
+			<Tooltip>
+				<TooltipTrigger>
+					<GitHubIcon href="https://github.com/ChrisCampaDev" />
+				</TooltipTrigger>
+				<TooltipContent side="bottom" align="center"> Github </TooltipContent>
+			</Tooltip>
+			<Tooltip>
+				<TooltipTrigger>
+					<LinkedInIcon
+						href="https://www.linkedin.com/in/christian-campa-su%C3%A1rez-40551b268/"
+					/>
+				</TooltipTrigger>
+				<TooltipContent side="bottom" align="center">
+					Linkendin
+				</TooltipContent>
+			</Tooltip>
+
+			<Tooltip>
+				<TooltipTrigger>
+					<WhatsAppIcon href=`https://wa.me/${telf}` />
+				</TooltipTrigger>
+				<TooltipContent side="bottom" align="center"> Whatsapp </TooltipContent>
+			</Tooltip>
+		</div>
+	</div>
+</div>

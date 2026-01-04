@@ -1,0 +1,58 @@
+---
+import Button from "@/components/starwind/button";
+import Input from "@/components/starwind/input";
+import Label from "@/components/starwind/label";
+import Textarea from "@/components/starwind/textarea";
+import { mail } from "@/utils/const";
+---
+
+<form
+	id="contactForm"
+	action=`https://formsubmit.co/${mail}`
+	method="POST"
+	class="max-w-xl border p-4 rounded-2xl dark:border-gray-200 border-blue-900"
+>
+	<div class="flex flex-col py-5 text-center">
+		<h1 class="text-2xl text-center">Contacto</h1>
+		<p>Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarme.</p>
+	</div>
+	<div class="flex flex-col gap-3">
+		<Label for="name">Nombre</Label>
+		<Input id="name" name="name" placeholder="Nombre o empresa" />
+		<Label for="email">Email</Label>
+		<Input id="email" name="email" placeholder="Correo" />
+		<Label>Mensaje</Label>
+		<Textarea
+			name="message"
+			placeholder="Escriba un mensaje para comunicarse conmigo"
+			size="lg"
+		/>
+	</div>
+	<div class="w-full flex flex-col py-5">
+		<p class="text-center mb-2">Enviar mensaje por:</p>
+		<div class="flex gap-5">
+			<!-- <Button type="submit" class="w-full" variant="success">Whatsapp</Button> -->
+			<Button type="submit" class="w-full" variant="primary">Email</Button>
+		</div>
+	</div>
+</form>
+
+<script>
+	import { toast } from "@/components/starwind/toast";
+	import { telf } from "@/utils/const";
+
+	// document.getElementById("contactForm").addEventListener("submit", e => {
+	// 	e.preventDefault();
+	// 	const formData = new FormData(e.target);
+	// 	const data = Object.fromEntries(formData.entries());
+
+	// 	if (!data.name || !data.email || !data.message) {
+	// 		toast.error("Por favor, completa todos los campos.");
+	// 		return;
+	// 	}
+
+	// 	const whatsappMessage = `Hola, tengo una consulta:\n\nNombre: ${data.name}\nEmail: ${data.email}\nMensaje: ${data.message}`;
+	// 	const whatsappUrl = `https://wa.me/${telf}?text=${whatsappMessage}`;
+	// 	window.open(whatsappUrl, "_blank");
+	// });
+</script>

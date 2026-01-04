@@ -1,51 +1,82 @@
 ---
-import { getTexts, getLocaleFromAstro } from "@/utils/i18n";
-import EsFlag from '@/components/ui/icons/flags/es.astro';
-import EnFlag from '@/components/ui/icons/flags/en.astro';
-
-// Determine current locale from the pathname considering the configured base (e.g., "/portfolio")
-const { pathname, hash } = Astro.url;
-
-const currentLocale = getLocaleFromAstro(Astro);
-const isEN = currentLocale === 'en';
-const t = getTexts(Astro);
-
-// Build a switch URL that preserves the current page path and hash
-function buildSwitchHref(targetLocale: 'es' | 'en') {
-  const segs = pathname.split('/').filter(Boolean);
-  // segs[0] is base (e.g., 'portfolio')
-  const base = segs[0] ?? '';
-  const hasLocale = segs[1] === 'en';
-  let rest = hasLocale ? segs.slice(2) : segs.slice(1);
-
-  let newSegs: string[];
-  if (targetLocale === 'en') {
-    newSegs = [base, 'en', ...rest];
-  } else {
-    newSegs = [base, ...rest];
-  }
-  const newPath = '/' + newSegs.filter(Boolean).join('/') + (pathname.endsWith('/') ? '/' : '');
-  return newPath + (hash || '');
-}
-
-const switchLocale = isEN ? 'es' : 'en';
-const switchHref = buildSwitchHref(switchLocale);
-const switchLabel = t.nav.switch;
-const TargetFlag = isEN ? EsFlag : EnFlag;
-const flagTitle = switchLocale === 'es' ? 'Español' : 'English';
-
+// import En from "@/components/icons/flags/en.astro";
+// import Es from "@/components/icons/flags/es.astro";
+import IconSun from "@/components/icons/themes/IconSun.astro";
+import IconMoon from "@/components/icons/themes/IconMoon.astro";
+import { Switch } from "@/components/starwind/switch";
 ---
 
-<nav class="hidden bg-gradient-to-r from-black/40 to-transparent text-white p-5 fixed z-10 w-full lg:block">
-  <div class="max-w-6xl mx-auto flex items-center justify-between">
-    <ul class="flex justify-center items-center px-10 py-2 gap-10 text-lg">
-      <a href="#proyectos">{t.nav.projects}</a>
-      <a href="#nosotros">{t.nav.about}</a>
-      <a href="#contacto">{t.nav.contact}</a>
-    </ul>
-    <a href={switchHref} class="px-3 py-1 rounded-md border border-white/40 hover:bg-white/10 transition inline-flex items-center gap-2" aria-label={`Switch language to ${switchLabel}`}>
-      {switchLabel}
-      <TargetFlag width={20} height={15} class="w-5 h-[15px]" title={flagTitle} />
-    </a>
-  </div>
-  </nav>
+<nav
+	class="dark:bg-black/90 bg-white/90 w-full z-20 start-0 border-b border-default top-0 sticky shadow-2xl shadow-gray-600 dark:shadow-blue-600"
+>
+	<div
+		class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2"
+	>
+		<a
+			href="/portfolio"
+			class="flex items-center space-x-3 rtl:space-x-reverse"
+		>
+			<span>ChrisCampaDev</span>
+		</a>
+		<div class="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
+			<span
+				class="text-body hover:bg-neutral-secondary-soft focus:outline-none focus:ring-4 focus:ring-neutral-tertiary rounded-lg text-sm p-2.5"
+			>
+				<IconSun id="theme-toggle-light-icon" class="w-6 h-6" />
+				<IconMoon id="theme-toggle-dark-icon" class="w-6 h-6 hidden" />
+			</span>
+			<Switch id="theme-toggle" variant="primary" />
+		</div>
+	</div>
+</nav>
+
+<script is:inline>
+	const themeToggleBtn = document.getElementById("theme-toggle");
+	const themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+	const themeToggleLightIcon = document.getElementById(
+		"theme-toggle-light-icon"
+	);
+
+	// Function to set theme
+	const setTheme = isDark => {
+		if (isDark) {
+			document.documentElement.classList.add("dark");
+			themeToggleLightIcon.classList.add("hidden");
+			themeToggleDarkIcon.classList.remove("hidden");
+			localStorage.setItem("theme", "dark");
+		} else {
+			document.documentElement.classList.remove("dark");
+			themeToggleLightIcon.classList.remove("hidden");
+			themeToggleDarkIcon.classList.add("hidden");
+			localStorage.setItem("theme", "light");
+		}
+	};
+
+	// Initial theme check
+	const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+	const savedTheme = localStorage.getItem("theme");
+
+	setTheme(savedTheme === "dark" || (savedTheme === null && prefersDark));
+
+	// Example of how to toggle the theme manually
+	function toggleTheme(newTheme) {
+		if (newTheme === "dark") {
+			document.documentElement.classList.add("dark");
+		} else if (newTheme === "light") {
+			document.documentElement.classList.remove("dark");
+		} else if (newTheme === "system") {
+			const prefersDark = window.matchMedia(
+				"(prefers-color-scheme: dark)"
+			).matches;
+			document.documentElement.classList.toggle("dark", prefersDark);
+		}
+
+		localStorage.setItem("colorTheme", newTheme);
+	}
+
+	// Add click listener
+	themeToggleBtn.addEventListener("click", function () {
+		setTheme(!document.documentElement.classList.contains("dark"));
+		// toggleTheme(savedTheme);
+	});
+</script>

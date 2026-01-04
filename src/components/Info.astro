@@ -1,0 +1,16 @@
+---
+import PersonalSection from "@/components/sections/Hero/PersonalSection.astro";
+import WorkSection from "@/components/sections/Hero/WorkSection.astro";
+import AlsoftSection from "@/components/sections/Hero/AlsoftSection.astro";
+---
+
+<section class="bg-neutral-primary">
+	<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+		<PersonalSection />
+
+		<div class="grid md:grid-cols-2 gap-8">
+			<WorkSection />
+			<AlsoftSection />
+		</div>
+	</div>
+</section>
