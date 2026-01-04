@@ -1,15 +1,21 @@
 ---
-import Input from "@/components/starwind/input";
-import Label from "@/components/starwind/label";
-import Textarea from "@/components/starwind/textarea";
+import {
+	Tabs,
+	TabsList,
+	TabsTrigger,
+	TabsContent,
+} from "@/components/starwind/tabs";
+import EmailSendForm from "./sections/Sends/EmailSendForm.astro";
+import WhatsappSendForm from "./sections/Sends/WhatsappSendForm.astro";
 ---
 
-<div class="max-w-xl border-2 p-4 rounded-2xl">
-	<h1 class="text-2xl text-center">Contacto</h1>
-	<Label for="name">Nombre</Label>
-	<Input id="name" placeholder="Nombre o empresa" />
-	<Label for="email">Email</Label>
-	<Input id="email" placeholder="Correo" />
-	<Label>Mensaje</Label>
-	<Textarea placeholder="Escriba un mensaje para comunicarse conmigo" />
-</div>
+<Tabs defaultValue="email" class="max-w-4xl">
+	<TabsList>
+		<TabsTrigger value="email" class="px-2 w-52">Email</TabsTrigger>
+		<TabsTrigger value="whatsapp" class="px-2 w-52">Whatsapp</TabsTrigger>
+	</TabsList>
+	<TabsContent value="email">
+		<EmailSendForm />
+	</TabsContent>
+	<TabsContent value="whatsapp"> <WhatsappSendForm /> </TabsContent>
+</Tabs>

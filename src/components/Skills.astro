@@ -1,7 +1,27 @@
-<div>
-	Experiencia
-	<br />
-	Hobbies
-	<br />
-	Skills
+---
+import {
+	Tabs,
+	TabsList,
+	TabsTrigger,
+	TabsContent,
+} from "@/components/starwind/tabs";
+import StackSection from "@/components/sections/Skills/StackSection.astro";
+import ToolsSection from "@/components/sections/Skills/ToolSection.astro";
+---
+
+<div class="flex justify-center w-full">
+	<Tabs defaultValue="Stack" class="max-w-4xl text-center">
+		<TabsList>
+			<TabsTrigger value="Stack" class="px-2 w-52">Stack</TabsTrigger>
+			<TabsTrigger value="tools" class="px-2 w-52">Herramientas</TabsTrigger>
+		</TabsList>
+		<TabsContent value="Stack" class="flex flex-col gap-5 w-[800px]">
+			<p>Lenguajes y Herramientas uso</p>
+			<StackSection />
+		</TabsContent>
+		<TabsContent value="tools" class="flex flex-col gap-5 w-[800px]">
+			<p>Herramientas de productividad que he usado</p>
+			<ToolsSection />
+		</TabsContent>
+	</Tabs>
 </div>
