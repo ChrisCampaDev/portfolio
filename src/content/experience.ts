@@ -3,7 +3,7 @@ export const exp = [
 		company: "AlsoftPro",
 		date: "Marzo 2025 - Actualidad",
 		description:
-			"AlsoftPro es una empresa dedicada a ofrecer soluciones de software personalizadas para pequeñas y medianas empresas, ayudándolas a optimizar sus operaciones y mejorar su eficiencia.",
+			"Empresa dedicada a ofrecer soluciones personalizados para pequeñas y medianas empresas, ayudándolas a optimizar sus operaciones y mejorar su eficiencia.",
 		projects: [
 			{
 				title: "ALCOM",
@@ -20,7 +20,7 @@ export const exp = [
 		company: "Medialityc",
 		date: "Junio 2024 - Noviembre 2025",
 		description:
-			"Desarrollo de Software a Medida, Soluciones Empresariales y marketing digital.",
+			"Empresa de marketing que tambien brinda los servicios de desarrollo de software a medida y soluciones empresariales.",
 		projects: [
 			{
 				title: "Tammys Cake",
@@ -43,7 +43,7 @@ export const exp = [
 		company: "Freelancer",
 		date: "Enero 2024 - Marzo 2025",
 		description:
-			"ChrisCampaDev es el nombre que he creado para ofrecer soluciones de software personalizadas para pequeñas y medianas empresas, ayudándolas a optimizar sus operaciones y mejorar su eficiencia. He trabajado en proyectos como el desarrollo de aplicaciones web, la creación de sitios web y la implementación de soluciones empresariales.",
+			"ChrisCampaDev es el nombre que he creado para ofrecer soluciones de software personalizadas para pequeñas empresas y emprendimientos, ayudándolos a optimizar sus operaciones y mejorar su eficiencia. He desarrollado webs con el objetivo de dar mas visualidad a los productos que brindan.",
 		projects: [
 			{
 				title: "Finance Wise",
@@ -53,7 +53,7 @@ export const exp = [
 			{
 				title: "Printur3D",
 				description:
-					"Desarrollo de una web oficial para este proyecto asi como la implementacion de una seccion para productos y servicios para los usuarios interesados. Ademas, se implemento una seccion de contacto para que los usuarios puedan contactar con la empresa.",
+					"Desarrollo de una web oficial para este proyecto asi como la implementación de una seccion para productos y servicios para los usuarios interesados. Ademas, se implemento una sección de contacto para que los usuarios puedan contactar con la empresa.",
 			},
 			{
 				title: "WixSlow",
@@ -69,9 +69,9 @@ export const exp = [
 			"La Fundación del Nuevo Cine Latinoamericano es una organización sin fines de lucro dedicada a promover y apoyar la producción, distribución y exhibición del cine latinoamericano. Fundada en 1986, la fundación trabaja para preservar la diversidad cultural y fomentar el desarrollo del cine en la región a través de diversas iniciativas, incluyendo festivales de cine, talleres, y programas de formación para cineastas emergentes.",
 		projects: [
 			{
-				title: "Soporte tecnico",
+				title: "Soporte técnico",
 				description:
-					"Brindaba soporte técnico a los servidores y a los equipos de la empresa. Acompañaba a los equipos de desarrollo en la implementación de nuevas tecnologías.",
+					"Brindaba soporte técnico a los servidores y a los equipos de la empresa. Participé con el equipo de desarrollo para modernizar la plataforma web.",
 			},
 		],
 	},
