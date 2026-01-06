@@ -1,0 +1,134 @@
+{
+  "es": [
+    {
+      "company": "AlsoftPro",
+      "date": "Marzo 2025 - Actualidad",
+      "description": "Empresa dedicada a ofrecer soluciones personalizados para pequeñas y medianas empresas, ayudándolas a optimizar sus operaciones y mejorar su eficiencia.",
+      "projects": [
+        {
+          "title": "ALCOM",
+          "description": "Desarrollo y soporte de la aplicacion web para la gestion del servicio de agua en La Habana"
+        },
+        {
+          "title": "Oficina Digital",
+          "description": "Desarrollo de una web para el pago de servicios"
+        }
+      ]
+    },
+    {
+      "company": "Medialityc",
+      "date": "Junio 2024 - Noviembre 2025",
+      "description": "Empresa de marketing que tambien brinda los servicios de desarrollo de software a medida y soluciones empresariales.",
+      "projects": [
+        {
+          "title": "Tammys Cake",
+          "description": "Desarrollo y soporte del sitio web para una pastelería usando herramientas de WordPress"
+        },
+        {
+          "title": "REDIPIES",
+          "description": "Desarrollo y soporte del sitio web para una red de universidades iberoamericanas usando herramientas de WordPress."
+        },
+        {
+          "title": "D'Concepto",
+          "description": "Participacion en el equipo de desarrollo para el sitio web de la tienda D'Concepto"
+        }
+      ]
+    },
+    {
+      "company": "Freelancer",
+      "date": "Enero 2024 - Marzo 2025",
+      "description": "ChrisCampaDev es el nombre que he creado para ofrecer soluciones de software personalizadas para pequeñas empresas y emprendimientos, ayudándolos a optimizar sus operaciones y mejorar su eficiencia. He desarrollado webs con el objetivo de dar mas visualidad a los productos que brindan.",
+      "projects": [
+        {
+          "title": "Finance Wise",
+          "description": "Desarrollo del sitio oficial para esta pequeña empresa. Junto a un compañero, desarrollamos utilizando Astro y Tailwind CSS para crear una experiencia de usuario moderna y atractiva."
+        },
+        {
+          "title": "Printur3D",
+          "description": "Desarrollo de una web oficial para este proyecto asi como la implementación de una seccion para productos y servicios para los usuarios interesados. Ademas, se implemento una sección de contacto para que los usuarios puedan contactar con la empresa."
+        },
+        {
+          "title": "WixSlow",
+          "description": "Desarrollo del sitio web oficial de WixSlow, editor profesional y especialista en Motion Graphic"
+        }
+      ]
+    },
+    {
+      "company": "Fundación del Nuevo Cine Latinoamericano",
+      "date": "Noviembre 2024 - Noviembre 2025",
+      "description": "La Fundación del Nuevo Cine Latinoamericano es una organización sin fines de lucro dedicada a promover y apoyar la producción, distribución y exhibición del cine latinoamericano. Fundada en 1986, la fundación trabaja para preservar la diversidad cultural y fomentar el desarrollo del cine en la región a través de diversas iniciativas, incluyendo festivales de cine, talleres, y programas de formación para cineastas emergentes.",
+      "projects": [
+        {
+          "title": "Soporte técnico",
+          "description": "Brindaba soporte técnico a los servidores y a los equipos de la empresa. Participé con el equipo de desarrollo para modernizar la plataforma web."
+        }
+      ]
+    }
+  ],
+  "en": [
+    {
+      "company": "AlsoftPro",
+      "date": "March 2025 - Present",
+      "description": "Company dedicated to offering customized solutions for small and medium-sized enterprises, helping them optimize their operations and improve their efficiency.",
+      "projects": [
+        {
+          "title": "ALCOM",
+          "description": "Development and support of the web application for water service management in Havana"
+        },
+        {
+          "title": "Digital Office",
+          "description": "Development of a web portal for service payments"
+        }
+      ]
+    },
+    {
+      "company": "Medialityc",
+      "date": "June 2024 - November 2025",
+      "description": "Marketing company that also provides custom software development services and business solutions.",
+      "projects": [
+        {
+          "title": "Tammys Cake",
+          "description": "Development and support of the website for a bakery using WordPress tools"
+        },
+        {
+          "title": "REDIPIES",
+          "description": "Development and support of the website for a network of Ibero-American universities using WordPress tools."
+        },
+        {
+          "title": "D'Concepto",
+          "description": "Participation in the development team for the D'Concepto store website"
+        }
+      ]
+    },
+    {
+      "company": "Freelancer",
+      "date": "January 2024 - March 2025",
+      "description": "ChrisCampaDev is the name I created to offer customized software solutions for small businesses and entrepreneurs, helping them optimize their operations and improve their efficiency. I have developed websites with the goal of giving more visibility to the products they offer.",
+      "projects": [
+        {
+          "title": "Finance Wise",
+          "description": "Development of the official website for this small company. Together with a colleague, we developed using Astro and Tailwind CSS to create a modern and attractive user experience."
+        },
+        {
+          "title": "Printur3D",
+          "description": "Development of an official website for this project as well as the implementation of a section for products and services for interested users. Additionally, a contact section was implemented so that users can contact the company."
+        },
+        {
+          "title": "WixSlow",
+          "description": "Development of the official website of WixSlow, professional editor and Motion Graphics specialist"
+        }
+      ]
+    },
+    {
+      "company": "Foundation of the New Latin American Cinema",
+      "date": "November 2024 - November 2025",
+      "description": "The Foundation of the New Latin American Cinema is a non-profit organization dedicated to promoting and supporting the production, distribution, and exhibition of Latin American cinema. Founded in 1986, the foundation works to preserve cultural diversity and promote the development of cinema in the region through various initiatives, including film festivals, workshops, and training programs for emerging filmmakers.",
+      "projects": [
+        {
+          "title": "Technical Support",
+          "description": "Provided technical support to the company's servers and equipment. I participated with the development team to modernize the web platform."
+        }
+      ]
+    }
+  ]
+}

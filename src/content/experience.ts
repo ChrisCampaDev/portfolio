@@ -1,3 +1,22 @@
+import experienceData from './experience.json';
+import { getLocaleFromAstro } from '@/utils/i18n';
+
+export interface ExperienceItem {
+	company: string;
+	date: string;
+	description: string;
+	projects: Array<{
+		title: string;
+		description: string;
+	}>;
+}
+
+export function getExperience(Astro: { url: URL }): ExperienceItem[] {
+	const locale = getLocaleFromAstro(Astro);
+	return (experienceData as any)[locale] || [];
+}
+
+// Keep the old export for backward compatibility
 export const exp = [
 	{
 		company: "AlsoftPro",

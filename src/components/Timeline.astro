@@ -1,8 +1,8 @@
 ---
-import { exp } from "@/content/experience";
+import { getExperience } from "@/content/experience";
 import { getTexts } from "@/utils/i18n";
 
-const timelineData = exp;
+const timelineData = getExperience(Astro);
 const texts = getTexts(Astro);
 ---
 
