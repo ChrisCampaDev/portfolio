@@ -8,32 +8,29 @@ import {
 	TooltipTrigger,
 } from "@/components/starwind/tooltip";
 import { telf } from "@/utils/const";
+import { getTexts } from "@/utils/i18n";
+const texts = getTexts(Astro);
 ---
 
 <div
 	class="flex gap-8 bg-neutral-secondary-soft border dark:border-gray-200 border-blue-900 rounded-2xl p-8 md:p-12 mb-8"
 >
 	<div>
-		<h1
-			class="text-heading tracking-tighter text-3xl md:text-5xl font-bold my-6"
-		>
-			Soy Christian Campa Suarez, <br />
-			<span class="text-blue-600 font-black">Desarrollador Frontend</span>
-		</h1>
-		<p class="md:text-lg font-normal text-body mb-6">
-			Como desarrollador, mi objetivo es crear experiencias web atractivas y
-			funcionales para los usuarios. Utilizo tecnologías como HTML, CSS y
-			TypeScript para diseñar y desarrollar interfaces de usuario interactivas y
-			responsivas. Además, tengo experiencia en el uso de librerias y frameworks
-			como React, Astro y Nextjs para construir aplicaciones web modernas y
-			escalables.
-		</p>
+<h1
+		class="text-heading tracking-tighter text-3xl md:text-5xl font-bold my-6"
+	>
+		{texts.personal.intro} <br />
+		<span class="text-blue-600 font-black">{texts.personal.role}</span>
+	</h1>
+	<p class="md:text-lg font-normal text-body mb-6">
+		{texts.personal.description}
+	</p>
 		<div>
 			<Tooltip>
 				<TooltipTrigger>
 					<GitHubIcon href="https://github.com/ChrisCampaDev" />
 				</TooltipTrigger>
-				<TooltipContent side="bottom" align="center"> Github </TooltipContent>
+				<TooltipContent side="bottom" align="center"> {texts.social.github} </TooltipContent>
 			</Tooltip>
 			<Tooltip>
 				<TooltipTrigger>
@@ -42,7 +39,7 @@ import { telf } from "@/utils/const";
 					/>
 				</TooltipTrigger>
 				<TooltipContent side="bottom" align="center">
-					Linkendin
+					{texts.social.linkedin}
 				</TooltipContent>
 			</Tooltip>
 
@@ -50,7 +47,7 @@ import { telf } from "@/utils/const";
 				<TooltipTrigger>
 					<WhatsAppIcon href=`https://wa.me/${telf}` />
 				</TooltipTrigger>
-				<TooltipContent side="bottom" align="center"> Whatsapp </TooltipContent>
+				<TooltipContent side="bottom" align="center"> {texts.social.whatsapp} </TooltipContent>
 			</Tooltip>
 		</div>
 	</div>

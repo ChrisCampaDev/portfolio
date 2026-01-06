@@ -1,132 +1,216 @@
 {
-  "es": {
-    "nav": {
-      "projects": "Proyectos",
-      "about": "Quién soy",
-      "contact": "Contacto",
-      "switch": "English",
-      "switch_es": "Español"
-    },
-    "hero": {
-      "hello": "Hola, soy",
-      "name": "Christian Campa",
-      "role": "Desarrollador Frontend",
-      "tagline": "apasionado por crear experiencias web excepcionales.",
-      "currentWork": "Actualmente trabajo en la",
-      "company": "Compañía Alsoftpro",
-      "about": "He trabajado en diversos proyectos, estando vinculado a diferentes empresas dedicadas al desarrollo web. Me especializo en crear interfaces modernas y funcionales.",
-      "cta_projects": "Ver mis proyectos",
-      "cta_cv": "Descargar CV",
-      "connect": "Conecta conmigo",
-      "profileAlt": "Christian Campa - Desarrollador Frontend"
-    },
-    "experience": {
-      "title": "Experiencia Laboral",
-      "labels": {
-        "role": "Cargo ocupado",
-        "skills": "Habilidades",
-        "tech_used": "Tecnologías usadas"
-      }
-    },
-    "projects": {
-      "title": "Proyectos",
-      "visit": "Visitar sitio web",
-      "visit_aria": "Visitar sitio web del proyecto",
-      "tech_aria_prefix": "Tecnología"
-    },
-    "contact": {
-      "title": "Contacto",
-      "subtitle": "Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarme.",
-      "labels": {
-        "name": "Nombre",
-        "email": "Email",
-        "message": "Mensaje"
-      },
-      "placeholders": {
-        "name": "Tu nombre",
-        "email": "tu@email.com",
-        "message": "Escribe tu mensaje aquí..."
-      },
-      "buttons": {
-        "sendEmail": "Enviar por Email",
-        "sendWhatsApp": "Enviar por WhatsApp"
-      },
-      "subject": "Contacto desde tu Portafolio",
-      "alertWhatsAppNotConfigured": "El número de WhatsApp no está configurado por el propietario del sitio.",
-      "formatted": {
-        "name": "Nombre",
-        "email": "Email",
-        "message": "Mensaje"
-      }
-    },
-    "footer": {
-      "description": "En esta web podrás ver mis proyectos, experiencia laboral y contactarme. Puedes contactarme por email o WhatsApp para trabajar juntos.",
-      "rights": "Todos los derechos reservados."
-    }
-  },
-  "en": {
-    "nav": {
-      "projects": "Projects",
-      "about": "About me",
-      "contact": "Contact",
-      "switch": "Español",
-      "switch_es": "English"
-    },
-    "hero": {
-      "hello": "Hi, I'm",
-      "name": "Christian Campa",
-      "role": "Frontend Developer",
-      "tagline": "passionate about crafting exceptional web experiences.",
-      "currentWork": "I currently work at",
-      "company": "Alsoftpro Company",
-      "about": "I've worked on a variety of projects for different web development companies. I specialize in building modern, functional interfaces.",
-      "cta_projects": "View my projects",
-      "cta_cv": "Download CV",
-      "connect": "Connect with me",
-      "profileAlt": "Christian Campa - Frontend Developer"
-    },
-    "experience": {
-      "title": "Work Experience",
-      "labels": {
-        "role": "Role",
-        "skills": "Skills",
-        "tech_used": "Technologies used"
-      }
-    },
-    "projects": {
-      "title": "Projects",
-      "visit": "Visit website",
-      "visit_aria": "Visit project website",
-      "tech_aria_prefix": "Technology"
-    },
-    "contact": {
-      "title": "Contact",
-      "subtitle": "If you have any questions or need help, feel free to contact me.",
-      "labels": {
-        "name": "Name",
-        "email": "Email",
-        "message": "Message"
-      },
-      "placeholders": {
-        "name": "Your name",
-        "email": "your@email.com",
-        "message": "Write your message here..."
-      },
-      "buttons": {
-        "sendEmail": "Send via Email",
-        "sendWhatsApp": "Send via WhatsApp"
-      },
-      "subject": "Contact from your Portfolio",
-      "alertWhatsAppNotConfigured": "The WhatsApp number is not configured by the site owner.",
-      "formatted": {
-        "name": "Name",
-        "email": "Email",
-        "message": "Message"
-      }
-    },
-    "footer": {
-      "description": "On this website you can view my projects, work experience, and contact me. You can reach me by email or WhatsApp to work together.",
-      "rights": "All rights reserved."
-    }
-  }
+	"es": {
+		"nav": {
+			"projects": "Proyectos",
+			"about": "Quién soy",
+			"contact": "Contacto",
+			"switch": "English",
+			"switch_es": "Español"
+		},
+		"hero": {
+			"hello": "Hola, soy",
+			"name": "Christian Campa",
+			"role": "Desarrollador Frontend",
+			"tagline": "apasionado por crear experiencias web excepcionales.",
+			"currentWork": "Actualmente trabajo en la",
+			"company": "Compañía Alsoftpro",
+			"about": "He trabajado en diversos proyectos, estando vinculado a diferentes empresas dedicadas al desarrollo web. Me especializo en crear interfaces modernas y funcionales.",
+			"cta_projects": "Ver mis proyectos",
+			"cta_cv": "Descargar CV",
+			"connect": "Conecta conmigo",
+			"profileAlt": "Christian Campa - Desarrollador Frontend"
+		},
+		"experience": {
+			"title": "Experiencia Laboral",
+			"labels": {
+				"role": "Cargo ocupado",
+				"skills": "Habilidades",
+				"tech_used": "Tecnologías usadas"
+			}
+		},
+		"projects": {
+			"title": "Proyectos",
+			"visit": "Visitar sitio web",
+			"visit_aria": "Visitar sitio web del proyecto",
+			"tech_aria_prefix": "Tecnología"
+		},
+		"contact": {
+			"title": "Contacto",
+			"subtitle": "Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarme.",
+			"labels": {
+				"name": "Nombre",
+				"email": "Email",
+				"message": "Mensaje"
+			},
+			"placeholders": {
+				"name": "Tu nombre",
+				"email": "tu@email.com",
+				"message": "Escribe tu mensaje aquí..."
+			},
+			"buttons": {
+				"sendEmail": "Enviar por Email",
+				"sendWhatsApp": "Enviar por WhatsApp"
+			},
+			"subject": "Contacto desde tu Portafolio",
+			"alertWhatsAppNotConfigured": "El número de WhatsApp no está configurado por el propietario del sitio.",
+			"formatted": {
+				"name": "Nombre",
+				"email": "Email",
+				"message": "Mensaje"
+			}
+		},
+		"footer": {
+			"description": "En esta web podrás ver mis proyectos, experiencia laboral y contactarme. Puedes contactarme por email o WhatsApp para trabajar juntos.",
+			"rights": "Todos los derechos reservados.",
+			"developed_by": "Desarrollado por:",
+			"background_by": "Fondo de:",
+			"tech_stack": "Para el desarrollo de este sitio web use el framework",
+			"component_lib": ", junto a la biblioteca de componentes de"
+		},
+		"personal": {
+			"intro": "Soy Christian Campa Suarez,",
+			"role": "Desarrollador Frontend",
+			"description": "Como desarrollador, mi objetivo es crear experiencias web atractivas y funcionales para los usuarios. Utilizo tecnologías como HTML, CSS y TypeScript para diseñar y desarrollar interfaces de usuario interactivas y responsivas. Además, tengo experiencia en el uso de librerias y frameworks como React, Astro y Nextjs para construir aplicaciones web modernas y escalables."
+		},
+		"work": {
+			"current_position": "Puesto Actual",
+			"position_title": "Desarrollador Frontend y Jefe de Equipo",
+			"description": "Actualmente trabajo en una empresa de desarrollo, donde soy responsable de liderar diversos proyectos, desde la definición de requisitos hasta la implementación y mantenimiento de las soluciones."
+		},
+		"company": {
+			"current_company": "Empresa Actual",
+			"name": "Alsoftpro SRL",
+			"description": "Alsoftpro SRL es una empresa de desarrollo web cuya principal objetivo es en brindar soluciones personalizadas para empresas estatales y privadas de Cuba."
+		},
+		"skills": {
+			"stack_tab": "Stack",
+			"tools_tab": "Herramientas",
+			"stack_description": "Lenguajes y Herramientas uso",
+			"tools_description": "Herramientas de productividad que he usado"
+		},
+		"timeline": {
+			"projects_title": "Proyectos realizados"
+		},
+		"form": {
+			"validation_error": "Por favor, completa todos los campos.",
+			"send_by": "Enviar mensaje por:",
+			"placeholders": {
+				"name": "Nombre o empresa",
+				"email": "Correo",
+				"message": "Escriba un mensaje para comunicarse conmigo"
+			}
+		},
+		"social": {
+			"github": "Github",
+			"linkedin": "Linkendin",
+			"whatsapp": "Whatsapp"
+		}
+	},
+	"en": {
+		"nav": {
+			"projects": "Projects",
+			"about": "About me",
+			"contact": "Contact",
+			"switch": "Español",
+			"switch_es": "English"
+		},
+		"hero": {
+			"hello": "Hi, I'm",
+			"name": "Christian Campa",
+			"role": "Frontend Developer",
+			"tagline": "passionate about crafting exceptional web experiences.",
+			"currentWork": "I currently work at",
+			"company": "Alsoftpro Company",
+			"about": "I've worked on a variety of projects for different web development companies. I specialize in building modern, functional interfaces.",
+			"cta_projects": "View my projects",
+			"cta_cv": "Download CV",
+			"connect": "Connect with me",
+			"profileAlt": "Christian Campa - Frontend Developer"
+		},
+		"experience": {
+			"title": "Work Experience",
+			"labels": {
+				"role": "Role",
+				"skills": "Skills",
+				"tech_used": "Technologies used"
+			}
+		},
+		"projects": {
+			"title": "Projects",
+			"visit": "Visit website",
+			"visit_aria": "Visit project website",
+			"tech_aria_prefix": "Technology"
+		},
+		"contact": {
+			"title": "Contact",
+			"subtitle": "If you have any questions or need help, feel free to contact me.",
+			"labels": {
+				"name": "Name",
+				"email": "Email",
+				"message": "Message"
+			},
+			"placeholders": {
+				"name": "Your name",
+				"email": "your@email.com",
+				"message": "Write your message here..."
+			},
+			"buttons": {
+				"sendEmail": "Send via Email",
+				"sendWhatsApp": "Send via WhatsApp"
+			},
+			"subject": "Contact from your Portfolio",
+			"alertWhatsAppNotConfigured": "The WhatsApp number is not configured by the site owner.",
+			"formatted": {
+				"name": "Name",
+				"email": "Email",
+				"message": "Message"
+			}
+		},
+		"footer": {
+			"description": "On this website you can view my projects, work experience, and contact me. You can reach me by email or WhatsApp to work together.",
+			"rights": "All rights reserved.",
+			"developed_by": "Developed by:",
+			"background_by": "Background by:",
+			"tech_stack": "For the development of this website I used the",
+			"component_lib": ", along with the component library from"
+		},
+		"personal": {
+			"intro": "I'm Christian Campa Suarez,",
+			"role": "Frontend Developer",
+			"description": "As a developer, my goal is to create attractive and functional web experiences for users. I use technologies like HTML, CSS, and TypeScript to design and develop interactive and responsive user interfaces. Additionally, I have experience using libraries and frameworks like React, Astro, and Nextjs to build modern and scalable web applications."
+		},
+		"work": {
+			"current_position": "Current Position",
+			"position_title": "Frontend Developer and Team Leader",
+			"description": "I currently work at a development company, where I'm responsible for leading various projects, from requirements definition to implementation and maintenance of solutions."
+		},
+		"company": {
+			"current_company": "Current Company",
+			"name": "Alsoftpro SRL",
+			"description": "Alsoftpro SRL is a web development company whose main objective is to provide customized solutions for state and private companies in Cuba."
+		},
+		"skills": {
+			"stack_tab": "Stack",
+			"tools_tab": "Tools",
+			"stack_description": "Languages and Tools I use",
+			"tools_description": "Productivity tools I have used"
+		},
+		"timeline": {
+			"projects_title": "Completed Projects"
+		},
+		"form": {
+			"validation_error": "Please, complete all fields.",
+			"send_by": "Send message by:",
+			"placeholders": {
+				"name": "Name or company",
+				"email": "Email",
+				"message": "Write a message to communicate with me"
+			}
+		},
+		"social": {
+			"github": "Github",
+			"linkedin": "LinkedIn",
+			"whatsapp": "WhatsApp"
+		}
+	}
 }

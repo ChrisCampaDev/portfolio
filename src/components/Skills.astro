@@ -7,20 +7,22 @@ import {
 } from "@/components/starwind/tabs";
 import StackSection from "@/components/sections/Skills/StackSection.astro";
 import ToolsSection from "@/components/sections/Skills/ToolSection.astro";
+import { getTexts } from "@/utils/i18n";
+const texts = getTexts(Astro);
 ---
 
 <div class="flex justify-center w-full">
 	<Tabs defaultValue="Stack" class="max-w-4xl text-center">
 		<TabsList>
-			<TabsTrigger value="Stack" class="px-2 w-52">Stack</TabsTrigger>
-			<TabsTrigger value="tools" class="px-2 w-52">Herramientas</TabsTrigger>
+			<TabsTrigger value="Stack" class="px-2 w-52">{texts.skills.stack_tab}</TabsTrigger>
+			<TabsTrigger value="tools" class="px-2 w-52">{texts.skills.tools_tab}</TabsTrigger>
 		</TabsList>
 		<TabsContent value="Stack" class="flex flex-col gap-5 w-[800px]">
-			<p>Lenguajes y Herramientas uso</p>
+			<p>{texts.skills.stack_description}</p>
 			<StackSection />
 		</TabsContent>
 		<TabsContent value="tools" class="flex flex-col gap-5 w-[800px]">
-			<p>Herramientas de productividad que he usado</p>
+			<p>{texts.skills.tools_description}</p>
 			<ToolsSection />
 		</TabsContent>
 	</Tabs>

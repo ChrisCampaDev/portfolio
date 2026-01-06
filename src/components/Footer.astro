@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
+import { getTexts } from "@/utils/i18n";
 const date = new Date();
+const texts = getTexts(Astro);
 ---
 
 <footer
@@ -17,7 +19,7 @@ const date = new Date();
 			/>
 			<div class="flex flex-col items-start justify-center gap-8">
 				<span class="text-sm text-body sm:text-center">
-					Desarrollado por:
+					{texts.footer.developed_by}
 					<a
 						href="https://github.com/ChrisCampaDev"
 						class="hover:underline"
@@ -25,7 +27,7 @@ const date = new Date();
 					>
 				</span>
 				<span>
-					Fondo de:
+					{texts.footer.background_by}
 					<a
 						href="https://codepen.io/riley-pearce/pen/OJWPjZM"
 						target="_blank"
@@ -36,10 +38,10 @@ const date = new Date();
 		</div>
 		<div>
 			<p>
-				Para el desarrollo de este sitio web use el framework <span
+				{texts.footer.tech_stack} <span
 					class="hover:text-orange-400 font-bold hover:underline"
 					><a href="https://astro.build/" target="_blank">Astrojs</a></span
-				>, junto a la biblioteca de componentes de <span
+				>{texts.footer.component_lib}<span
 					class="hover:text-gray-400
 						font-bold
 						hover:underline"

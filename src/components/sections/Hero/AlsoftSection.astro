@@ -1,23 +1,23 @@
 ---
 import Badge from "@/components/starwind/badge";
+import { getTexts } from "@/utils/i18n";
+const texts = getTexts(Astro);
 ---
 
 <div
 	class="bg-neutral-secondary-soft border dark:border-gray-200 border-blue-900 rounded-2xl p-8 md:p-12"
 >
-	<Badge variant="info"> Empresa Actual </Badge>
+	<Badge variant="info"> {texts.company.current_company} </Badge>
 
-	<h2 class="text-heading text-3xl font-semobild my-4">Alsoftpro SRL</h2>
+	<h2 class="text-heading text-3xl font-semobild my-4">{texts.company.name}</h2>
 	<p class="font-normal text-body mb-4">
-		Alsoftpro SRL es una empresa de desarrollo web cuya principal objetivo es en
-		brindar soluciones personalizadas para empresas estatales y privadas de
-		Cuba.
+		{texts.company.description}
 	</p>
 	<a
 		href="https://www.linkedin.com/company/alsoftpro-s-r-l/"
 		target="_blank"
 		class="text-fg-brand hover:underline font-medium text-lg inline-flex items-center"
-		>Linkendin
+		>{texts.social.linkedin}
 		<svg
 			class="w-6 h-6 rtl:rotate-180 ms-1.5"
 			aria-hidden="true"
