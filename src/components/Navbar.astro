@@ -1,9 +1,22 @@
 ---
-// import En from "@/components/icons/flags/en.astro";
-// import Es from "@/components/icons/flags/es.astro";
+import En from "@/components/icons/flags/en.astro";
+import Es from "@/components/icons/flags/es.astro";
 import IconSun from "@/components/icons/themes/IconSun.astro";
 import IconMoon from "@/components/icons/themes/IconMoon.astro";
 import { Switch } from "@/components/starwind/switch";
+import { getTexts, getLocaleFromAstro } from "@/utils/i18n";
+
+const texts = getTexts(Astro);
+const currentLocale = getLocaleFromAstro(Astro);
+const isEnglish = currentLocale === 'en';
+
+// Generate URLs for language switching
+const currentPath = Astro.url.pathname;
+const isEnglishPath = currentPath.includes('/en/');
+const pathWithoutLocale = currentPath.replace(/^\/portfolio\/?(en\/?)?/, '');
+const baseUrl = pathWithoutLocale || '';
+const spanishUrl = `/portfolio${baseUrl ? '/' + baseUrl : ''}`;
+const englishUrl = `/portfolio/en${baseUrl ? '/' + baseUrl : ''}`;
 ---
 
 <nav
@@ -13,12 +26,45 @@ import { Switch } from "@/components/starwind/switch";
 		class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2"
 	>
 		<a
-			href="/portfolio"
+			href={isEnglish ? englishUrl : spanishUrl}
 			class="flex items-center space-x-3 rtl:space-x-reverse"
 		>
 			<span>ChrisCampaDev</span>
 		</a>
+		
+		<!-- Navigation Links -->
+		<div class="hidden md:flex items-center space-x-6">
+			<a 
+				href={`${isEnglish ? englishUrl : spanishUrl}#about`}
+				class="text-body hover:text-fg-brand transition-colors"
+			>
+				{texts.nav.about}
+			</a>
+			<a 
+				href={`${isEnglish ? englishUrl : spanishUrl}#skills`}
+				class="text-body hover:text-fg-brand transition-colors"
+			>
+				{texts.nav.projects}
+			</a>
+			<a 
+				href={`${isEnglish ? englishUrl : spanishUrl}#contact`}
+				class="text-body hover:text-fg-brand transition-colors"
+			>
+				{texts.nav.contact}
+			</a>
+		</div>
 		<div class="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
+			<!-- Language Switch -->
+			<a 
+				href={isEnglish ? spanishUrl : englishUrl}
+				class="text-body hover:bg-neutral-secondary-soft focus:outline-none focus:ring-4 focus:ring-neutral-tertiary rounded-lg text-sm p-2.5 transition-colors"
+				title={texts.nav.switch}
+			>
+				<Es class={`w-6 h-6 ${isEnglish ? '' : 'hidden'}`} title="Español" />
+				<En class={`w-6 h-6 ${isEnglish ? 'hidden' : ''}`} title="English" />
+			</a>
+			
+			<!-- Theme Toggle -->
 			<span
 				class="text-body hover:bg-neutral-secondary-soft focus:outline-none focus:ring-4 focus:ring-neutral-tertiary rounded-lg text-sm p-2.5"
 			>
@@ -78,5 +124,20 @@ import { Switch } from "@/components/starwind/switch";
 	themeToggleBtn.addEventListener("click", function () {
 		setTheme(!document.documentElement.classList.contains("dark"));
 		// toggleTheme(savedTheme);
+	});
+
+	// Language switching enhancement
+	const currentPath = window.location.pathname;
+	const isEnglishPage = currentPath.includes('/en/') || currentPath.endsWith('/en');
+	
+	// Store user's language preference
+	const langLinks = document.querySelectorAll('a[title*="Español"], a[title*="English"]');
+	langLinks.forEach(link => {
+		link.addEventListener('click', function(e) {
+			const href = this.getAttribute('href');
+			if (href) {
+				localStorage.setItem('preferredLanguage', href.includes('/en/') ? 'en' : 'es');
+			}
+		});
 	});
 </script>
