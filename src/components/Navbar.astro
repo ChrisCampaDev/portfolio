@@ -8,80 +8,174 @@ import { getTexts, getLocaleFromAstro } from "@/utils/i18n";
 
 const texts = getTexts(Astro);
 const currentLocale = getLocaleFromAstro(Astro);
-const isEnglish = currentLocale === 'en';
+const isEnglish = currentLocale === "en";
 
 // Generate URLs for language switching
 const currentPath = Astro.url.pathname;
-const isEnglishPath = currentPath.includes('/en/');
-const pathWithoutLocale = currentPath.replace(/^\/portfolio\/?(en\/?)?/, '');
-const baseUrl = pathWithoutLocale || '';
-const spanishUrl = `/portfolio${baseUrl ? '/' + baseUrl : ''}`;
-const englishUrl = `/portfolio/en${baseUrl ? '/' + baseUrl : ''}`;
+const isEnglishPath = currentPath.includes("/en/");
+const pathWithoutLocale = currentPath.replace(/^\/portfolio\/?(en\/?)?/, "");
+const baseUrl = pathWithoutLocale || "";
+const spanishUrl = `/portfolio${baseUrl ? "/" + baseUrl : ""}`;
+const englishUrl = `/portfolio/en${baseUrl ? "/" + baseUrl : ""}`;
 ---
 
 <nav
 	class="dark:bg-black/90 bg-white/90 w-full z-20 start-0 border-b border-default top-0 sticky shadow-2xl shadow-gray-600 dark:shadow-blue-600"
+	role="navigation"
+	aria-label="Navegación principal"
 >
 	<div
 		class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2"
 	>
 		<a
 			href={isEnglish ? englishUrl : spanishUrl}
-			class="flex items-center space-x-3 rtl:space-x-reverse"
+			class="flex items-center space-x-3 rtl:space-x-reverse font-bold text-lg"
+			aria-label="Ir a la página de inicio"
 		>
 			<span>ChrisCampaDev</span>
 		</a>
-		
+
+		<!-- Mobile menu button -->
+		<button
+			type="button"
+			class="md:hidden inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-body rounded-lg hover:bg-neutral-secondary-soft focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
+			aria-controls="mobile-menu"
+			aria-expanded="false"
+			id="mobile-menu-button"
+		>
+			<span class="sr-only">Abrir menú principal</span>
+			<svg
+				class="w-5 h-5"
+				aria-hidden="true"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 17 14"
+			>
+				<path
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M1 1h15M1 7h15M1 13h15"></path>
+			</svg>
+		</button>
+
 		<!-- Navigation Links -->
-		<div class="hidden md:flex items-center space-x-6">
-			<a 
+		<div class="hidden md:flex items-center space-x-6" id="desktop-menu">
+			<a
 				href={`${isEnglish ? englishUrl : spanishUrl}#about`}
-				class="text-body hover:text-fg-brand transition-colors"
+				class="text-body hover:text-fg-brand transition-colors focus:outline-none focus:ring-2 focus:ring-neutral-tertiary rounded px-2 py-1"
+				aria-current="page"
 			>
 				{texts.nav.about}
 			</a>
-			<a 
+			<a
 				href={`${isEnglish ? englishUrl : spanishUrl}#skills`}
-				class="text-body hover:text-fg-brand transition-colors"
+				class="text-body hover:text-fg-brand transition-colors focus:outline-none focus:ring-2 focus:ring-neutral-tertiary rounded px-2 py-1"
 			>
 				{texts.nav.projects}
 			</a>
-			<a 
+			<a
 				href={`${isEnglish ? englishUrl : spanishUrl}#contact`}
-				class="text-body hover:text-fg-brand transition-colors"
+				class="text-body hover:text-fg-brand transition-colors focus:outline-none focus:ring-2 focus:ring-neutral-tertiary rounded px-2 py-1"
 			>
 				{texts.nav.contact}
 			</a>
 		</div>
+
+		<!-- Mobile menu -->
+		<div class="hidden md:hidden w-full" id="mobile-menu">
+			<ul
+				class="flex flex-col p-4 mt-4 font-medium border border-neutral-tertiary rounded-lg bg-neutral-secondary-soft"
+			>
+				<li>
+					<a
+						href={`${isEnglish ? englishUrl : spanishUrl}#about`}
+						class="block py-2 px-3 text-body hover:text-fg-brand rounded focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
+						aria-current="page"
+					>
+						{texts.nav.about}
+					</a>
+				</li>
+				<li>
+					<a
+						href={`${isEnglish ? englishUrl : spanishUrl}#skills`}
+						class="block py-2 px-3 text-body hover:text-fg-brand rounded focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
+					>
+						{texts.nav.projects}
+					</a>
+				</li>
+				<li>
+					<a
+						href={`${isEnglish ? englishUrl : spanishUrl}#contact`}
+						class="block py-2 px-3 text-body hover:text-fg-brand rounded focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
+					>
+						{texts.nav.contact}
+					</a>
+				</li>
+			</ul>
+		</div>
 		<div class="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
 			<!-- Language Switch -->
-			<a 
+			<a
 				href={isEnglish ? spanishUrl : englishUrl}
 				class="text-body hover:bg-neutral-secondary-soft focus:outline-none focus:ring-4 focus:ring-neutral-tertiary rounded-lg text-sm p-2.5 transition-colors"
+				aria-label={texts.nav.switch}
 				title={texts.nav.switch}
 			>
-				<Es class={`w-6 h-6 ${isEnglish ? '' : 'hidden'}`} title="Español" />
-				<En class={`w-6 h-6 ${isEnglish ? 'hidden' : ''}`} title="English" />
+				<span class="sr-only"
+					>Cambiar idioma a {isEnglish ? "Español" : "English"}</span
+				>
+				<Es
+					class={`w-6 h-6 ${isEnglish ? "" : "hidden"}`}
+					aria-hidden="true"
+					title="Español"
+				/>
+				<En
+					class={`w-6 h-6 ${isEnglish ? "hidden" : ""}`}
+					aria-hidden="true"
+					title="English"
+				/>
 			</a>
-			
+
 			<!-- Theme Toggle -->
-			<span
+			<button
+				type="button"
+				id="theme-toggle-button"
 				class="text-body hover:bg-neutral-secondary-soft focus:outline-none focus:ring-4 focus:ring-neutral-tertiary rounded-lg text-sm p-2.5"
+				aria-label="Cambiar entre modo claro y oscuro"
+				title="Cambiar tema"
 			>
-				<IconSun id="theme-toggle-light-icon" class="w-6 h-6" />
-				<IconMoon id="theme-toggle-dark-icon" class="w-6 h-6 hidden" />
-			</span>
-			<Switch id="theme-toggle" variant="primary" />
+				<IconSun
+					id="theme-toggle-light-icon"
+					class="w-6 h-6"
+					aria-hidden="true"
+				/>
+				<IconMoon
+					id="theme-toggle-dark-icon"
+					class="w-6 h-6 hidden"
+					aria-hidden="true"
+				/>
+			</button>
+			<Switch
+				id="theme-toggle"
+				variant="primary"
+				class="hidden"
+				aria-hidden="true"
+			/>
 		</div>
 	</div>
 </nav>
 
 <script is:inline>
 	const themeToggleBtn = document.getElementById("theme-toggle");
+	const themeToggleButton = document.getElementById("theme-toggle-button");
 	const themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
 	const themeToggleLightIcon = document.getElementById(
-		"theme-toggle-light-icon"
+		"theme-toggle-light-icon",
 	);
+	const mobileMenuButton = document.getElementById("mobile-menu-button");
+	const mobileMenu = document.getElementById("mobile-menu");
 
 	// Function to set theme
 	const setTheme = isDark => {
@@ -112,7 +206,7 @@ const englishUrl = `/portfolio/en${baseUrl ? '/' + baseUrl : ''}`;
 			document.documentElement.classList.remove("dark");
 		} else if (newTheme === "system") {
 			const prefersDark = window.matchMedia(
-				"(prefers-color-scheme: dark)"
+				"(prefers-color-scheme: dark)",
 			).matches;
 			document.documentElement.classList.toggle("dark", prefersDark);
 		}
@@ -120,23 +214,45 @@ const englishUrl = `/portfolio/en${baseUrl ? '/' + baseUrl : ''}`;
 		localStorage.setItem("colorTheme", newTheme);
 	}
 
-	// Add click listener
-	themeToggleBtn.addEventListener("click", function () {
+	// Add click listener for theme toggle
+	themeToggleButton.addEventListener("click", function () {
 		setTheme(!document.documentElement.classList.contains("dark"));
-		// toggleTheme(savedTheme);
 	});
+
+	// Mobile menu toggle
+	if (mobileMenuButton && mobileMenu) {
+		mobileMenuButton.addEventListener("click", function () {
+			const isExpanded = this.getAttribute("aria-expanded") === "true";
+			this.setAttribute("aria-expanded", !isExpanded);
+			mobileMenu.classList.toggle("hidden");
+
+			// Update button text
+			const srText = this.querySelector(".sr-only");
+			if (srText) {
+				srText.textContent = isExpanded
+					? "Abrir menú principal"
+					: "Cerrar menú principal";
+			}
+		});
+	}
 
 	// Language switching enhancement
 	const currentPath = window.location.pathname;
-	const isEnglishPage = currentPath.includes('/en/') || currentPath.endsWith('/en');
-	
+	const isEnglishPage =
+		currentPath.includes("/en/") || currentPath.endsWith("/en");
+
 	// Store user's language preference
-	const langLinks = document.querySelectorAll('a[title*="Español"], a[title*="English"]');
+	const langLinks = document.querySelectorAll(
+		'a[title*="Español"], a[title*="English"]',
+	);
 	langLinks.forEach(link => {
-		link.addEventListener('click', function(e) {
-			const href = this.getAttribute('href');
+		link.addEventListener("click", function (e) {
+			const href = this.getAttribute("href");
 			if (href) {
-				localStorage.setItem('preferredLanguage', href.includes('/en/') ? 'en' : 'es');
+				localStorage.setItem(
+					"preferredLanguage",
+					href.includes("/en/") ? "en" : "es",
+				);
 			}
 		});
 	});

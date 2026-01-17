@@ -11,28 +11,73 @@ const texts = getTexts(Astro);
 <form
 	id="contactForm"
 	class="max-w-xl border p-4 rounded-2xl dark:border-gray-200 border-blue-900"
+	aria-labelledby="form-title"
+	novalidate
 >
 	<div class="flex flex-col py-5 text-center">
-		<h1 class="text-2xl text-center">{texts.contact.title}</h1>
+		<h1 id="form-title" class="text-2xl text-center">{texts.contact.title}</h1>
 		<p>{texts.contact.subtitle}</p>
 	</div>
-	<div class="flex flex-col gap-3">
-		<Label for="name">{texts.contact.labels.name}</Label>
-		<Input id="name" name="name" placeholder={texts.form.placeholders.name} />
-		<Label for="email">{texts.contact.labels.email}</Label>
-		<Input id="email" name="email" placeholder={texts.form.placeholders.email} />
-		<Label>{texts.contact.labels.message}</Label>
-		<Textarea
-			name="message"
-			placeholder={texts.form.placeholders.message}
-			size="lg"
-		/>
+	<div id="form-errors" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4" role="alert" aria-live="polite">
+		<p class="font-medium">Por favor, corrige los siguientes errores:</p>
+		<ul id="error-list" class="list-disc list-inside mt-2"></ul>
 	</div>
+	<fieldset class="flex flex-col gap-3">
+		<legend class="sr-only">Información de contacto</legend>
+		<div>
+			<Label for="name">{texts.contact.labels.name} <span class="text-red-500" aria-label="requerido">*</span></Label>
+			<Input 
+				id="name" 
+				name="name" 
+				placeholder={texts.form.placeholders.name}
+				required
+				aria-describedby="name-error"
+				aria-invalid="false"
+			/>
+			<div id="name-error" class="hidden text-red-600 text-sm mt-1" role="alert"></div>
+		</div>
+		<div>
+			<Label for="email">{texts.contact.labels.email} <span class="text-red-500" aria-label="requerido">*</span></Label>
+			<Input 
+				id="email" 
+				name="email" 
+				type="email"
+				placeholder={texts.form.placeholders.email}
+				required
+				aria-describedby="email-error"
+				aria-invalid="false"
+			/>
+			<div id="email-error" class="hidden text-red-600 text-sm mt-1" role="alert"></div>
+		</div>
+		<div>
+			<Label for="message">{texts.contact.labels.message} <span class="text-red-500" aria-label="requerido">*</span></Label>
+			<Textarea
+				id="message"
+				name="message"
+				placeholder={texts.form.placeholders.message}
+				size="lg"
+				required
+				aria-describedby="message-error"
+				aria-invalid="false"
+			/>
+			<div id="message-error" class="hidden text-red-600 text-sm mt-1" role="alert"></div>
+		</div>
+	</fieldset>
 	<div class="w-full flex flex-col py-5">
 		<p class="text-center mb-2">{texts.form.send_by}</p>
 		<div class="flex gap-5">
-			<Button type="submit" class="w-full" variant="success">{texts.social.whatsapp}</Button>
+			<Button 
+				type="submit" 
+				class="w-full" 
+				variant="success"
+				aria-describedby="submit-help"
+			>
+				{texts.social.whatsapp}
+			</Button>
 			<!-- <Button type="submit" class="w-full" variant="primary">Email</Button> -->
+		</div>
+		<div id="submit-help" class="sr-only">
+			Al enviar este formulario, se abrirá WhatsApp con tu mensaje prellenado
 		</div>
 	</div>
 </form>
@@ -49,14 +94,98 @@ const texts = getTexts(Astro);
 			const formData = new FormData(form);
 			const data = Object.fromEntries(formData.entries());
 
-			if (!data.name || !data.email || !data.message) {
-				toast.error("Por favor, completa todos los campos.");
+			// Clear previous errors
+			clearErrors();
+
+			// Validate form
+			const errors = validateForm(data);
+
+			if (errors.length > 0) {
+				displayErrors(errors);
 				return;
 			}
 
+			// Success - submit to WhatsApp
 			const whatsappMessage = `Hola, tengo una consulta:\n\nNombre: ${data.name}\nEmail: ${data.email}\nMensaje: ${data.message}`;
-			const whatsappUrl = `https://wa.me/${telf}?text=${whatsappMessage}`;
+			const whatsappUrl = `https://wa.me/${telf}?text=${encodeURIComponent(whatsappMessage)}`;
 			window.open(whatsappUrl, "_blank");
+			
+			// Reset form after successful submission
+			form.reset();
+			toast.success("¡Mensaje enviado correctamente!");
 		});
+	}
+
+	function clearErrors() {
+		const errorContainer = document.getElementById("form-errors");
+		const errorList = document.getElementById("error-list");
+		const fields = ["name", "email", "message"];
+		
+		errorContainer?.classList.add("hidden");
+		errorList!.innerHTML = "";
+		
+		fields.forEach(fieldName => {
+			const field = document.getElementById(fieldName) as HTMLInputElement;
+			const errorDiv = document.getElementById(`${fieldName}-error`);
+			
+			if (field) {
+				field.setAttribute("aria-invalid", "false");
+			}
+			if (errorDiv) {
+				errorDiv.classList.add("hidden");
+				errorDiv.textContent = "";
+			}
+		});
+	}
+
+	function validateForm(data: Record<string, any>): string[] {
+		const errors: string[] = [];
+		const fields = ["name", "email", "message"];
+		
+		fields.forEach(fieldName => {
+			const field = document.getElementById(fieldName) as HTMLInputElement;
+			const errorDiv = document.getElementById(`${fieldName}-error`);
+			const value = data[fieldName]?.toString().trim();
+			
+			if (!value) {
+				errors.push(`El campo ${fieldName === "name" ? "nombre" : fieldName === "email" ? "correo electrónico" : "mensaje"} es requerido`);
+				
+				if (field) {
+					field.setAttribute("aria-invalid", "true");
+				}
+				if (errorDiv) {
+					errorDiv.textContent = `Este campo es requerido`;
+					errorDiv.classList.remove("hidden");
+				}
+			} else if (fieldName === "email" && !isValidEmail(value)) {
+				errors.push("El correo electrónico no es válido");
+				
+				if (field) {
+					field.setAttribute("aria-invalid", "true");
+				}
+				if (errorDiv) {
+					errorDiv.textContent = "Por favor, ingresa un correo electrónico válido";
+					errorDiv.classList.remove("hidden");
+				}
+			}
+		});
+		
+		return errors;
+	}
+
+	function displayErrors(errors: string[]) {
+		const errorContainer = document.getElementById("form-errors");
+		const errorList = document.getElementById("error-list");
+		
+		if (errorContainer && errorList) {
+			errorList.innerHTML = errors.map(error => `<li>${error}</li>`).join("");
+			errorContainer.classList.remove("hidden");
+			errorContainer.focus();
+		}
+	}
+
+	function isValidEmail(email: string): boolean {
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		return emailRegex.test(email);
 	}
 </script>

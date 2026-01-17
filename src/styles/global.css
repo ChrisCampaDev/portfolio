@@ -127,3 +127,21 @@ html {
 	font-variation-settings: "wdth" 100;
 	scroll-behavior: smooth;
 }
+
+/* Skip link styles */
+.skip-link {
+	position: absolute;
+	top: -40px;
+	left: 6px;
+	background: var(--primary);
+	color: var(--primary-foreground);
+	padding: 8px;
+	text-decoration: none;
+	border-radius: 6px;
+	z-index: 100;
+	transition: top 0.3s;
+}
+
+.skip-link:focus {
+	top: 6px;
+}

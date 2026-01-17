@@ -7,7 +7,9 @@ const texts = getTexts(Astro);
 ---
 
 <div class="w-full max-w-6xl mx-auto px-4">
-	<h5 class="text-2xl font-bold text-center p-6">{texts.experience.title}</h5>
+	<h2 id="experience-heading" class="text-2xl font-bold text-center p-6">
+		{texts.experience.title}
+	</h2>
 	<div class="relative">
 		{
 			timelineData.map(item => (

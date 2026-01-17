@@ -10,37 +10,53 @@ import Figma from "@/components/icons/tools/figma.astro";
 ---
 
 <div
-	class="flex gap-8 border bg-white/40 border-blue-950 dark:border-white dark:bg-stone-900 p-8 rounded-2xl justify-center items-center"
+	class="flex gap-5 p-2 sm:p-4 md:p-6 border bg-white/40 border-blue-950 dark:border-white dark:bg-stone-900 rounded-2xl justify-center items-center"
+	role="list"
+	aria-label="Herramientas de desarrollo y colaboración"
 >
-	<div class="size-20">
-		<Slack />
-		<span>Slack</span>
+	<div
+		class="size-10 sm:size-16 md:size-18 flex flex-col items-center justify-center"
+		role="listitem"
+	>
+		<Slack aria-hidden="true" />
 	</div>
-	<div class="size-20">
-		<Git />
-		<span>Git</span>
-	</div>
-
-	<div class="size-20">
-		<Trello />
-		<span>Trello</span>
-	</div>
-
-	<div class="size-20">
-		<Drive />
-		<span>Drive</span>
+	<div
+		class="size-10 sm:size-16 md:size-18 flex flex-col items-center justify-center"
+		role="listitem"
+	>
+		<Git aria-hidden="true" />
 	</div>
 
-	<div class="size-20">
-		<Mui />
-		<span>MUI</span>
+	<div
+		class="size-10 sm:size-16 md:size-18 flex flex-col items-center justify-center"
+		role="listitem"
+	>
+		<Trello aria-hidden="true" />
 	</div>
-	<div class="size-20">
-		<Npm />
-		<span>NPM</span>
+
+	<div
+		class="size-10 sm:size-16 md:size-18 flex flex-col items-center justify-center"
+		role="listitem"
+	>
+		<Drive aria-hidden="true" />
 	</div>
-	<div class="size-20">
-		<Figma />
-		<span>Figma</span>
+
+	<div
+		class="size-10 sm:size-16 md:size-18 flex flex-col items-center justify-center"
+		role="listitem"
+	>
+		<Mui aria-hidden="true" />
+	</div>
+	<div
+		class="size-10 sm:size-16 md:size-18 flex flex-col items-center justify-center"
+		role="listitem"
+	>
+		<Npm aria-hidden="true" />
+	</div>
+	<div
+		class="size-10 sm:size-16 md:size-18 flex flex-col items-center justify-center"
+		role="listitem"
+	>
+		<Figma aria-hidden="true" />
 	</div>
 </div>

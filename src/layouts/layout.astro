@@ -32,13 +32,23 @@ import { Toaster } from "@/components/starwind/toast";
 		<title>{title}</title>
 	</head>
 	<body>
+		<a
+			href="#main-content"
+			class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50 focus:outline-none focus:ring-2 focus:ring-white"
+		>
+			Saltar al contenido principal
+		</a>
 		<Stars />
-		<Navbar />
-		<main class="min-h-screen">
+		<header>
+			<Navbar />
+		</header>
+		<main id="main-content" class="min-h-screen" role="main">
 			<slot />
 			<Toaster position="top-center" />
 		</main>
-		<Footer />
+		<footer>
+			<Footer />
+		</footer>
 	</body>
 	<script is:inline>
 		function initTheme() {
@@ -64,7 +74,7 @@ import { Toaster } from "@/components/starwind/toast";
 				} else if (colorTheme === "system") {
 					// use system preference
 					const prefersDark = window.matchMedia(
-						"(prefers-color-scheme: dark)"
+						"(prefers-color-scheme: dark)",
 					).matches;
 					document.documentElement.classList.toggle("dark", prefersDark);
 				}

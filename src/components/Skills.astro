@@ -12,16 +12,29 @@ const texts = getTexts(Astro);
 ---
 
 <div class="flex justify-center w-full">
+	<h2 id="skills-heading" class="sr-only">
+		{texts.skills.title || "Habilidades"}
+	</h2>
 	<Tabs defaultValue="Stack" class="max-w-4xl text-center">
 		<TabsList>
-			<TabsTrigger value="Stack" class="px-2 w-52">{texts.skills.stack_tab}</TabsTrigger>
-			<TabsTrigger value="tools" class="px-2 w-52">{texts.skills.tools_tab}</TabsTrigger>
+			<TabsTrigger value="Stack" class="px-2 w-52"
+				>{texts.skills.stack_tab}</TabsTrigger
+			>
+			<TabsTrigger value="tools" class="px-2 w-52"
+				>{texts.skills.tools_tab}</TabsTrigger
+			>
 		</TabsList>
-		<TabsContent value="Stack" class="flex flex-col gap-5 w-[800px]">
+		<TabsContent
+			value="Stack"
+			class="flex flex-col min-w-[200px] max-w-[600px]"
+		>
 			<p>{texts.skills.stack_description}</p>
 			<StackSection />
 		</TabsContent>
-		<TabsContent value="tools" class="flex flex-col gap-5 w-[800px]">
+		<TabsContent
+			value="tools"
+			class="flex flex-col min-w-[200px] max-w-[600px]"
+		>
 			<p>{texts.skills.tools_description}</p>
 			<ToolsSection />
 		</TabsContent>
