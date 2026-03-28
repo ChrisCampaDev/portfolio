@@ -1,0 +1,162 @@
+{
+  "es": [
+    {
+      "company": "AlsoftPro",
+      "title": "ALCOM",
+      "description": "Aplicación web para la gestión del servicio de agua en La Habana",
+      "url": "",
+      "technologies": [
+        "Astro",
+        "React",
+        "TypeScript"
+      ]
+    },
+    {
+      "company": "AlsoftPro",
+      "title": "Oficina Digital",
+      "description": "Plataforma web para el pago de servicios",
+      "url": "",
+      "technologies": [
+        "Astro",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "company": "Medialityc",
+      "title": "Tammys Cake",
+      "description": "Sitio web para una pastelería",
+      "url": "https://tamyscakes.com/",
+      "technologies": [
+        "WordPress"
+      ]
+    },
+    {
+      "company": "Medialityc",
+      "title": "REDIPIES",
+      "description": "Sitio web para una red de universidades iberoamericanas",
+      "url": "",
+      "technologies": [
+        "WordPress"
+      ]
+    },
+    {
+      "company": "Medialityc",
+      "title": "D'Concepto",
+      "description": "Sitio web para tienda de moda conceptual",
+      "url": "https://dconceptos.com/",
+      "technologies": [
+        "WordPress"
+      ]
+    },
+    {
+      "company": "Freelancer",
+      "title": "Finance Wise",
+      "description": "Sitio oficial para pequeña empresa",
+      "url": "https://financewisesolutions.com/",
+      "technologies": [
+        "Astro",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "company": "Freelancer",
+      "title": "Printur3D",
+      "description": "Web oficial para proyecto de impresión 3D",
+      "url": "",
+      "technologies": [
+        "Astro",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "company": "Freelancer",
+      "title": "WixSlow",
+      "description": "Sitio web profesional de Motion Graphics",
+      "url": "",
+      "technologies": [
+        "Astro",
+        "Tailwind CSS"
+      ]
+    }
+  ],
+  "en": [
+    {
+      "company": "AlsoftPro",
+      "title": "ALCOM",
+      "description": "Web application for water service management in Havana",
+      "url": "",
+      "technologies": [
+        "Astro",
+        "React",
+        "TypeScript"
+      ]
+    },
+    {
+      "company": "AlsoftPro",
+      "title": "Digital Office",
+      "description": "Web portal for service payments",
+      "url": "",
+      "technologies": [
+        "Astro",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "company": "Medialityc",
+      "title": "Tammys Cake",
+      "description": "Website for a bakery",
+      "url": "https://tamyscakes.com/",
+      "technologies": [
+        "WordPress"
+      ]
+    },
+    {
+      "company": "Medialityc",
+      "title": "REDIPIES",
+      "description": "Website for a network of Ibero-American universities",
+      "url": "",
+      "technologies": [
+        "WordPress"
+      ]
+    },
+    {
+      "company": "Medialityc",
+      "title": "D'Concepto",
+      "description": "Website for a conceptual fashion store",
+      "url": "https://dconceptos.com/",
+      "technologies": [
+        "WordPress"
+      ]
+    },
+    {
+      "company": "Freelancer",
+      "title": "Finance Wise",
+      "description": "Official website for small business",
+      "url": "https://financewisesolutions.com/",
+      "technologies": [
+        "Astro",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "company": "Freelancer",
+      "title": "Printur3D",
+      "description": "Official website for 3D printing project",
+      "url": "",
+      "technologies": [
+        "Astro",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "company": "Freelancer",
+      "title": "WixSlow",
+      "description": "Professional Motion Graphics website",
+      "url": "",
+      "technologies": [
+        "Astro",
+        "Tailwind CSS"
+      ]
+    }
+  ]
+}
