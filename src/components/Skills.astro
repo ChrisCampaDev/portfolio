@@ -11,31 +11,31 @@ import { getTexts } from "@/utils/i18n";
 const texts = getTexts(Astro);
 ---
 
-<div class="flex justify-center w-full">
+<div class="flex justify-center w-full px-2">
 	<h2 id="skills-heading" class="sr-only">
 		{texts.skills.title || "Habilidades"}
 	</h2>
-	<Tabs defaultValue="Stack" class="max-w-4xl text-center">
-		<TabsList>
-			<TabsTrigger value="Stack" class="px-2 w-52"
+	<Tabs defaultValue="Stack" class="max-w-4xl w-full text-center">
+		<TabsList class="w-full justify-center">
+			<TabsTrigger value="Stack" class="px-3 sm:px-6 min-w-28 sm:min-w-40"
 				>{texts.skills.stack_tab}</TabsTrigger
 			>
-			<TabsTrigger value="tools" class="px-2 w-52"
+			<TabsTrigger value="tools" class="px-3 sm:px-6 min-w-28 sm:min-w-40"
 				>{texts.skills.tools_tab}</TabsTrigger
 			>
 		</TabsList>
 		<TabsContent
 			value="Stack"
-			class="flex flex-col min-w-[200px] max-w-[600px]"
+			class="flex flex-col w-full px-2 sm:px-4"
 		>
-			<p>{texts.skills.stack_description}</p>
+			<p class="text-sm sm:text-base mb-4">{texts.skills.stack_description}</p>
 			<StackSection />
 		</TabsContent>
 		<TabsContent
 			value="tools"
-			class="flex flex-col min-w-[200px] max-w-[600px]"
+			class="flex flex-col w-full px-2 sm:px-4"
 		>
-			<p>{texts.skills.tools_description}</p>
+			<p class="text-sm sm:text-base mb-4">{texts.skills.tools_description}</p>
 			<ToolsSection />
 		</TabsContent>
 	</Tabs>

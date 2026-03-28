@@ -32,7 +32,10 @@
 			"title": "Proyectos",
 			"visit": "Visitar sitio web",
 			"visit_aria": "Visitar sitio web del proyecto",
-			"tech_aria_prefix": "Tecnología"
+			"tech_aria_prefix": "Tecnología",
+			"with_url": "Proyectos desplegados",
+			"without_url": "Proyectos en desarrollo",
+			"subtitle": "Explora los proyectos en los que he trabajado"
 		},
 		"contact": {
 			"title": "Contacto",
@@ -139,7 +142,10 @@
 			"title": "Projects",
 			"visit": "Visit website",
 			"visit_aria": "Visit project website",
-			"tech_aria_prefix": "Technology"
+			"tech_aria_prefix": "Technology",
+			"with_url": "Deployed Projects",
+			"without_url": "Projects in development",
+			"subtitle": "Explore the projects I have worked on"
 		},
 		"contact": {
 			"title": "Contact",
