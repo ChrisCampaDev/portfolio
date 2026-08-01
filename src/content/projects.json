@@ -6,7 +6,7 @@
       "description": "Aplicación web para la gestión del servicio de agua en La Habana",
       "url": "",
       "technologies": [
-        "Astro",
+        "Material UI",
         "React",
         "TypeScript"
       ]
@@ -17,7 +17,7 @@
       "description": "Plataforma web para el pago de servicios",
       "url": "",
       "technologies": [
-        "Astro",
+        "React",
         "Tailwind CSS"
       ]
     },
@@ -45,7 +45,9 @@
       "description": "Sitio web para tienda de moda conceptual",
       "url": "https://dconceptos.com/",
       "technologies": [
-        "WordPress"
+        "NextJS",
+        "shardcn",
+        "Tailwind CSS"
       ]
     },
     {

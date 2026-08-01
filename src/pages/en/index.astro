@@ -1,27 +1,15 @@
 ---
-import Contact from "@/components/Contact.astro";
-import Info from "@/components/Info.astro";
-import Projects from "@/components/Projects.astro";
-
-import Skills from "@/components/Skills.astro";
-import Timeline from "@/components/Timeline.astro";
+import EducationSection from "@/components/sections/new/EducationSection.astro";
+import ExpSectionV2 from "@/components/sections/new/ExpSectionV2.astro";
+import ToolsSectionV2 from "@/components/sections/new/ToolsSectionV2.astro";
 import Layout from "@/layouts/layout.astro";
 ---
 
-<Layout title="Portfolio ChrisCampaDev" desc="">
-	<section id="about">
-		<Info />
-	</section>
-	<section id="skills">
-		<Skills />
-	</section>
-	<section id="projects">
-		<Projects />
-	</section>
-	<section id="experience">
-		<Timeline />
-	</section>
-	<section id="contact">
-		<Contact />
-	</section>
+<Layout
+    title="Portfolio ChrisCampaDev"
+    desc="ChrisCampaDev's web portfolio about the jobs and experiences like a web developer"
+>
+    <ExpSectionV2 />
+    <ToolsSectionV2 />
+    <EducationSection />
 </Layout>
