@@ -2,6 +2,7 @@
   "es": [
     {
       "company": "AlsoftPro",
+      "year": 2025,
       "date": "Marzo 2025 - Actualidad",
       "description": "Empresa dedicada a ofrecer soluciones personalizados para pequeñas y medianas empresas, ayudándolas a optimizar sus operaciones y mejorar su eficiencia.",
       "projects": [
@@ -17,6 +18,7 @@
     },
     {
       "company": "Medialityc",
+      "year": 2024,
       "date": "Junio 2024 - Noviembre 2025",
       "description": "Empresa de marketing que tambien brinda los servicios de desarrollo de software a medida y soluciones empresariales.",
       "projects": [
@@ -36,6 +38,7 @@
     },
     {
       "company": "Freelancer",
+      "year": 2024,
       "date": "Enero 2024 - Marzo 2025",
       "description": "ChrisCampaDev es el nombre que he creado para ofrecer soluciones de software personalizadas para pequeñas empresas y emprendimientos, ayudándolos a optimizar sus operaciones y mejorar su eficiencia. He desarrollado webs con el objetivo de dar mas visualidad a los productos que brindan.",
       "projects": [
@@ -55,6 +58,7 @@
     },
     {
       "company": "Fundación del Nuevo Cine Latinoamericano",
+      "year": 2024,
       "date": "Noviembre 2024 - Noviembre 2025",
       "description": "La Fundación del Nuevo Cine Latinoamericano es una organización sin fines de lucro dedicada a promover y apoyar la producción, distribución y exhibición del cine latinoamericano. Fundada en 1986, la fundación trabaja para preservar la diversidad cultural y fomentar el desarrollo del cine en la región a través de diversas iniciativas, incluyendo festivales de cine, talleres, y programas de formación para cineastas emergentes.",
       "projects": [
@@ -68,6 +72,7 @@
   "en": [
     {
       "company": "AlsoftPro",
+      "year": 2025,
       "date": "March 2025 - Present",
       "description": "Company dedicated to offering customized solutions for small and medium-sized enterprises, helping them optimize their operations and improve their efficiency.",
       "projects": [
@@ -83,6 +88,7 @@
     },
     {
       "company": "Medialityc",
+      "year": 2024,
       "date": "June 2024 - November 2025",
       "description": "Marketing company that also provides custom software development services and business solutions.",
       "projects": [
@@ -102,6 +108,7 @@
     },
     {
       "company": "Freelancer",
+      "year": 2024,
       "date": "January 2024 - March 2025",
       "description": "ChrisCampaDev is the name I created to offer customized software solutions for small businesses and entrepreneurs, helping them optimize their operations and improve their efficiency. I have developed websites with the goal of giving more visibility to the products they offer.",
       "projects": [
@@ -121,6 +128,7 @@
     },
     {
       "company": "Foundation of the New Latin American Cinema",
+      "year": 2024,
       "date": "November 2024 - November 2025",
       "description": "The Foundation of the New Latin American Cinema is a non-profit organization dedicated to promoting and supporting the production, distribution, and exhibition of Latin American cinema. Founded in 1986, the foundation works to preserve cultural diversity and promote the development of cinema in the region through various initiatives, including film festivals, workshops, and training programs for emerging filmmakers.",
       "projects": [

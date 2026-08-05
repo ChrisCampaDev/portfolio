@@ -1,87 +1,86 @@
 ---
-import Footer from "@/components/Footer.astro";
 import Navbar from "@/components/Navbar.astro";
-
-interface Props {
-    title: string;
-    desc: string;
-}
-
-const { title, desc } = Astro.props;
+import FooterV2 from "@/components/FooterV2.astro";
+import { Toaster } from "@/components/starwind/toast";
 import "@/styles/global.css";
 import "@/styles/starwind.css";
 
-import { Toaster } from "@/components/starwind/toast";
-import NavbarV2 from "@/components/NavbarV2.astro";
-import FooterV2 from "@/components/FooterV2.astro";
+interface Props {
+	title: string;
+	desc: string;
+	lang?: "es" | "en";
+}
+
+const { title, desc, lang = "es" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="icon" type="image/svg+xml" href="/public/favicon.svg" />
+<html lang={lang}>
+	<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="icon" type="image/svg+xml" href="/portfolio/favicon.svg" />
 
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <meta name="description" content={desc} />
-        <title>{title}</title>
-    </head>
-    <body>
-        <header>
-            <NavbarV2 />
-        </header>
-        <main id="main-content" class="min-h-screen" role="main">
-            <slot />
-            <Toaster position="top-center" />
-        </main>
+		<meta name="description" content={desc} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<a href="#main-content" class="skip-link">Ir al contenido principal</a>
+		<header>
+			<Navbar />
+		</header>
+		<main id="main-content" class="min-h-screen" role="main">
+			<slot />
+			<Toaster position="top-center" />
+		</main>
 
-        <FooterV2 />
-    </body>
-    <script is:inline>
-        function initTheme() {
-            const colorTheme = localStorage.getItem("colorTheme");
-            if (!colorTheme) {
-                // if no color theme yet, use the users preferences
-                if (
-                    window.matchMedia &&
-                    window.matchMedia("(prefers-color-scheme: dark)").matches
-                ) {
-                    document.documentElement.classList.add("dark");
-                    localStorage.setItem("colorTheme", "dark");
-                } else {
-                    document.documentElement.classList.remove("dark");
-                    localStorage.setItem("colorTheme", "light");
-                }
-            } else {
-                // assign the theme based on the value in local storage
-                if (colorTheme === "dark") {
-                    document.documentElement.classList.add("dark");
-                } else if (colorTheme === "light") {
-                    document.documentElement.classList.remove("dark");
-                } else if (colorTheme === "system") {
-                    // use system preference
-                    const prefersDark = window.matchMedia(
-                        "(prefers-color-scheme: dark)",
-                    ).matches;
-                    document.documentElement.classList.toggle(
-                        "dark",
-                        prefersDark,
-                    );
-                }
-            }
-        }
+		<FooterV2 />
+	</body>
+	<script is:inline>
+		function initTheme() {
+			const colorTheme = localStorage.getItem("colorTheme");
+			if (!colorTheme) {
+				// if no color theme yet, use the users preferences
+				if (
+					window.matchMedia &&
+					window.matchMedia("(prefers-color-scheme: dark)").matches
+				) {
+					document.documentElement.classList.add("dark");
+					localStorage.setItem("colorTheme", "dark");
+				} else {
+					document.documentElement.classList.remove("dark");
+					localStorage.setItem("colorTheme", "light");
+				}
+			} else {
+				// assign the theme based on the value in local storage
+				if (colorTheme === "dark") {
+					document.documentElement.classList.add("dark");
+				} else if (colorTheme === "light") {
+					document.documentElement.classList.remove("dark");
+				} else if (colorTheme === "system") {
+					// use system preference
+					const prefersDark = window.matchMedia(
+						"(prefers-color-scheme: dark)",
+					).matches;
+					document.documentElement.classList.toggle(
+						"dark",
+						prefersDark,
+					);
+				}
+			}
+		}
 
-        // runs on initial page load
-        initTheme();
+		// runs on initial page load
+		initTheme();
 
-        // runs on view transitions navigation
-        document.addEventListener("astro:after-swap", initTheme);
-    </script>
+		// runs on view transitions navigation
+		document.addEventListener("astro:after-swap", initTheme);
+	</script>
 </html>

@@ -1,0 +1,39 @@
+---
+import TerminalWindow from "@/components/TerminalWindow.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import { getTestimonials } from "@/content/testimonials";
+import { getTexts } from "@/utils/i18n";
+
+const texts = getTexts(Astro);
+const items = getTestimonials(Astro);
+---
+
+<section id="testimonials" class="scroll-mt-24 py-12 sm:py-16" aria-labelledby="testimonials-heading">
+	<div class="mx-auto max-w-6xl px-4">
+		<TerminalWindow filename="testimonials.json">
+			<SectionHeader id="testimonials-heading" title={texts.testimonials.title} comment="testimonials.json" />
+			<p class="mb-8 text-muted-foreground">{texts.testimonials.subtitle}</p>
+			{
+				items.length === 0 ? (
+					<p class="text-muted-foreground">
+						{texts.testimonials.title}: <span class="font-mono text-coder-muted">[]</span>
+					</p>
+				) : (
+					<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+						{items.map((item) => (
+							<article class="rounded-lg border border-coder-edge bg-card p-5 transition-colors hover:border-coder-accent/60 sm:p-6">
+								<span class="font-mono text-2xl leading-none text-coder-accent" aria-hidden="true">"</span>
+								<blockquote class="mt-2 text-sm text-muted-foreground">"{item.quote}"</blockquote>
+								<p class="mt-4 font-mono text-sm font-semibold text-foreground">{item.author}</p>
+								<p class="font-mono text-xs text-coder-muted">
+									{item.role}
+									{item.company ? ` · ${item.company}` : ""}
+								</p>
+							</article>
+						))}
+					</div>
+				)
+			}
+		</TerminalWindow>
+	</div>
+</section>

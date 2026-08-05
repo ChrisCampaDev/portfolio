@@ -1,0 +1,29 @@
+{
+  "contact": {
+    "email": "christiancampa546@gmail.com",
+    "phone": "54758835",
+    "whatsapp": "5354758835",
+    "github": "https://github.com/ChrisCampaDev",
+    "linkedin": "https://www.linkedin.com/in/christian-campa-su%C3%A1rez-40551b268/",
+    "location": "La Habana, Cuba",
+    "cv": "/portfolio/CV%20CHRISTIAN%20CAMPA%20PDF.pdf"
+  },
+  "es": {
+    "name": "Christian Campa",
+    "role": "Frontend Developer",
+    "tagline": "apasionado por crear experiencias web excepcionales.",
+    "about": "He trabajado en diversos proyectos, estando vinculado a diferentes empresas dedicadas al desarrollo web. Me especializo en crear interfaces modernas y funcionales.",
+    "availability": "Disponible para proyectos",
+    "status": "open to work",
+    "stack": ["React", "Astro", "TypeScript"]
+  },
+  "en": {
+    "name": "Christian Campa",
+    "role": "Frontend Developer",
+    "tagline": "passionate about crafting exceptional web experiences.",
+    "about": "I've worked on a variety of projects for different web development companies. I specialize in building modern, functional interfaces.",
+    "availability": "Open to work",
+    "status": "open to work",
+    "stack": ["React", "Astro", "TypeScript"]
+  }
+}

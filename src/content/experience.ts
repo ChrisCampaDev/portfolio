@@ -3,6 +3,7 @@ import { getLocaleFromAstro } from '@/utils/i18n';
 
 export interface ExperienceItem {
 	company: string;
+	year?: number;
 	date: string;
 	description: string;
 	projects: Array<{

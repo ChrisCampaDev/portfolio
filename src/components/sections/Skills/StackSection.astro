@@ -1,5 +1,5 @@
 ---
-import React from "@/components/icons/tools/react.astro";
+import ReactIcon from "@/components/icons/tools/react.astro";
 import AstroIcon from "@/components/icons/tools/astro.astro";
 import Css from "@/components/icons/tools/css.astro";
 import Html from "@/components/icons/tools/html.astro";
@@ -7,59 +7,82 @@ import Node from "@/components/icons/tools/node.astro";
 import Nextjs from "@/components/icons/tools/nexts.astro";
 import Tailwind from "@/components/icons/tools/tailwindcss.astro";
 import Ts from "@/components/icons/tools/ts.astro";
+import { getTexts } from "@/utils/i18n";
+import skills from "@/content/skills.json";
+
+const texts = getTexts(Astro);
+
+const stackIcons: Record<string, (props: { class?: string }) => any> = {
+	react: ReactIcon,
+	astro: AstroIcon,
+	nextjs: Nextjs,
+	css: Css,
+	html: Html,
+	node: Node,
+	tailwind: Tailwind,
+	typescript: Ts,
+};
 ---
 
 <div
-	class="flex flex-wrap justify-center gap-3 sm:gap-5 p-2 sm:p-4 md:p-6 border bg-white/40 border-blue-950 dark:border-white dark:bg-stone-900 rounded-2xl"
+	class="flex flex-wrap justify-center gap-3 rounded-lg border border-coder-edge bg-coder-panel p-3 sm:gap-5 sm:p-6"
 	role="list"
-	aria-label="Tecnologías y herramientas de desarrollo"
+	aria-label={texts.skills.stack_tab}
 >
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<React class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<AstroIcon class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<Nextjs class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<Css class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<Html class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<Node class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<Tailwind class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<Ts class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
+	{
+		skills.stack.map((stack) => {
+			const Icon = stackIcons[stack.id];
+			return (
+				<button
+					type="button"
+					class="flex size-16 flex-col items-center justify-center gap-1 rounded-lg border border-coder-edge bg-coder-panel p-2 transition-colors hover:border-coder-accent data-[active=true]:border-coder-accent data-[active=true]:bg-coder-accent/10 data-[active=true]:text-coder-accent sm:size-20"
+					data-stack-button
+					data-stack-id={stack.id}
+					data-stack-name={stack.name}
+					data-stack-match={stack.match.join(" ")}
+					aria-pressed="false"
+					aria-label={stack.name}
+				>
+					{Icon && <Icon class="h-7 w-7 sm:h-9 sm:w-9" aria-hidden="true" />}
+					<span class="font-mono text-[10px] text-coder-muted data-[active=true]:text-coder-accent sm:text-xs">
+						{stack.name}
+					</span>
+				</button>
+			);
+		})
+	}
 </div>
+
+<script>
+	const buttons = Array.from(
+		document.querySelectorAll("[data-stack-button]"),
+	);
+
+	function setActive(id) {
+		for (const button of buttons) {
+			const isActive = id !== null && button.dataset.stackId === id;
+			button.dataset.active = String(isActive);
+			button.setAttribute("aria-pressed", String(isActive));
+		}
+	}
+
+	buttons.forEach((button) => {
+		button.addEventListener("click", () => {
+			const next = button.dataset.active === "true" ? null : button.dataset.stackId;
+			window.dispatchEvent(
+				new CustomEvent("stack:filter", {
+					detail: {
+						id: next,
+						name: next === null ? undefined : button.dataset.stackName,
+						match: next === null ? undefined : (button.dataset.stackMatch || "").split(" ").filter(Boolean),
+					},
+				}),
+			);
+		});
+	});
+
+	window.addEventListener("stack:filter", (event) => {
+		const detail = event.detail || {};
+		setActive(detail.id == null ? null : detail.id);
+	});
+</script>

@@ -1,20 +1,76 @@
-<footer class="grid grid-cols-6 grid-rows-6 border border-white">
-    <div class="col-span-3 row-span-6">
-        <div class="flex flex-col">
-            <h4>Contacto</h4>
-            <p>a</p>
-        </div>
-    </div>
-    <div class="col-span-3 row-span-3 col-start-4">
-        <div class="flex flex-col">
-            <h4>diseno</h4>
-            <p>desarrollado por</p>
-        </div>
-    </div>
-    <div class="col-span-3 row-span-3 col-start-4 row-start-4">
-        <div class="flex flex-col">
-            <h4>diseno</h4>
-            <h4>desarrollado por <a href="https://github.com/">github</a></h4>
-        </div>
-    </div>
+---
+import GitHubIcon from "@/components/icons/social/GitHubIcon.astro";
+import LinkedInIcon from "@/components/icons/social/LinkedInIcon.astro";
+import WhatsAppIcon from "@/components/icons/social/WhatsAppIcon.astro";
+import { getContact } from "@/content/profile";
+import { getTexts } from "@/utils/i18n";
+
+const texts = getTexts(Astro);
+const contact = getContact();
+---
+
+<footer class="border-t border-coder-edge bg-card/50">
+	<div class="mx-auto max-w-6xl px-4 py-12">
+		<div class="grid grid-cols-1 gap-10 md:grid-cols-3">
+			<div>
+				<p class="mb-3 font-mono text-sm text-coder-muted" aria-hidden="true">
+					<span class="text-coder-accent">$</span> echo "thanks for visiting"
+				</p>
+				<p class="text-sm leading-relaxed text-muted-foreground">
+					{texts.footer.description}
+				</p>
+			</div>
+
+			<div>
+				<h2 class="mb-3 font-mono text-sm uppercase tracking-wider text-coder-muted">
+					// {texts.nav.contact}
+				</h2>
+				<ul class="flex flex-col gap-2 font-mono text-sm">
+					<li>
+						<a
+							href={`mailto:${contact.email}`}
+							class="break-all text-muted-foreground transition-colors hover:text-coder-accent"
+						>
+							{contact.email}
+						</a>
+					</li>
+					<li>
+						<a
+							href={`https://wa.me/${contact.whatsapp}`}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-muted-foreground transition-colors hover:text-coder-accent"
+						>
+							+{contact.whatsapp}
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div>
+				<h2 class="mb-3 font-mono text-sm uppercase tracking-wider text-coder-muted">
+					// {texts.footer.developed_by}
+				</h2>
+				<p class="font-mono text-sm text-foreground">
+					<span class="text-coder-accent">~</span> ChrisCampaDev
+				</p>
+				<div class="mt-4 flex items-center gap-2.5">
+					<GitHubIcon href={contact.github} />
+					<LinkedInIcon href={contact.linkedin} />
+					<WhatsAppIcon href={`https://wa.me/${contact.whatsapp}`} />
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="mt-10 flex flex-col items-center justify-between gap-2 border-t border-coder-edge pt-6 sm:flex-row"
+		>
+			<p class="text-xs text-muted-foreground">
+				© 2026 ChrisCampaDev — {texts.footer.rights}
+			</p>
+			<p class="font-mono text-xs text-coder-muted" aria-hidden="true">
+				~/portfolio $ _
+			</p>
+		</div>
+	</div>
 </footer>

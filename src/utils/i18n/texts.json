@@ -1,9 +1,18 @@
 {
 	"es": {
 		"nav": {
+			"home": "Inicio",
+			"experience": "Experiencia",
+			"skills": "Habilidades",
 			"projects": "Proyectos",
-			"about": "Quién soy",
+			"education": "Educación",
+			"testimonials": "Testimonios",
 			"contact": "Contacto",
+			"cv": "CV",
+			"theme": "Cambiar tema",
+			"menu_open": "Abrir menú principal",
+			"menu_close": "Cerrar menú principal",
+			"about": "Quién soy",
 			"switch": "English",
 			"switch_es": "Español"
 		},
@@ -17,11 +26,13 @@
 			"about": "He trabajado en diversos proyectos, estando vinculado a diferentes empresas dedicadas al desarrollo web. Me especializo en crear interfaces modernas y funcionales.",
 			"cta_projects": "Ver mis proyectos",
 			"cta_cv": "Descargar CV",
+			"cta_contact": "Contáctame",
 			"connect": "Conecta conmigo",
 			"profileAlt": "Christian Campa - Desarrollador Frontend"
 		},
 		"experience": {
 			"title": "Experiencia Laboral",
+			"year_other": "Otros",
 			"labels": {
 				"role": "Cargo ocupado",
 				"skills": "Habilidades",
@@ -35,7 +46,11 @@
 			"tech_aria_prefix": "Tecnología",
 			"with_url": "Proyectos desplegados",
 			"without_url": "Proyectos en desarrollo",
-			"subtitle": "Explora los proyectos en los que he trabajado"
+			"in_dev": "En desarrollo",
+			"subtitle": "Explora los proyectos en los que he trabajado",
+			"filter_status": "Filtrando por:",
+			"filter_clear": "Quitar filtro",
+			"filter_empty": "No hay proyectos con este stack"
 		},
 		"contact": {
 			"title": "Contacto",
@@ -55,6 +70,7 @@
 				"sendWhatsApp": "Enviar por WhatsApp"
 			},
 			"subject": "Contacto desde tu Portafolio",
+			"email_body": "Hola Christian,",
 			"alertWhatsAppNotConfigured": "El número de WhatsApp no está configurado por el propietario del sitio.",
 			"formatted": {
 				"name": "Nombre",
@@ -86,10 +102,33 @@
 			"description": "Alsoftpro SRL es una empresa de desarrollo web cuya principal objetivo es en brindar soluciones personalizadas para empresas estatales y privadas de Cuba."
 		},
 		"skills": {
+			"title": "Habilidades",
 			"stack_tab": "Stack",
 			"tools_tab": "Herramientas",
 			"stack_description": "Lenguajes y Herramientas uso",
-			"tools_description": "Herramientas de productividad que he usado"
+			"tools_title": "Herramientas",
+			"tools_description": "Herramientas de productividad que he usado",
+			"filter_hint": "Tocá un stack para filtrar los proyectos",
+			"tools": {
+				"level_label": "Experiencia",
+				"items": {
+					"slack": "Comunicación",
+					"git": "Control de versiones",
+					"trello": "Gestión de tareas",
+					"drive": "Almacenamiento",
+					"mui": "Librería de componentes",
+					"npm": "Gestor de paquetes",
+					"figma": "Diseño de interfaces"
+				}
+			}
+		},
+		"education": {
+			"title": "Educación",
+			"subtitle": "Formación académica y cursos"
+		},
+		"testimonials": {
+			"title": "Testimonios",
+			"subtitle": "Lo que dicen quienes trabajaron conmigo"
 		},
 		"timeline": {
 			"projects_title": "Proyectos realizados"
@@ -97,6 +136,17 @@
 		"form": {
 			"validation_error": "Por favor, completa todos los campos.",
 			"send_by": "Enviar mensaje por:",
+			"success_toast": "¡Mensaje enviado correctamente!",
+			"send_help": "Al enviar este formulario, se abrirá WhatsApp con tu mensaje prellenado",
+			"errors": {
+				"summary": "Por favor, corrige los siguientes errores:",
+				"required_field": "El campo {field} es requerido",
+				"required": "Este campo es requerido",
+				"email_invalid": "Por favor, ingresa un correo electrónico válido",
+				"label_name": "nombre",
+				"label_email": "correo electrónico",
+				"label_message": "mensaje"
+			},
 			"placeholders": {
 				"name": "Nombre o empresa",
 				"email": "Correo",
@@ -111,9 +161,18 @@
 	},
 	"en": {
 		"nav": {
+			"home": "Home",
+			"experience": "Experience",
+			"skills": "Skills",
 			"projects": "Projects",
-			"about": "About me",
+			"education": "Education",
+			"testimonials": "Testimonials",
 			"contact": "Contact",
+			"cv": "CV",
+			"theme": "Toggle theme",
+			"menu_open": "Open main menu",
+			"menu_close": "Close main menu",
+			"about": "About me",
 			"switch": "Español",
 			"switch_es": "English"
 		},
@@ -127,11 +186,13 @@
 			"about": "I've worked on a variety of projects for different web development companies. I specialize in building modern, functional interfaces.",
 			"cta_projects": "View my projects",
 			"cta_cv": "Download CV",
+			"cta_contact": "Contact me",
 			"connect": "Connect with me",
 			"profileAlt": "Christian Campa - Frontend Developer"
 		},
 		"experience": {
 			"title": "Work Experience",
+			"year_other": "Others",
 			"labels": {
 				"role": "Role",
 				"skills": "Skills",
@@ -145,7 +206,11 @@
 			"tech_aria_prefix": "Technology",
 			"with_url": "Deployed Projects",
 			"without_url": "Projects in development",
-			"subtitle": "Explore the projects I have worked on"
+			"in_dev": "In development",
+			"subtitle": "Explore the projects I have worked on",
+			"filter_status": "Filtering by:",
+			"filter_clear": "Clear filter",
+			"filter_empty": "No projects with this stack"
 		},
 		"contact": {
 			"title": "Contact",
@@ -165,6 +230,7 @@
 				"sendWhatsApp": "Send via WhatsApp"
 			},
 			"subject": "Contact from your Portfolio",
+			"email_body": "Hi Christian,",
 			"alertWhatsAppNotConfigured": "The WhatsApp number is not configured by the site owner.",
 			"formatted": {
 				"name": "Name",
@@ -196,10 +262,33 @@
 			"description": "Alsoftpro SRL is a web development company whose main objective is to provide customized solutions for state and private companies in Cuba."
 		},
 		"skills": {
+			"title": "Skills",
 			"stack_tab": "Stack",
 			"tools_tab": "Tools",
 			"stack_description": "Languages and Tools I use",
-			"tools_description": "Productivity tools I have used"
+			"tools_title": "Tools",
+			"tools_description": "Productivity tools I have used",
+			"filter_hint": "Click a stack to filter projects",
+			"tools": {
+				"level_label": "Experience",
+				"items": {
+					"slack": "Communication",
+					"git": "Version control",
+					"trello": "Task management",
+					"drive": "Storage",
+					"mui": "Component library",
+					"npm": "Package manager",
+					"figma": "Interface design"
+				}
+			}
+		},
+		"education": {
+			"title": "Education",
+			"subtitle": "Academic background and courses"
+		},
+		"testimonials": {
+			"title": "Testimonials",
+			"subtitle": "What people say about working with me"
 		},
 		"timeline": {
 			"projects_title": "Completed Projects"
@@ -207,6 +296,17 @@
 		"form": {
 			"validation_error": "Please, complete all fields.",
 			"send_by": "Send message by:",
+			"success_toast": "Message sent successfully!",
+			"send_help": "Submitting this form will open WhatsApp with your message pre-filled",
+			"errors": {
+				"summary": "Please fix the following errors:",
+				"required_field": "The {field} field is required",
+				"required": "This field is required",
+				"email_invalid": "Please enter a valid email address",
+				"label_name": "name",
+				"label_email": "email",
+				"label_message": "message"
+			},
 			"placeholders": {
 				"name": "Name or company",
 				"email": "Email",

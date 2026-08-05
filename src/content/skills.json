@@ -1,0 +1,21 @@
+{
+  "stack": [
+    { "id": "react", "name": "React", "match": ["react"] },
+    { "id": "astro", "name": "Astro", "match": ["astro"] },
+    { "id": "nextjs", "name": "Next.js", "match": ["nextjs"] },
+    { "id": "css", "name": "CSS", "match": ["css"] },
+    { "id": "html", "name": "HTML", "match": ["html"] },
+    { "id": "node", "name": "Node", "match": ["node"] },
+    { "id": "tailwind", "name": "Tailwind", "match": ["tailwindcss"] },
+    { "id": "typescript", "name": "TypeScript", "match": ["typescript"] }
+  ],
+  "tools": [
+    { "id": "slack", "name": "Slack", "level": 80 },
+    { "id": "git", "name": "Git", "level": 90 },
+    { "id": "trello", "name": "Trello", "level": 70 },
+    { "id": "drive", "name": "Google Drive", "level": 85 },
+    { "id": "mui", "name": "Material UI", "level": 75 },
+    { "id": "npm", "name": "NPM", "level": 90 },
+    { "id": "figma", "name": "Figma", "level": 60 }
+  ]
+}

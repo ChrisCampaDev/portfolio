@@ -1,15 +1,26 @@
 ---
-import EducationSection from "@/components/sections/new/EducationSection.astro";
-import ExpSectionV2 from "@/components/sections/new/ExpSectionV2.astro";
-import ToolsSectionV2 from "@/components/sections/new/ToolsSectionV2.astro";
 import Layout from "@/layouts/layout.astro";
+import HeroSection from "@/components/HeroSection.astro";
+import ExperienceSection from "@/components/ExperienceSection.astro";
+import SkillsSection from "@/components/SkillsSection.astro";
+import ToolsSection from "@/components/ToolsSection.astro";
+import Projects from "@/components/Projects.astro";
+import EducationSection from "@/components/EducationSection.astro";
+import TestimonialsSection from "@/components/TestimonialsSection.astro";
+import ContactSection from "@/components/ContactSection.astro";
 ---
 
 <Layout
-    title="Portfolio ChrisCampaDev"
-    desc="ChrisCampaDev's web portfolio about the jobs and experiences like a web developer"
+	title="Portfolio ChrisCampaDev"
+	desc="ChrisCampaDev's web portfolio about the jobs and experiences like a web developer"
+	lang="en"
 >
-    <ExpSectionV2 />
-    <ToolsSectionV2 />
-    <EducationSection />
+	<HeroSection />
+	<ExperienceSection />
+	<SkillsSection />
+	<Projects />
+	<ToolsSection />
+	<EducationSection />
+	<TestimonialsSection />
+	<ContactSection />
 </Layout>

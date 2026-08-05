@@ -1,0 +1,30 @@
+{
+	"es": [
+		{
+			"quote": "(Completar) Escribí aquí qué dijo esta persona sobre trabajar con vos.",
+			"author": "(Completar) Nombre",
+			"role": "(Completar) Puesto",
+			"company": "(Completar) Empresa"
+		},
+		{
+			"quote": "(Completar) Otro testimonio de ejemplo.",
+			"author": "(Completar)",
+			"role": "(Completar)",
+			"company": "(Completar)"
+		}
+	],
+	"en": [
+		{
+			"quote": "(To complete) Write here what this person said about working with you.",
+			"author": "(To complete) Name",
+			"role": "(To complete) Role",
+			"company": "(To complete) Company"
+		},
+		{
+			"quote": "(To complete) Another example testimonial.",
+			"author": "(To complete)",
+			"role": "(To complete)",
+			"company": "(To complete)"
+		}
+	]
+}

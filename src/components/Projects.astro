@@ -1,4 +1,6 @@
 ---
+import TerminalWindow from "@/components/TerminalWindow.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
 import { Badge } from "@/components/starwind/badge";
 import { Button } from "@/components/starwind/button";
 import { getTexts, getLocaleFromAstro } from "@/utils/i18n";
@@ -14,119 +16,230 @@ interface Project {
 
 const texts = getTexts(Astro);
 const locale = getLocaleFromAstro(Astro);
-const allProjects: Project[] = projectsData[locale] || [];
+const allProjects: Project[] = (projectsData as any)[locale] || [];
 
 const projectsWithUrl = allProjects.filter((p) => p.url && p.url.trim() !== "");
 const projectsWithoutUrl = allProjects.filter(
 	(p) => !p.url || p.url.trim() === "",
 );
+
+const cardClass =
+	"flex flex-col rounded-lg border border-coder-edge bg-card p-5 transition-colors hover:border-coder-accent/60";
+
+const techsAttr = (technologies: string[]) =>
+	technologies.map((t) => t.toLowerCase().replace(/[^a-z0-9]+/g, "")).join(" ");
 ---
 
-<section
-	id="projects"
-	aria-labelledby="projects-heading"
-	class="py-16 px-4 scroll-mt-20"
->
-	<div class="max-w-6xl mx-auto">
-		<div class="text-center mb-12">
-			<h2
-				id="projects-heading"
-				class="text-3xl font-bold text-gray-900 dark:text-white mb-2"
-			>
-				{texts.projects.title}
-			</h2>
-			<p class="text-gray-600 dark:text-gray-300">
-				{texts.projects.subtitle}
-			</p>
-		</div>
+<section id="projects" class="scroll-mt-24 py-12 sm:py-16" aria-labelledby="projects-heading">
+	<div class="mx-auto max-w-6xl px-4">
+		<TerminalWindow filename="projects.json">
+			<SectionHeader id="projects-heading" title={texts.projects.title} comment="projects.json" />
+			<p class="mb-8 text-muted-foreground">{texts.projects.subtitle}</p>
 
-		{
-			projectsWithUrl.length > 0 && (
-				<div class="mb-12">
-					<h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
-						{texts.projects.with_url}
-					</h3>
-					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						{projectsWithUrl.map((project) => (
-							<article class="flex flex-col border dark:border-gray-200 border-blue-900 rounded-xl p-5 bg-neutral-primary-soft dark:bg-black/40 hover:shadow-lg transition-shadow">
-								<div class="flex-1">
-									<span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+			<div
+				id="projects-filter-bar"
+				hidden
+				aria-live="polite"
+				class="mb-8 flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg border border-coder-accent/40 bg-coder-accent/10 px-4 py-3 font-mono text-sm"
+			>
+				<span class="text-coder-muted">{texts.projects.filter_status}</span>
+				<strong id="projects-filter-name" class="font-semibold text-coder-accent"></strong>
+				<button
+					type="button"
+					id="projects-filter-clear"
+					class="ml-auto inline-flex items-center gap-1.5 rounded-md border border-coder-edge px-3 py-1 font-mono text-xs text-coder-muted transition-colors hover:border-coder-accent hover:text-coder-accent"
+				>
+					<span aria-hidden="true">✕</span>
+					<span>{texts.projects.filter_clear}</span>
+				</button>
+			</div>
+
+			<p
+				id="projects-filter-empty"
+				hidden
+				class="mb-8 rounded-lg border border-dashed border-coder-edge px-4 py-6 text-center font-mono text-sm text-coder-muted"
+			>
+				{texts.projects.filter_empty}
+			</p>
+
+			{
+				projectsWithUrl.length > 0 && (
+					<div class="mb-10" data-project-group>
+						<h3 class="mb-5 font-mono text-sm uppercase tracking-wider text-coder-muted" data-project-group-title>
+							// {texts.projects.with_url}
+						</h3>
+						<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+							{projectsWithUrl.map((project) => (
+								<article class={cardClass} data-techs={techsAttr(project.technologies)}>
+									<span class="font-mono text-[11px] uppercase tracking-wider text-coder-muted">
 										{project.company}
 									</span>
-									<h4 class="text-xl font-bold text-gray-900 dark:text-white mt-1 mb-2">
+									<h4 class="mt-1 font-mono text-lg font-semibold text-foreground">
 										{project.title}
 									</h4>
-									<p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+									<p class="mb-4 mt-1 flex-1 text-sm text-muted-foreground">
 										{project.description}
 									</p>
-								</div>
-								<div class="flex flex-wrap gap-2 mb-4">
-									{project.technologies.map((tech) => (
-										<Badge variant="secondary" size="sm">
-											{tech}
-										</Badge>
-									))}
-								</div>
-								<Button
-									href={project.url}
-									target="_blank"
-									rel="noopener noreferrer"
-									variant="primary"
-									size="sm"
-									class="mt-auto"
-								>
-									<svg
-										class="w-4 h-4 mr-2"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
+									<div class="mb-4 flex flex-wrap gap-2">
+										{project.technologies.map((tech) => (
+											<Badge
+												variant="outline"
+												size="sm"
+												class="font-mono text-[11px]"
+												aria-label={`${texts.projects.tech_aria_prefix}: ${tech}`}
+											>
+												{"<"}
+												{tech}
+												{">"}
+											</Badge>
+										))}
+									</div>
+									<Button
+										href={project.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										variant="primary"
+										size="sm"
+										class="font-mono"
+										aria-label={`${texts.projects.visit_aria}: ${project.title}`}
 									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-										/>
-									</svg>
-									{texts.projects.visit}
-								</Button>
-							</article>
-						))}
+										<svg
+											class="h-4 w-4"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											aria-hidden="true"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+											/>
+										</svg>
+										{texts.projects.visit}
+									</Button>
+								</article>
+							))}
+						</div>
 					</div>
-				</div>
-			)
-		}
+				)
+			}
 
-		{
-			projectsWithoutUrl.length > 0 && (
-				<div>
-					<h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
-						{texts.projects.without_url}
-					</h3>
-					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						{projectsWithoutUrl.map((project) => (
-							<article class="flex flex-col border dark:border-gray-200 border-blue-900 rounded-xl p-5 bg-neutral-primary-soft dark:bg-black/40">
-								<span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-									{project.company}
-								</span>
-								<h4 class="text-xl font-bold text-gray-900 dark:text-white mt-1 mb-2">
-									{project.title}
-								</h4>
-								<p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-									{project.description}
-								</p>
-								<div class="flex flex-wrap gap-2 mt-auto">
-									{project.technologies.map((tech) => (
-										<Badge variant="outline" size="sm">
-											{tech}
-										</Badge>
-									))}
-								</div>
-							</article>
-						))}
+			{
+				projectsWithoutUrl.length > 0 && (
+					<div data-project-group>
+						<h3 class="mb-5 font-mono text-sm uppercase tracking-wider text-coder-muted" data-project-group-title>
+							// {texts.projects.without_url}
+						</h3>
+						<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+							{projectsWithoutUrl.map((project) => (
+								<article class={cardClass} data-techs={techsAttr(project.technologies)}>
+									<span class="font-mono text-[11px] uppercase tracking-wider text-coder-muted">
+										{project.company}
+									</span>
+									<h4 class="mt-1 font-mono text-lg font-semibold text-foreground">
+										{project.title}
+									</h4>
+									<p class="mb-4 mt-1 flex-1 text-sm text-muted-foreground">
+										{project.description}
+									</p>
+									<div class="mb-4 flex flex-wrap gap-2">
+										{project.technologies.map((tech) => (
+											<Badge
+												variant="outline"
+												size="sm"
+												class="font-mono text-[11px]"
+												aria-label={`${texts.projects.tech_aria_prefix}: ${tech}`}
+											>
+												{"<"}
+												{tech}
+												{">"}
+											</Badge>
+										))}
+									</div>
+									<Badge
+										variant="ghost"
+										size="sm"
+										class="w-fit font-mono text-[11px] text-coder-yellow"
+									>
+										{texts.projects.in_dev}
+									</Badge>
+								</article>
+							))}
+						</div>
 					</div>
-				</div>
-			)
-		}
+				)
+			}
+		</TerminalWindow>
 	</div>
 </section>
+
+<script define:vars={{ filterStatus: texts.projects.filter_status, filterClear: texts.projects.filter_clear, filterEmpty: texts.projects.filter_empty }}>
+	function normalize(s) {
+		return s.toLowerCase().replace(/[^a-z0-9]+/g, "");
+	}
+
+	const articles = Array.from(
+		document.querySelectorAll("#projects article[data-techs]"),
+	);
+	const groups = Array.from(
+		document.querySelectorAll("#projects [data-project-group]"),
+	);
+	const bar = document.getElementById("projects-filter-bar");
+	const barName = document.getElementById("projects-filter-name");
+	const empty = document.getElementById("projects-filter-empty");
+
+	function applyFilter(detail) {
+		const id = detail && detail.id != null ? detail.id : null;
+
+		if (id === null) {
+			articles.forEach((a) => (a.hidden = false));
+			groups.forEach((g) => {
+				const title = g.querySelector("[data-project-group-title]");
+				if (title) title.hidden = false;
+			});
+			if (bar) bar.hidden = true;
+			if (empty) empty.hidden = true;
+			return;
+		}
+
+		const match = (detail.match || []).map(normalize).filter(Boolean);
+		let visibleCount = 0;
+
+		articles.forEach((a) => {
+			const techs = (a.dataset.techs || "").split(" ").filter(Boolean);
+			const visible = match.some((m) => techs.includes(m));
+			a.hidden = !visible;
+			if (visible) visibleCount++;
+		});
+
+		groups.forEach((g) => {
+			const cards = Array.from(g.querySelectorAll("article[data-techs]"));
+			const anyVisible = cards.some((c) => !c.hidden);
+			const title = g.querySelector("[data-project-group-title]");
+			if (title) title.hidden = !anyVisible;
+		});
+
+		if (empty) empty.hidden = visibleCount > 0;
+		if (bar) bar.hidden = false;
+		if (barName && detail.name) barName.textContent = detail.name;
+	}
+
+	window.addEventListener("stack:filter", (event) => {
+		const detail = event.detail || {};
+		applyFilter(detail);
+		if (detail.id != null) {
+			const projects = document.getElementById("projects");
+			if (projects) projects.scrollIntoView({ behavior: "smooth" });
+		}
+	});
+
+	const clearBtn = document.getElementById("projects-filter-clear");
+	if (clearBtn) {
+		clearBtn.addEventListener("click", () => {
+			window.dispatchEvent(new CustomEvent("stack:filter", { detail: { id: null } }));
+			applyFilter({ id: null });
+		});
+	}
+</script>
