@@ -12,7 +12,14 @@
 			"title": "Oficina Digital",
 			"description": "Multiplataforma web para el pago de servicios",
 			"url": "",
-			"technologies": ["React", "Tailwind CSS", "React Native"]
+			"technologies": ["React", "Tailwind CSS", "React Native", "Expo"]
+		},
+		{
+			"company": "AlsoftPro",
+			"title": "Transitoria",
+			"description": "Plataforma web para la gestion de inventario de una empresaa",
+			"url": "",
+			"technologies": ["React", "Tailwind CSS", "Vite"]
 		},
 		{
 			"company": "AlsoftPro",

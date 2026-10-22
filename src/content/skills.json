@@ -26,8 +26,10 @@
 		{ "id": "figma", "name": "Figma" },
 		{ "id": "trello", "name": "Trello" },
 		{ "id": "slack", "name": "Slack" },
+		{ "id": "taiga", "name": "Taiga" },
+		{ "id": "scrum", "name": "Metodologia Agil" },
 		{ "id": "ai", "name": "AI-Assisted Development" },
 		{ "id": "architecture", "name": "Arquitectura Frontend" },
-		{ "id": "docs", "name": "Documentación de Código" }
+		{ "id": "docs", "name": "Documentación de Código con markdown" }
 	]
 }
