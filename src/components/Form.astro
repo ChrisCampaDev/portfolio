@@ -4,8 +4,10 @@ import Input from "@/components/starwind/input";
 import Label from "@/components/starwind/label";
 import Textarea from "@/components/starwind/textarea";
 import { getTexts } from "@/utils/i18n";
+import { getContact } from "@/content/profile";
 
 const texts = getTexts(Astro);
+const contact = getContact();
 
 const formTexts = {
 	errorsSummary: texts.form.errors.summary,
@@ -18,12 +20,14 @@ const formTexts = {
 	successToast: texts.form.success_toast,
 	sendHelp: texts.form.send_help,
 	sendBy: texts.form.send_by,
+	whatsappMessage: texts.form.whatsapp_message,
+	popupBlockedToast: texts.form.popup_blocked_toast,
 };
 ---
 
 <form
 	id="contactForm"
-	class="rounded-lg border border-coder-edge bg-card p-5 sm:p-6"
+	class="rounded-lg p-0 sm:p-0"
 	aria-labelledby="form-title"
 	novalidate
 >
@@ -119,9 +123,7 @@ const formTexts = {
 	</div>
 </form>
 
-<script define:vars={{ formTexts }}>
-	const telf = "5354758835";
-
+<script define:vars={{ formTexts, telf: contact.whatsapp }}>
 	const contactForm = document.getElementById("contactForm");
 	if (contactForm) {
 		contactForm.addEventListener("submit", (e) => {
@@ -139,14 +141,27 @@ const formTexts = {
 				return;
 			}
 
-			const whatsappMessage = `Hola, tengo una consulta:\n\nNombre: ${data.name}\nEmail: ${data.email}\nMensaje: ${data.message}`;
+			const whatsappMessage = formTexts.whatsappMessage
+				.replace("{name}", data.name)
+				.replace("{email}", data.email)
+				.replace("{message}", data.message);
 			const whatsappUrl = `https://wa.me/${telf}?text=${encodeURIComponent(whatsappMessage)}`;
-			window.open(whatsappUrl, "_blank");
+			const whatsappWindow = window.open(whatsappUrl, "_blank");
 
 			form.reset();
 
 			const manager = window.__starwind__ && window.__starwind__.toast;
-			if (manager) manager.add({ title: formTexts.successToast, variant: "success" });
+			if (manager) {
+				// popup blockers make window.open return null: notify instead of a fake success
+				if (whatsappWindow) {
+					manager.add({ title: formTexts.successToast, variant: "success" });
+				} else {
+					manager.add({
+						title: formTexts.popupBlockedToast,
+						variant: "error",
+					});
+				}
+			}
 		});
 	}
 

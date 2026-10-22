@@ -12,6 +12,7 @@ const isEnglish = currentLocale === "en";
 const contact = getContact();
 
 const currentPath = Astro.url.pathname;
+// Assumes the deploy base "/portfolio" from astro.config.mjs; update if moving to a custom domain
 const pathWithoutLocale = currentPath.replace(/^\/portfolio\/?(en\/?)?/, "");
 const baseUrl = pathWithoutLocale || "";
 const spanishUrl = `/portfolio${baseUrl ? "/" + baseUrl : ""}`;
@@ -29,30 +30,28 @@ const links = [
 ];
 
 const linkClass =
-	"rounded px-2 py-1 font-mono text-sm transition-colors hover:text-coder-accent focus-visible:ring-2 focus-visible:ring-coder-accent/60 focus-visible:outline-none";
+	"rounded px-2 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-coder-accent/60 focus-visible:outline-none";
 ---
 
 <nav
 	class="sticky top-0 z-20 border-b border-coder-edge bg-background/85 backdrop-blur"
 	role="navigation"
-	aria-label="Main navigation"
+	aria-label={texts.nav.aria}
 >
 	<div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-3">
 		<a
 			href={homeHref}
-			class="font-mono text-base font-semibold text-foreground transition-colors hover:text-coder-accent"
+			class="text-base font-semibold text-foreground"
 			aria-label="Home"
 		>
-			<span class="text-coder-muted" aria-hidden="true">$</span>
-			<span class="text-coder-accent" aria-hidden="true">~/</span>chriscampadev
+			<span class="text-coder-accent" aria-hidden="true">~</span>chriscampadev
 		</a>
 
 		<div class="hidden items-center gap-1 md:flex">
 			{
 				links.map((link) => (
 					<a href={link.href} class={linkClass}>
-						<span class="text-coder-muted" aria-hidden="true">cd</span>
-						<span class="text-foreground">/{link.label}</span>
+						{link.label}
 					</a>
 				))
 			}
@@ -61,8 +60,9 @@ const linkClass =
 		<div class="flex items-center gap-1.5">
 			<a
 				href={contact.cv}
-				download
-				class="hidden rounded-md border border-coder-accent px-3 py-1.5 font-mono text-sm text-coder-accent transition-colors hover:bg-coder-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coder-accent/60 md:inline-flex"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="hidden rounded-md border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coder-accent/60 md:inline-flex"
 			>
 				{texts.nav.cv}
 			</a>
@@ -136,10 +136,9 @@ const linkClass =
 					<li>
 						<a
 							href={link.href}
-							class="block rounded px-2 py-2 font-mono text-sm text-foreground transition-colors hover:text-coder-accent"
+							class="block rounded px-2 py-2 text-sm text-foreground transition-colors hover:text-muted-foreground"
 						>
-							<span class="text-coder-muted" aria-hidden="true">cd</span>
-							<span class="text-foreground">/{link.label}</span>
+							{link.label}
 						</a>
 					</li>
 				))
@@ -147,8 +146,9 @@ const linkClass =
 			<li class="pt-2">
 				<a
 					href={contact.cv}
-					download
-					class="inline-flex w-full items-center justify-center rounded-md border border-coder-accent px-3 py-2 font-mono text-sm text-coder-accent transition-colors hover:bg-coder-accent/10"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-flex w-full items-center justify-center rounded-md border border-border px-3 py-2 text-sm text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
 				>
 					{texts.nav.cv}
 				</a>

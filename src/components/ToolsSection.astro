@@ -1,80 +1,37 @@
 ---
-import TerminalWindow from "@/components/TerminalWindow.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
-import Slack from "@/components/icons/tools/slack.astro";
-import Git from "@/components/icons/tools/git.astro";
-import Trello from "@/components/icons/tools/trello.astro";
-import Drive from "@/components/icons/tools/drive.astro";
-import Mui from "@/components/icons/tools/mui.astro";
-import Npm from "@/components/icons/tools/npm.astro";
-import Figma from "@/components/icons/tools/figma.astro";
 import { getTexts } from "@/utils/i18n";
 import skills from "@/content/skills.json";
 
 const texts = getTexts(Astro);
 
-const toolIcons: Record<string, (props: { class?: string }) => any> = {
-	slack: Slack,
-	git: Git,
-	trello: Trello,
-	drive: Drive,
-	mui: Mui,
-	npm: Npm,
-	figma: Figma,
-};
+const textFor = (tool: (typeof skills.tools)[number]): string | undefined =>
+	(texts.skills.tools.items as Record<string, string> | undefined)?.[tool.id];
+
+const nameFor = (tool: (typeof skills.tools)[number]): string =>
+	(texts.skills.tools.names as Record<string, string> | undefined)?.[tool.id] || tool.name;
 ---
 
 <section id="tools" class="scroll-mt-24 py-12 sm:py-16" aria-labelledby="tools-heading">
 	<div class="mx-auto max-w-6xl px-4">
-		<TerminalWindow filename="tools.json">
-			<SectionHeader id="tools-heading" title={texts.skills.tools_title} comment="tools.json" />
-			<p class="mb-8 text-muted-foreground">{texts.skills.tools_description}</p>
-
-			<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4" role="list">
-				{
-					skills.tools.map((tool) => {
-						const Icon = toolIcons[tool.id];
-						return (
-							<div
-								class="flex flex-col gap-2 rounded-lg border border-coder-edge bg-card p-4 transition-colors hover:border-coder-accent/60"
-								role="listitem"
-							>
-								<div class="flex items-center justify-between">
-									{Icon && <Icon class="h-6 w-6 sm:h-7 sm:w-7" aria-hidden="true" />}
-									<span
-										class="font-mono text-xs font-semibold text-success"
-										aria-hidden="true"
-									>
-										✓
-									</span>
-								</div>
-								<span class="font-mono text-sm text-foreground">{tool.name}</span>
-								<div
-									class="mt-1 flex items-center gap-2"
-									role="progressbar"
-									aria-label={`${texts.skills.tools.level_label}: ${tool.name} ${tool.level}%`}
-									aria-valuenow={tool.level}
-									aria-valuemin="0"
-									aria-valuemax="100"
-								>
-									<div class="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
-										<div
-											class="h-full rounded-full bg-coder-accent transition-all duration-500"
-											style={`width: ${tool.level}%`}
-										/>
-									</div>
-									<span class="shrink-0 font-mono text-xs text-coder-accent">
-										{tool.level}%
-									</span>
-								</div>
-								<span class="text-xs text-muted-foreground">
-									{texts.skills.tools.items[tool.id as keyof typeof texts.skills.tools.items]}
-								</span>
-							</div>
-						);
-					})
-				}
-			</div>
-		</TerminalWindow>
+		<SectionHeader id="tools-heading" title={texts.skills.tools_title} comment="tools" />
+		<p class="mb-8 max-w-xl text-muted-foreground">
+			{texts.skills.tools_description}
+		</p>
+		<ul class="grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2" role="list">
+			{
+				skills.tools.map((tool) => (
+					<li
+						class="flex flex-wrap items-baseline gap-x-3 border-b border-border pb-3"
+						role="listitem"
+					>
+						<span class="text-sm font-medium text-foreground">{nameFor(tool)}</span>
+						{textFor(tool) && (
+							<span class="text-xs text-muted-foreground">{textFor(tool)}</span>
+						)}
+					</li>
+				))
+			}
+		</ul>
 	</div>
 </section>

@@ -14,8 +14,10 @@
 			"menu_close": "Cerrar menú principal",
 			"about": "Quién soy",
 			"switch": "English",
-			"switch_es": "Español"
+			"switch_es": "Español",
+			"aria": "Navegación principal"
 		},
+		"skip_link": "Ir al contenido principal",
 		"hero": {
 			"hello": "Hola, soy",
 			"name": "Christian Campa",
@@ -25,10 +27,11 @@
 			"company": "Compañía Alsoftpro",
 			"about": "He trabajado en diversos proyectos, estando vinculado a diferentes empresas dedicadas al desarrollo web. Me especializo en crear interfaces modernas y funcionales.",
 			"cta_projects": "Ver mis proyectos",
-			"cta_cv": "Descargar CV",
+			"cta_cv": "Ver CV",
 			"cta_contact": "Contáctame",
 			"connect": "Conecta conmigo",
-			"profileAlt": "Christian Campa - Desarrollador Frontend"
+			"profileAlt": "Christian Campa - Desarrollador Frontend",
+			"terminal_aria": "Terminal de presentación"
 		},
 		"experience": {
 			"title": "Experiencia Laboral",
@@ -105,20 +108,31 @@
 			"title": "Habilidades",
 			"stack_tab": "Stack",
 			"tools_tab": "Herramientas",
-			"stack_description": "Lenguajes y Herramientas uso",
-			"tools_title": "Herramientas",
-			"tools_description": "Herramientas de productividad que he usado",
+			"languages_title": "Lenguajes",
+			"frameworks_title": "Frameworks & Librerías",
+			"stack_description": "Ecosistema React, tipado estricto en TypeScript, interfaces modernas, escalables y de alto rendimiento.",
+			"tools_title": "Herramientas & Metodologías",
+			"tools_description": "Herramientas del día a día con las que desarrollo, diseño y colaboro",
 			"filter_hint": "Tocá un stack para filtrar los proyectos",
 			"tools": {
 				"level_label": "Experiencia",
+				"names": {
+					"git": "Git & GitHub",
+					"figma": "Figma",
+					"trello": "Trello",
+					"slack": "Slack",
+					"ai": "Desarrollo asistido por IA",
+					"architecture": "Arquitectura Frontend",
+					"docs": "Documentación de Código"
+				},
 				"items": {
-					"slack": "Comunicación",
-					"git": "Control de versiones",
+					"git": "Control de versiones, Git Flow y Pull Requests",
+					"figma": "Diseño de interfaces",
 					"trello": "Gestión de tareas",
-					"drive": "Almacenamiento",
-					"mui": "Librería de componentes",
-					"npm": "Gestor de paquetes",
-					"figma": "Diseño de interfaces"
+					"slack": "Comunicación de equipo",
+					"ai": "Desarrollo asistido por IA",
+					"architecture": "Arquitectura Frontend",
+					"docs": "Documentación de código"
 				}
 			}
 		},
@@ -138,6 +152,8 @@
 			"send_by": "Enviar mensaje por:",
 			"success_toast": "¡Mensaje enviado correctamente!",
 			"send_help": "Al enviar este formulario, se abrirá WhatsApp con tu mensaje prellenado",
+			"whatsapp_message": "Hola, tengo una consulta:\n\nNombre: {name}\nEmail: {email}\nMensaje: {message}",
+			"popup_blocked_toast": "No se pudo abrir WhatsApp. Verifica que las ventanas emergentes estén permitidas o escríbeme por email.",
 			"errors": {
 				"summary": "Por favor, corrige los siguientes errores:",
 				"required_field": "El campo {field} es requerido",
@@ -157,6 +173,13 @@
 			"github": "Github",
 			"linkedin": "Linkendin",
 			"whatsapp": "Whatsapp"
+		},
+		"notfound": {
+			"title": "Error 404 - Página no encontrada",
+			"description": "Página no encontrada. Parece que te has perdido, pero aquí tienes cómo regresar.",
+			"heading": "¡Ups! Página no encontrada",
+			"text": "Parece que la página que buscas no existe o ha sido movida. No te preocupes, puedes regresar al inicio fácilmente.",
+			"button": "Volver al inicio"
 		}
 	},
 	"en": {
@@ -174,8 +197,10 @@
 			"menu_close": "Close main menu",
 			"about": "About me",
 			"switch": "Español",
-			"switch_es": "English"
+			"switch_es": "English",
+			"aria": "Main navigation"
 		},
+		"skip_link": "Skip to main content",
 		"hero": {
 			"hello": "Hi, I'm",
 			"name": "Christian Campa",
@@ -185,7 +210,7 @@
 			"company": "Alsoftpro Company",
 			"about": "I've worked on a variety of projects for different web development companies. I specialize in building modern, functional interfaces.",
 			"cta_projects": "View my projects",
-			"cta_cv": "Download CV",
+			"cta_cv": "View CV",
 			"cta_contact": "Contact me",
 			"connect": "Connect with me",
 			"profileAlt": "Christian Campa - Frontend Developer"
@@ -265,20 +290,31 @@
 			"title": "Skills",
 			"stack_tab": "Stack",
 			"tools_tab": "Tools",
-			"stack_description": "Languages and Tools I use",
-			"tools_title": "Tools",
-			"tools_description": "Productivity tools I have used",
+			"languages_title": "Languages",
+			"frameworks_title": "Frameworks & Libraries",
+			"stack_description": "React ecosystem, strict TypeScript typing, modern, scalable and high-performance interfaces.",
+			"tools_title": "Tools & Methodologies",
+			"tools_description": "Day-to-day tools I use to develop, design and collaborate",
 			"filter_hint": "Click a stack to filter projects",
 			"tools": {
 				"level_label": "Experience",
+				"names": {
+					"git": "Git & GitHub",
+					"figma": "Figma",
+					"trello": "Trello",
+					"slack": "Slack",
+					"ai": "AI-Assisted Development",
+					"architecture": "Frontend Architecture",
+					"docs": "Code Documentation"
+				},
 				"items": {
-					"slack": "Communication",
-					"git": "Version control",
+					"git": "Version control, Git Flow and Pull Requests",
+					"figma": "Interface design",
 					"trello": "Task management",
-					"drive": "Storage",
-					"mui": "Component library",
-					"npm": "Package manager",
-					"figma": "Interface design"
+					"slack": "Team communication",
+					"ai": "AI-assisted development",
+					"architecture": "Frontend architecture",
+					"docs": "Code documentation"
 				}
 			}
 		},
@@ -317,6 +353,13 @@
 			"github": "Github",
 			"linkedin": "LinkedIn",
 			"whatsapp": "WhatsApp"
+		},
+		"notfound": {
+			"title": "Error 404 - Page not found",
+			"description": "Page not found. Looks like you got lost, but here is how to get back.",
+			"heading": "Oops! Page not found",
+			"text": "Looks like the page you are looking for does not exist or has been moved. Don't worry, you can easily go back to the home page.",
+			"button": "Back to home"
 		}
 	}
 }

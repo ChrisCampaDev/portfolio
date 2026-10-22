@@ -1,8 +1,5 @@
 ---
-import TerminalWindow from "@/components/TerminalWindow.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
-import { Badge } from "@/components/starwind/badge";
-import { Button } from "@/components/starwind/button";
 import { getTexts, getLocaleFromAstro } from "@/utils/i18n";
 import projectsData from "@/content/projects.json";
 
@@ -23,155 +20,122 @@ const projectsWithoutUrl = allProjects.filter(
 	(p) => !p.url || p.url.trim() === "",
 );
 
-const cardClass =
-	"flex flex-col rounded-lg border border-coder-edge bg-card p-5 transition-colors hover:border-coder-accent/60";
-
 const techsAttr = (technologies: string[]) =>
 	technologies.map((t) => t.toLowerCase().replace(/[^a-z0-9]+/g, "")).join(" ");
 ---
 
 <section id="projects" class="scroll-mt-24 py-12 sm:py-16" aria-labelledby="projects-heading">
 	<div class="mx-auto max-w-6xl px-4">
-		<TerminalWindow filename="projects.json">
-			<SectionHeader id="projects-heading" title={texts.projects.title} comment="projects.json" />
-			<p class="mb-8 text-muted-foreground">{texts.projects.subtitle}</p>
+		<SectionHeader id="projects-heading" title={texts.projects.title} comment="projects" />
+		<p class="mb-10 max-w-xl text-muted-foreground">{texts.projects.subtitle}</p>
 
-			<div
-				id="projects-filter-bar"
-				hidden
-				aria-live="polite"
-				class="mb-8 flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg border border-coder-accent/40 bg-coder-accent/10 px-4 py-3 font-mono text-sm"
+		<div
+			id="projects-filter-bar"
+			hidden
+			aria-live="polite"
+			class="mb-10 flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-border px-4 py-2 text-sm"
+		>
+			<span class="text-muted-foreground">{texts.projects.filter_status}</span>
+			<strong id="projects-filter-name" class="font-medium text-foreground"></strong>
+			<button
+				type="button"
+				id="projects-filter-clear"
+				class="ml-auto inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
 			>
-				<span class="text-coder-muted">{texts.projects.filter_status}</span>
-				<strong id="projects-filter-name" class="font-semibold text-coder-accent"></strong>
-				<button
-					type="button"
-					id="projects-filter-clear"
-					class="ml-auto inline-flex items-center gap-1.5 rounded-md border border-coder-edge px-3 py-1 font-mono text-xs text-coder-muted transition-colors hover:border-coder-accent hover:text-coder-accent"
-				>
-					<span aria-hidden="true">✕</span>
-					<span>{texts.projects.filter_clear}</span>
-				</button>
-			</div>
+				<span aria-hidden="true">✕</span>
+				<span>{texts.projects.filter_clear}</span>
+			</button>
+		</div>
 
-			<p
-				id="projects-filter-empty"
-				hidden
-				class="mb-8 rounded-lg border border-dashed border-coder-edge px-4 py-6 text-center font-mono text-sm text-coder-muted"
-			>
-				{texts.projects.filter_empty}
-			</p>
+		<p
+			id="projects-filter-empty"
+			hidden
+			class="mb-10 text-center text-sm text-muted-foreground"
+		>
+			{texts.projects.filter_empty}
+		</p>
 
-			{
-				projectsWithUrl.length > 0 && (
-					<div class="mb-10" data-project-group>
-						<h3 class="mb-5 font-mono text-sm uppercase tracking-wider text-coder-muted" data-project-group-title>
-							// {texts.projects.with_url}
-						</h3>
-						<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-							{projectsWithUrl.map((project) => (
-								<article class={cardClass} data-techs={techsAttr(project.technologies)}>
-									<span class="font-mono text-[11px] uppercase tracking-wider text-coder-muted">
-										{project.company}
-									</span>
-									<h4 class="mt-1 font-mono text-lg font-semibold text-foreground">
-										{project.title}
-									</h4>
-									<p class="mb-4 mt-1 flex-1 text-sm text-muted-foreground">
-										{project.description}
-									</p>
-									<div class="mb-4 flex flex-wrap gap-2">
-										{project.technologies.map((tech) => (
-											<Badge
-												variant="outline"
-												size="sm"
-												class="font-mono text-[11px]"
-												aria-label={`${texts.projects.tech_aria_prefix}: ${tech}`}
-											>
-												{"<"}
-												{tech}
-												{">"}
-											</Badge>
-										))}
-									</div>
-									<Button
-										href={project.url}
-										target="_blank"
-										rel="noopener noreferrer"
-										variant="primary"
-										size="sm"
-										class="font-mono"
-										aria-label={`${texts.projects.visit_aria}: ${project.title}`}
+		{
+			projectsWithUrl.length > 0 && (
+				<div class="mb-12" data-project-group>
+					<h3 class="mb-6 text-xs font-medium uppercase tracking-widest text-muted-foreground" data-project-group-title>
+						{texts.projects.with_url}
+					</h3>
+					<div class="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+						{projectsWithUrl.map((project) => (
+							<article class="flex flex-col" data-techs={techsAttr(project.technologies)}>
+								<span class="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+									{project.company}
+								</span>
+								<h4 class="mt-1 text-lg font-semibold text-foreground">
+									{project.title}
+								</h4>
+								<p class="mb-4 mt-1 flex-1 text-sm text-muted-foreground">
+									{project.description}
+								</p>
+								<p class="mb-4 font-mono text-xs text-muted-foreground">
+									{project.technologies.join(" · ")}
+								</p>
+								<a
+									href={project.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="inline-flex w-fit items-center gap-1.5 text-sm font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+									aria-label={`${texts.projects.visit_aria}: ${project.title}`}
+								>
+									{texts.projects.visit}
+									<svg
+										class="h-3.5 w-3.5"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										aria-hidden="true"
 									>
-										<svg
-											class="h-4 w-4"
-											fill="none"
-											stroke="currentColor"
-											viewBox="0 0 24 24"
-											aria-hidden="true"
-										>
-											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												stroke-width="2"
-												d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-											/>
-										</svg>
-										{texts.projects.visit}
-									</Button>
-								</article>
-							))}
-						</div>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+										/>
+									</svg>
+								</a>
+							</article>
+						))}
 					</div>
-				)
-			}
+				</div>
+			)
+		}
 
-			{
-				projectsWithoutUrl.length > 0 && (
-					<div data-project-group>
-						<h3 class="mb-5 font-mono text-sm uppercase tracking-wider text-coder-muted" data-project-group-title>
-							// {texts.projects.without_url}
-						</h3>
-						<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-							{projectsWithoutUrl.map((project) => (
-								<article class={cardClass} data-techs={techsAttr(project.technologies)}>
-									<span class="font-mono text-[11px] uppercase tracking-wider text-coder-muted">
-										{project.company}
-									</span>
-									<h4 class="mt-1 font-mono text-lg font-semibold text-foreground">
-										{project.title}
-									</h4>
-									<p class="mb-4 mt-1 flex-1 text-sm text-muted-foreground">
-										{project.description}
-									</p>
-									<div class="mb-4 flex flex-wrap gap-2">
-										{project.technologies.map((tech) => (
-											<Badge
-												variant="outline"
-												size="sm"
-												class="font-mono text-[11px]"
-												aria-label={`${texts.projects.tech_aria_prefix}: ${tech}`}
-											>
-												{"<"}
-												{tech}
-												{">"}
-											</Badge>
-										))}
-									</div>
-									<Badge
-										variant="ghost"
-										size="sm"
-										class="w-fit font-mono text-[11px] text-coder-yellow"
-									>
-										{texts.projects.in_dev}
-									</Badge>
-								</article>
-							))}
-						</div>
+		{
+			projectsWithoutUrl.length > 0 && (
+				<div data-project-group>
+					<h3 class="mb-6 text-xs font-medium uppercase tracking-widest text-muted-foreground" data-project-group-title>
+						{texts.projects.without_url}
+					</h3>
+					<div class="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+						{projectsWithoutUrl.map((project) => (
+							<article class="flex flex-col" data-techs={techsAttr(project.technologies)}>
+								<span class="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+									{project.company}
+								</span>
+								<h4 class="mt-1 text-lg font-semibold text-foreground">
+									{project.title}
+								</h4>
+								<p class="mb-4 mt-1 flex-1 text-sm text-muted-foreground">
+									{project.description}
+								</p>
+								<p class="mb-4 font-mono text-xs text-muted-foreground">
+									{project.technologies.join(" · ")}
+								</p>
+								<span class="text-xs italic text-muted-foreground">
+									{texts.projects.in_dev}
+								</span>
+							</article>
+						))}
 					</div>
-				)
-			}
-		</TerminalWindow>
+				</div>
+			)
+		}
 	</div>
 </section>
 

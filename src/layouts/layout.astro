@@ -2,6 +2,8 @@
 import Navbar from "@/components/Navbar.astro";
 import FooterV2 from "@/components/FooterV2.astro";
 import { Toaster } from "@/components/starwind/toast";
+import { getProfile, getContact } from "@/content/profile";
+import { getTexts, getLocaleFromAstro } from "@/utils/i18n";
 import "@/styles/global.css";
 import "@/styles/starwind.css";
 
@@ -12,6 +14,31 @@ interface Props {
 }
 
 const { title, desc, lang = "es" } = Astro.props;
+const texts = getTexts(Astro);
+const locale = getLocaleFromAstro(Astro);
+const contact = getContact();
+const profile = getProfile(Astro);
+
+const site = Astro.site ?? new URL("https://chriscampadev.github.io");
+const canonical = new URL(Astro.url.pathname, site);
+
+// hreflang alternates: strip /en from the path for the Spanish version, add it for English
+const pathSansLocale = Astro.url.pathname.replace(/\/en(?=\/|$)/, "");
+const alternateEs = new URL(pathSansLocale, site);
+const alternateEn = new URL(pathSansLocale.replace(/(?<=\/portfolio)\/?/, "/en/"), site);
+
+const ogImage = new URL("/portfolio/og-image.jpg", site);
+const ogLocale = locale === "en" ? "en_US" : "es_ES";
+const jsonLd = JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: profile.name,
+	jobTitle: profile.role,
+	email: `mailto:${contact.email}`,
+	url: new URL("/portfolio/", site).href,
+	image: new URL("/portfolio/christian-campa-profile.jpeg", site).href,
+	sameAs: [contact.github, contact.linkedin],
+});
 ---
 
 <!doctype html>
@@ -30,9 +57,37 @@ const { title, desc, lang = "es" } = Astro.props;
 
 		<meta name="description" content={desc} />
 		<title>{title}</title>
+
+		<!-- Canonical & hreflang -->
+		<link rel="canonical" href={canonical.href} />
+		<link rel="alternate" hreflang="es" href={alternateEs.href} />
+		<link rel="alternate" hreflang="en" href={alternateEn.href} />
+		<link rel="alternate" hreflang="x-default" href={alternateEs.href} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="ChrisCampaDev" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={desc} />
+		<meta property="og:url" content={canonical.href} />
+		<meta property="og:image" content={ogImage.href} />
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content={profile.name} />
+		<meta property="og:locale" content={ogLocale} />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={desc} />
+		<meta name="twitter:image" content={ogImage.href} />
+
+		<!-- Structured data -->
+		<script type="application/ld+json" is:inline set:html={jsonLd} />
 	</head>
 	<body>
-		<a href="#main-content" class="skip-link">Ir al contenido principal</a>
+		<a href="#main-content" class="skip-link">{texts.skip_link}</a>
 		<header>
 			<Navbar />
 		</header>
@@ -79,8 +134,5 @@ const { title, desc, lang = "es" } = Astro.props;
 
 		// runs on initial page load
 		initTheme();
-
-		// runs on view transitions navigation
-		document.addEventListener("astro:after-swap", initTheme);
 	</script>
 </html>

@@ -1,5 +1,4 @@
 ---
-import TerminalWindow from "@/components/TerminalWindow.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
 import Form from "@/components/Form.astro";
 import { Button } from "@/components/starwind/button";
@@ -17,67 +16,58 @@ const whatsappHref = `https://wa.me/${contact.whatsapp}`;
 
 <section id="contact" class="scroll-mt-24 py-12 sm:py-16" aria-labelledby="contact-heading">
 	<div class="mx-auto max-w-6xl px-4">
-		<TerminalWindow filename="contact.ts">
-			<SectionHeader id="contact-heading" title={texts.contact.title} comment="contact.ts" />
-			<div class="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.15fr]">
-				<div>
-					<p class="mb-6 text-muted-foreground">{texts.contact.subtitle}</p>
+		<SectionHeader id="contact-heading" title={texts.contact.title} comment="contact" />
+		<div class="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.15fr]">
+			<div>
+				<p class="mb-8 max-w-md text-muted-foreground">{texts.contact.subtitle}</p>
 
-					<ul class="flex flex-col gap-3 font-mono text-sm">
-						<li class="flex items-start gap-3">
-							<span class="text-coder-muted" aria-hidden="true">✉</span>
-							<a
-								href={`mailto:${contact.email}`}
-								class="break-all text-foreground transition-colors hover:text-coder-accent"
-							>
-								{contact.email}
-							</a>
-						</li>
-						<li class="flex items-start gap-3">
-							<span class="text-coder-muted" aria-hidden="true">◉</span>
-							<a
-								href={whatsappHref}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="text-foreground transition-colors hover:text-coder-accent"
-							>
-								{contact.whatsapp}
-							</a>
-						</li>
-						<li class="flex items-start gap-3">
-							<span class="text-coder-muted" aria-hidden="true">◈</span>
-							<span class="text-foreground">{contact.location}</span>
-						</li>
-						<li class="flex items-start gap-3">
-							<span class="text-coder-muted" aria-hidden="true">▲</span>
-							<a
-								href={contact.github}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="break-all text-foreground transition-colors hover:text-coder-accent"
-							>
-								{contact.github.replace("https://", "")}
-							</a>
-						</li>
-					</ul>
+				<ul class="flex flex-col gap-3 text-sm">
+					<li class="flex items-start gap-3">
+						<a
+							href={`mailto:${contact.email}`}
+							class="break-all text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+						>
+							{contact.email}
+						</a>
+					</li>
+					<li class="flex items-start gap-3">
+						<a
+							href={whatsappHref}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+						>
+							{contact.whatsapp}
+						</a>
+					</li>
+					<li class="flex items-start gap-3">
+						<span class="text-foreground">{contact.location}</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<a
+							href={contact.github}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="break-all text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+						>
+							{contact.github.replace("https://", "")}
+						</a>
+					</li>
+				</ul>
 
-					<div class="mt-8 flex flex-wrap gap-3">
-						<Button href={mailtoHref} variant="outline" class="font-mono">
-							{texts.contact.buttons.sendEmail}
-						</Button>
-						<Button href={whatsappHref} target="_blank" rel="noopener noreferrer" variant="success" class="font-mono">
-							{texts.contact.buttons.sendWhatsApp}
-						</Button>
-						<Button href={contact.cv} download variant="primary" class="font-mono">
-							{texts.hero.cta_cv}
-						</Button>
-					</div>
-				</div>
-
-				<div>
-					<Form />
+				<div class="mt-8 flex flex-wrap gap-3">
+					<Button href={mailtoHref} variant="primary" size="sm">
+						{texts.contact.buttons.sendEmail}
+					</Button>
+					<Button href={contact.cv} target="_blank" rel="noopener noreferrer" variant="outline" size="sm">
+						{texts.hero.cta_cv}
+					</Button>
 				</div>
 			</div>
-		</TerminalWindow>
+
+			<div>
+				<Form />
+			</div>
+		</div>
 	</div>
 </section>

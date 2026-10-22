@@ -1,16 +1,10 @@
 {
 	"es": [
 		{
-			"quote": "(Completar) Escribí aquí qué dijo esta persona sobre trabajar con vos.",
-			"author": "(Completar) Nombre",
-			"role": "(Completar) Puesto",
-			"company": "(Completar) Empresa"
-		},
-		{
-			"quote": "(Completar) Otro testimonio de ejemplo.",
-			"author": "(Completar)",
-			"role": "(Completar)",
-			"company": "(Completar)"
+			"quote": "Escribí aquí qué dijo esta persona sobre trabajar con vos.",
+			"author": "Yendri",
+			"role": "Presidente ",
+			"company": "Alsoftpro"
 		}
 	],
 	"en": [

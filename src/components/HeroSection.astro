@@ -2,11 +2,6 @@
 import GitHubIcon from "@/components/icons/social/GitHubIcon.astro";
 import LinkedInIcon from "@/components/icons/social/LinkedInIcon.astro";
 import WhatsAppIcon from "@/components/icons/social/WhatsAppIcon.astro";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipTrigger,
-} from "@/components/starwind/tooltip";
 import { Button } from "@/components/starwind/button";
 import { getProfile, getContact } from "@/content/profile";
 import { getTexts } from "@/utils/i18n";
@@ -14,7 +9,7 @@ import { getTexts } from "@/utils/i18n";
 const texts = getTexts(Astro);
 const profile = getProfile(Astro);
 const contact = getContact(Astro);
-const stackStr = profile.stack.map((t) => `"${t}"`).join(", ");
+const portrait = "/portfolio/christian-campa-profile.jpeg";
 ---
 
 <section
@@ -22,26 +17,26 @@ const stackStr = profile.stack.map((t) => `"${t}"`).join(", ");
 	class="scroll-mt-24 py-16 sm:py-24"
 	aria-labelledby="hero-heading"
 >
-	<div class="mx-auto grid max-w-6xl items-center gap-10 px-4 lg:grid-cols-2">
+	<div class="mx-auto grid max-w-6xl items-center gap-12 px-4 lg:grid-cols-[1.4fr_1fr]">
 		<div>
-			<p class="font-mono text-sm text-coder-muted">{texts.hero.hello}</p>
+			<p class="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+				{texts.hero.hello}
+			</p>
 			<h1
 				id="hero-heading"
-				class="mt-2 font-mono text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+				class="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
 			>
 				{profile.name}
 			</h1>
-			<p class="mt-3 font-mono text-xl text-coder-accent sm:text-2xl">
+			<p class="mt-3 text-xl text-muted-foreground sm:text-2xl">
 				{profile.role}
 			</p>
-			<p class="mt-3 max-w-xl text-muted-foreground">{profile.about}</p>
+			<p class="mt-5 max-w-xl text-muted-foreground">{profile.about}</p>
 
-			<div
-				class="mt-5 flex items-center gap-2 font-mono text-sm text-foreground"
-			>
-				<span class="relative flex size-2.5 shrink-0" aria-hidden="true">
+			<div class="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
+				<span class="relative flex size-2 shrink-0" aria-hidden="true">
 					<span class="animate-status-pulse absolute inline-flex h-full w-full rounded-full bg-coder-accent"></span>
-					<span class="relative inline-flex size-2.5 rounded-full bg-coder-accent"></span>
+					<span class="relative inline-flex size-2 rounded-full bg-coder-accent"></span>
 				</span>
 				<span>{profile.availability}</span>
 			</div>
@@ -49,109 +44,43 @@ const stackStr = profile.stack.map((t) => `"${t}"`).join(", ");
 			<div class="mt-8 flex flex-wrap items-center gap-3">
 				<Button
 					href={contact.cv}
-					download
+					target="_blank"
+					rel="noopener noreferrer"
 					variant="primary"
 					size="lg"
-					class="font-mono"
 				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						aria-hidden="true"
-						><path d="M12 3v12"></path><path d="m8 11 4 4 4-4"></path><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path
-					></svg>
 					{texts.hero.cta_cv}
 				</Button>
 				<Button
 					href={`#contact`}
-					variant="outline"
+					variant="ghost"
 					size="lg"
-					class="font-mono"
 				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						aria-hidden="true"
-						><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path
-					></svg>
 					{texts.hero.cta_contact}
 				</Button>
 			</div>
 
-			<div class="mt-8">
-				<p class="mb-3 font-mono text-xs uppercase tracking-wider text-coder-muted">
+			<div class="mt-10">
+				<p class="mb-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">
 					{texts.hero.connect}
 				</p>
-				<div class="flex items-center gap-2.5">
-					<Tooltip>
-						<TooltipTrigger>
-							<GitHubIcon href={contact.github} />
-						</TooltipTrigger>
-						<TooltipContent side="bottom" align="center">
-							{texts.social.github}
-						</TooltipContent>
-					</Tooltip>
-					<Tooltip>
-						<TooltipTrigger>
-							<LinkedInIcon href={contact.linkedin} />
-						</TooltipTrigger>
-						<TooltipContent side="bottom" align="center">
-							{texts.social.linkedin}
-						</TooltipContent>
-					</Tooltip>
-					<Tooltip>
-						<TooltipTrigger>
-							<WhatsAppIcon
-								href={`https://wa.me/${contact.whatsapp}`}
-							/>
-						</TooltipTrigger>
-						<TooltipContent side="bottom" align="center">
-							{texts.social.whatsapp}
-						</TooltipContent>
-					</Tooltip>
+				<div class="flex items-center gap-3">
+					<GitHubIcon href={contact.github} />
+					<LinkedInIcon href={contact.linkedin} />
+					<WhatsAppIcon href={`https://wa.me/${contact.whatsapp}`} />
 				</div>
 			</div>
 		</div>
 
 		<div class="lg:pl-6">
-			<div class="overflow-hidden rounded-xl border border-coder-edge bg-coder-panel">
-				<div
-					class="flex items-center gap-3 border-b border-coder-edge px-4 py-2.5"
-				>
-					<div class="flex shrink-0 gap-1.5" aria-hidden="true">
-						<span class="size-3 rounded-full bg-coder-red"></span>
-						<span class="size-3 rounded-full bg-coder-yellow"></span>
-						<span class="size-3 rounded-full bg-coder-accent"></span>
-					</div>
-					<span class="font-mono text-xs text-muted-foreground">
-						whoami.sh
-					</span>
-				</div>
-				<pre
-					class="overflow-x-auto p-5 font-mono text-sm leading-relaxed text-coder-fg sm:p-6"
-					aria-label="Terminal de presentación"
-				><code>
-<span class="text-coder-muted">$</span> whoami
-<span class="text-coder-muted">&gt;</span> {profile.name}
-<span class="text-coder-muted">$</span> cat role.json
-&#123;<span class="text-coder-purple">"role"</span>: <span class="text-coder-yellow">"{profile.role}"</span>, <span class="text-coder-purple">"stack"</span>: [{stackStr}], <span class="text-coder-purple">"status"</span>: <span class="text-coder-accent">"{profile.status}"</span>&#125;
-<span class="text-coder-muted">$</span> <span class="animate-cursor-blink inline-block h-4 w-2.5 translate-y-0.5 bg-coder-accent"></span>
-</code></pre>
-			</div>
+			<img
+				src={portrait}
+				alt={texts.hero.profileAlt}
+				width="400"
+				height="400"
+				loading="eager"
+				class="mx-auto aspect-square w-full max-w-xs rounded-2xl border border-border object-cover lg:max-w-sm"
+			/>
 		</div>
 	</div>
 </section>

@@ -1,55 +1,56 @@
 ---
-import ReactIcon from "@/components/icons/tools/react.astro";
-import AstroIcon from "@/components/icons/tools/astro.astro";
-import Css from "@/components/icons/tools/css.astro";
-import Html from "@/components/icons/tools/html.astro";
-import Node from "@/components/icons/tools/node.astro";
-import Nextjs from "@/components/icons/tools/nexts.astro";
-import Tailwind from "@/components/icons/tools/tailwindcss.astro";
-import Ts from "@/components/icons/tools/ts.astro";
 import { getTexts } from "@/utils/i18n";
 import skills from "@/content/skills.json";
 
 const texts = getTexts(Astro);
 
-const stackIcons: Record<string, (props: { class?: string }) => any> = {
-	react: ReactIcon,
-	astro: AstroIcon,
-	nextjs: Nextjs,
-	css: Css,
-	html: Html,
-	node: Node,
-	tailwind: Tailwind,
-	typescript: Ts,
-};
+const groups = [
+	{ title: texts.skills.languages_title, items: skills.languages },
+	{ title: texts.skills.frameworks_title, items: skills.frameworks },
+].map((group, gi) => {
+	const offset = gi === 0 ? 0 : skills.languages.length;
+	return {
+		...group,
+		items: group.items.map((item, i) => ({
+			...item,
+			number: String(offset + i + 1).padStart(2, "0"),
+		})),
+	};
+});
 ---
 
-<div
-	class="flex flex-wrap justify-center gap-3 rounded-lg border border-coder-edge bg-coder-panel p-3 sm:gap-5 sm:p-6"
-	role="list"
-	aria-label={texts.skills.stack_tab}
->
+<div class="flex flex-col gap-12" aria-label={texts.skills.stack_tab}>
 	{
-		skills.stack.map((stack) => {
-			const Icon = stackIcons[stack.id];
-			return (
-				<button
-					type="button"
-					class="flex size-16 flex-col items-center justify-center gap-1 rounded-lg border border-coder-edge bg-coder-panel p-2 transition-colors hover:border-coder-accent data-[active=true]:border-coder-accent data-[active=true]:bg-coder-accent/10 data-[active=true]:text-coder-accent sm:size-20"
-					data-stack-button
-					data-stack-id={stack.id}
-					data-stack-name={stack.name}
-					data-stack-match={stack.match.join(" ")}
-					aria-pressed="false"
-					aria-label={stack.name}
-				>
-					{Icon && <Icon class="h-7 w-7 sm:h-9 sm:w-9" aria-hidden="true" />}
-					<span class="font-mono text-[10px] text-coder-muted data-[active=true]:text-coder-accent sm:text-xs">
-						{stack.name}
-					</span>
-				</button>
-			);
-		})
+		groups.map((group) => (
+			<div>
+				<h3 class="mb-5 text-sm font-semibold text-foreground">{group.title}</h3>
+				<div class="grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2" role="list" aria-label={group.title}>
+					{group.items.map((stack) => (
+						<button
+							type="button"
+							class="group flex items-baseline gap-4 border-b border-border pb-3 text-left transition-colors hover:border-foreground/40 data-[active=true]:border-foreground"
+							data-stack-button
+							data-stack-id={stack.id}
+							data-stack-name={stack.name}
+							data-stack-match={stack.match.join(" ")}
+							aria-pressed="false"
+							aria-label={stack.name}
+							role="listitem"
+						>
+							<span
+								class="shrink-0 font-mono text-xs text-muted-foreground"
+								aria-hidden="true"
+							>
+								{stack.number}
+							</span>
+							<span class="text-base font-medium text-foreground transition-colors group-data-[active=true]:text-muted-foreground sm:text-lg">
+								{stack.name}
+							</span>
+						</button>
+					))}
+				</div>
+			</div>
+		))
 	}
 </div>
 

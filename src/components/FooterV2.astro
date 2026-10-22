@@ -13,23 +13,23 @@ const contact = getContact();
 	<div class="mx-auto max-w-6xl px-4 py-12">
 		<div class="grid grid-cols-1 gap-10 md:grid-cols-3">
 			<div>
-				<p class="mb-3 font-mono text-sm text-coder-muted" aria-hidden="true">
-					<span class="text-coder-accent">$</span> echo "thanks for visiting"
+				<p class="mb-3 text-sm font-medium text-foreground">
+					ChrisCampaDev
 				</p>
-				<p class="text-sm leading-relaxed text-muted-foreground">
+				<p class="max-w-xs text-sm leading-relaxed text-muted-foreground">
 					{texts.footer.description}
 				</p>
 			</div>
 
 			<div>
-				<h2 class="mb-3 font-mono text-sm uppercase tracking-wider text-coder-muted">
-					// {texts.nav.contact}
+				<h2 class="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
+					{texts.nav.contact}
 				</h2>
-				<ul class="flex flex-col gap-2 font-mono text-sm">
+				<ul class="flex flex-col gap-2 text-sm">
 					<li>
 						<a
 							href={`mailto:${contact.email}`}
-							class="break-all text-muted-foreground transition-colors hover:text-coder-accent"
+							class="break-all text-muted-foreground transition-colors hover:text-foreground"
 						>
 							{contact.email}
 						</a>
@@ -39,7 +39,7 @@ const contact = getContact();
 							href={`https://wa.me/${contact.whatsapp}`}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-muted-foreground transition-colors hover:text-coder-accent"
+							class="text-muted-foreground transition-colors hover:text-foreground"
 						>
 							+{contact.whatsapp}
 						</a>
@@ -48,12 +48,10 @@ const contact = getContact();
 			</div>
 
 			<div>
-				<h2 class="mb-3 font-mono text-sm uppercase tracking-wider text-coder-muted">
-					// {texts.footer.developed_by}
+				<h2 class="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
+					{texts.footer.developed_by}
 				</h2>
-				<p class="font-mono text-sm text-foreground">
-					<span class="text-coder-accent">~</span> ChrisCampaDev
-				</p>
+				<p class="text-sm text-foreground">ChrisCampaDev</p>
 				<div class="mt-4 flex items-center gap-2.5">
 					<GitHubIcon href={contact.github} />
 					<LinkedInIcon href={contact.linkedin} />
@@ -67,9 +65,6 @@ const contact = getContact();
 		>
 			<p class="text-xs text-muted-foreground">
 				© 2026 ChrisCampaDev — {texts.footer.rights}
-			</p>
-			<p class="font-mono text-xs text-coder-muted" aria-hidden="true">
-				~/portfolio $ _
 			</p>
 		</div>
 	</div>

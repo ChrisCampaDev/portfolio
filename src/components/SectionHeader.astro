@@ -8,15 +8,11 @@ interface Props {
 const { title, comment, id } = Astro.props;
 ---
 
-<div class="mb-8">
-	<p class="font-mono text-sm text-coder-muted" aria-hidden="true">
-		// --- {comment || title} ---
+<div class="mb-10">
+	<p class="font-mono text-xs uppercase tracking-widest text-muted-foreground" aria-hidden="true">
+		{comment || title}
 	</p>
-	<h2
-		id={id}
-		class="mt-1 font-mono text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
-	>
+	<h2 id={id} class="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
 		{title}
 	</h2>
-	<div class="mt-4 h-px w-24 bg-coder-edge" aria-hidden="true"></div>
 </div>

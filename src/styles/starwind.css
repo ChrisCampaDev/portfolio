@@ -105,8 +105,9 @@
 	--radius: 0.625rem;
 
 	--coder-accent: #1a7f37;
-	--coder-cyan: #0969da;
-	--coder-purple: #8250df;
+	/* Neutralized: syntax-color palette reduced to muted grays for a minimal monochrome look */
+	--coder-cyan: #59636e;
+	--coder-purple: #59636e;
 	--coder-yellow: #9a6700;
 	--coder-red: #cf222e;
 	--coder-fg: #1f2328;
@@ -146,8 +147,9 @@
 	--radius: 0.625rem;
 
 	--coder-accent: #3fb950;
-	--coder-cyan: #39c5cf;
-	--coder-purple: #a371f7;
+	/* Neutralized: syntax-color palette reduced to muted grays for a minimal monochrome look */
+	--coder-cyan: #8b949e;
+	--coder-purple: #8b949e;
 	--coder-yellow: #d29922;
 	--coder-red: #f85149;
 	--coder-fg: #e6edf3;
