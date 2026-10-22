@@ -1,0 +1,35 @@
+{
+	"languages": [
+		{
+			"id": "javascript",
+			"name": "JavaScript (ES6+)",
+			"match": ["javascript"]
+		},
+		{ "id": "typescript", "name": "TypeScript", "match": ["typescript"] },
+		{ "id": "html", "name": "HTML5", "match": ["html"] },
+		{ "id": "css", "name": "CSS3", "match": ["css"] }
+	],
+	"frameworks": [
+		{ "id": "react", "name": "React.js", "match": ["react"] },
+		{ "id": "nextjs", "name": "Next.js", "match": ["nextjs"] },
+		{
+			"id": "react-native",
+			"name": "React Native",
+			"match": ["react native", "reactnative"]
+		},
+		{ "id": "expo", "name": "Expo", "match": ["expo"] },
+		{ "id": "astro", "name": "Astro", "match": ["astro"] },
+		{ "id": "vite", "name": "Vite", "match": ["vite"] }
+	],
+	"tools": [
+		{ "id": "git", "name": "Git & GitHub" },
+		{ "id": "figma", "name": "Figma" },
+		{ "id": "trello", "name": "Trello" },
+		{ "id": "slack", "name": "Slack" },
+		{ "id": "taiga", "name": "Taiga" },
+		{ "id": "scrum", "name": "Metodología Ágil" },
+		{ "id": "ai", "name": "AI-Assisted Development" },
+		{ "id": "architecture", "name": "Arquitectura Frontend" },
+		{ "id": "docs", "name": "Documentación de Código con markdown" }
+	]
+}

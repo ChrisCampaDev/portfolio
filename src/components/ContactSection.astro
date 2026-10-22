@@ -1,0 +1,73 @@
+---
+import SectionHeader from "@/components/SectionHeader.astro";
+import Form from "@/components/Form.astro";
+import { Button } from "@/components/starwind/button";
+import { getContact } from "@/content/profile";
+import { getTexts } from "@/utils/i18n";
+
+const texts = getTexts(Astro);
+const contact = getContact();
+
+const mailtoHref = `mailto:${contact.email}?subject=${encodeURIComponent(
+	texts.contact.subject,
+)}&body=${encodeURIComponent(texts.contact.email_body)}`;
+const whatsappHref = `https://wa.me/${contact.whatsapp}`;
+---
+
+<section id="contact" class="scroll-mt-24 py-12 sm:py-16" aria-labelledby="contact-heading">
+	<div class="mx-auto max-w-6xl px-4">
+		<SectionHeader id="contact-heading" title={texts.contact.title} comment="contact" />
+		<div class="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.15fr]">
+			<div>
+				<p class="mb-8 max-w-md text-muted-foreground">{texts.contact.subtitle}</p>
+
+				<ul class="flex flex-col gap-3 text-sm">
+					<li class="flex items-start gap-3">
+						<a
+							href={`mailto:${contact.email}`}
+							class="break-all text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+						>
+							{contact.email}
+						</a>
+					</li>
+					<li class="flex items-start gap-3">
+						<a
+							href={whatsappHref}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+						>
+							{contact.whatsapp}
+						</a>
+					</li>
+					<li class="flex items-start gap-3">
+						<span class="text-foreground">{contact.location}</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<a
+							href={contact.github}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="break-all text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+						>
+							{contact.github.replace("https://", "")}
+						</a>
+					</li>
+				</ul>
+
+				<div class="mt-8 flex flex-wrap gap-3">
+					<Button href={mailtoHref} variant="primary" size="sm">
+						{texts.contact.buttons.sendEmail}
+					</Button>
+					<Button href={contact.cv} target="_blank" rel="noopener noreferrer" variant="outline" size="sm">
+						{texts.hero.cta_cv}
+					</Button>
+				</div>
+			</div>
+
+			<div>
+				<Form />
+			</div>
+		</div>
+	</div>
+</section>

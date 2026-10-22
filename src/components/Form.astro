@@ -4,100 +4,136 @@ import Input from "@/components/starwind/input";
 import Label from "@/components/starwind/label";
 import Textarea from "@/components/starwind/textarea";
 import { getTexts } from "@/utils/i18n";
-// import { mail } from "@/utils/const";
+import { getContact } from "@/content/profile";
+
 const texts = getTexts(Astro);
+const contact = getContact();
+
+const formTexts = {
+	errorsSummary: texts.form.errors.summary,
+	requiredField: texts.form.errors.required_field,
+	required: texts.form.errors.required,
+	emailInvalid: texts.form.errors.email_invalid,
+	labelName: texts.form.errors.label_name,
+	labelEmail: texts.form.errors.label_email,
+	labelMessage: texts.form.errors.label_message,
+	successToast: texts.form.success_toast,
+	sendHelp: texts.form.send_help,
+	sendBy: texts.form.send_by,
+	whatsappMessage: texts.form.whatsapp_message,
+	popupBlockedToast: texts.form.popup_blocked_toast,
+};
 ---
 
 <form
 	id="contactForm"
-	class="max-w-xl border p-4 rounded-2xl dark:border-gray-200 border-blue-900"
+	class="rounded-lg p-0 sm:p-0"
 	aria-labelledby="form-title"
 	novalidate
 >
-	<div class="flex flex-col py-5 text-center">
-		<h1 id="form-title" class="text-2xl text-center">{texts.contact.title}</h1>
-		<p>{texts.contact.subtitle}</p>
+	<h3 id="form-title" class="font-mono text-base font-semibold text-foreground">
+		{texts.contact.title}
+	</h3>
+	<p class="mb-5 mt-1 text-sm text-muted-foreground">
+		{texts.contact.subtitle}
+	</p>
+
+	<div
+		id="form-errors"
+		class="mb-4 hidden rounded-lg border border-coder-red/40 bg-coder-red/10 px-4 py-3 text-coder-red"
+		role="alert"
+		aria-live="polite"
+	>
+		<p class="font-medium">{formTexts.errorsSummary}</p>
+		<ul id="error-list" class="mt-2 list-inside list-disc"></ul>
 	</div>
-	<div id="form-errors" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4" role="alert" aria-live="polite">
-		<p class="font-medium">Por favor, corrige los siguientes errores:</p>
-		<ul id="error-list" class="list-disc list-inside mt-2"></ul>
-	</div>
+
 	<fieldset class="flex flex-col gap-3">
-		<legend class="sr-only">Información de contacto</legend>
+		<legend class="sr-only">Contact</legend>
 		<div>
-			<Label for="name">{texts.contact.labels.name} <span class="text-red-500" aria-label="requerido">*</span></Label>
-			<Input 
-				id="name" 
-				name="name" 
+			<Label for="name" class="font-mono text-xs uppercase tracking-wider"
+				>{texts.contact.labels.name}
+				<span class="text-coder-red" aria-hidden="true">*</span></Label
+			>
+			<Input
+				id="name"
+				name="name"
 				placeholder={texts.form.placeholders.name}
+				class="mt-1.5"
 				required
 				aria-describedby="name-error"
 				aria-invalid="false"
 			/>
-			<div id="name-error" class="hidden text-red-600 text-sm mt-1" role="alert"></div>
+			<div id="name-error" class="mt-1 hidden text-sm text-coder-red" role="alert"></div>
 		</div>
 		<div>
-			<Label for="email">{texts.contact.labels.email} <span class="text-red-500" aria-label="requerido">*</span></Label>
-			<Input 
-				id="email" 
-				name="email" 
+			<Label for="email" class="font-mono text-xs uppercase tracking-wider"
+				>{texts.contact.labels.email}
+				<span class="text-coder-red" aria-hidden="true">*</span></Label
+			>
+			<Input
+				id="email"
+				name="email"
 				type="email"
 				placeholder={texts.form.placeholders.email}
+				class="mt-1.5"
 				required
 				aria-describedby="email-error"
 				aria-invalid="false"
 			/>
-			<div id="email-error" class="hidden text-red-600 text-sm mt-1" role="alert"></div>
+			<div id="email-error" class="mt-1 hidden text-sm text-coder-red" role="alert"></div>
 		</div>
 		<div>
-			<Label for="message">{texts.contact.labels.message} <span class="text-red-500" aria-label="requerido">*</span></Label>
+			<Label for="message" class="font-mono text-xs uppercase tracking-wider"
+				>{texts.contact.labels.message}
+				<span class="text-coder-red" aria-hidden="true">*</span></Label
+			>
 			<Textarea
 				id="message"
 				name="message"
 				placeholder={texts.form.placeholders.message}
 				size="lg"
+				class="mt-1.5"
 				required
 				aria-describedby="message-error"
 				aria-invalid="false"
 			/>
-			<div id="message-error" class="hidden text-red-600 text-sm mt-1" role="alert"></div>
+			<div id="message-error" class="mt-1 hidden text-sm text-coder-red" role="alert"></div>
 		</div>
 	</fieldset>
-	<div class="w-full flex flex-col py-5">
-		<p class="text-center mb-2">{texts.form.send_by}</p>
-		<div class="flex gap-5">
-			<Button 
-				type="submit" 
-				class="w-full" 
-				variant="success"
-				aria-describedby="submit-help"
-			>
-				{texts.social.whatsapp}
-			</Button>
-			<!-- <Button type="submit" class="w-full" variant="primary">Email</Button> -->
-		</div>
-		<div id="submit-help" class="sr-only">
-			Al enviar este formulario, se abrirá WhatsApp con tu mensaje prellenado
-		</div>
+
+	<div class="mt-6 flex flex-col gap-3">
+		<Button type="submit" variant="success" size="lg" class="w-full font-mono">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				fill="currentColor"
+				aria-hidden="true"
+				><path
+					d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52s.198-.298.298-.497c.099-.198.05-.371-.025-.52s-.669-1.612-.916-2.207c-.242-.579-.487-.5-.669-.51a13 13 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074s2.096 3.2 5.077 4.487c.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413s.248-1.289.173-1.413c-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.82 11.82 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.9 11.9 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.459-8.413"
+				></path
+			></svg>
+			{formTexts.sendBy} WhatsApp
+		</Button>
+	</div>
+	<div id="submit-help" class="sr-only">
+		{formTexts.sendHelp}
 	</div>
 </form>
 
-<script>
-	import { toast } from "@/components/starwind/toast";
-	import { telf } from "@/utils/const";
-
+<script define:vars={{ formTexts, telf: contact.whatsapp }}>
 	const contactForm = document.getElementById("contactForm");
 	if (contactForm) {
-		contactForm.addEventListener("submit", (e: Event) => {
+		contactForm.addEventListener("submit", (e) => {
 			e.preventDefault();
-			const form = e.target as HTMLFormElement;
+			const form = e.target;
 			const formData = new FormData(form);
 			const data = Object.fromEntries(formData.entries());
 
-			// Clear previous errors
 			clearErrors();
 
-			// Validate form
 			const errors = validateForm(data);
 
 			if (errors.length > 0) {
@@ -105,14 +141,27 @@ const texts = getTexts(Astro);
 				return;
 			}
 
-			// Success - submit to WhatsApp
-			const whatsappMessage = `Hola, tengo una consulta:\n\nNombre: ${data.name}\nEmail: ${data.email}\nMensaje: ${data.message}`;
+			const whatsappMessage = formTexts.whatsappMessage
+				.replace("{name}", data.name)
+				.replace("{email}", data.email)
+				.replace("{message}", data.message);
 			const whatsappUrl = `https://wa.me/${telf}?text=${encodeURIComponent(whatsappMessage)}`;
-			window.open(whatsappUrl, "_blank");
-			
-			// Reset form after successful submission
+			const whatsappWindow = window.open(whatsappUrl, "_blank");
+
 			form.reset();
-			toast.success("¡Mensaje enviado correctamente!");
+
+			const manager = window.__starwind__ && window.__starwind__.toast;
+			if (manager) {
+				// popup blockers make window.open return null: notify instead of a fake success
+				if (whatsappWindow) {
+					manager.add({ title: formTexts.successToast, variant: "success" });
+				} else {
+					manager.add({
+						title: formTexts.popupBlockedToast,
+						variant: "error",
+					});
+				}
+			}
 		});
 	}
 
@@ -120,14 +169,14 @@ const texts = getTexts(Astro);
 		const errorContainer = document.getElementById("form-errors");
 		const errorList = document.getElementById("error-list");
 		const fields = ["name", "email", "message"];
-		
-		errorContainer?.classList.add("hidden");
-		errorList!.innerHTML = "";
-		
-		fields.forEach(fieldName => {
-			const field = document.getElementById(fieldName) as HTMLInputElement;
+
+		if (errorContainer) errorContainer.classList.add("hidden");
+		if (errorList) errorList.innerHTML = "";
+
+		fields.forEach((fieldName) => {
+			const field = document.getElementById(fieldName);
 			const errorDiv = document.getElementById(`${fieldName}-error`);
-			
+
 			if (field) {
 				field.setAttribute("aria-invalid", "false");
 			}
@@ -138,53 +187,61 @@ const texts = getTexts(Astro);
 		});
 	}
 
-	function validateForm(data: Record<string, any>): string[] {
-		const errors: string[] = [];
+	function validateForm(data) {
+		const errors = [];
 		const fields = ["name", "email", "message"];
-		
-		fields.forEach(fieldName => {
-			const field = document.getElementById(fieldName) as HTMLInputElement;
+
+		fields.forEach((fieldName) => {
+			const field = document.getElementById(fieldName);
 			const errorDiv = document.getElementById(`${fieldName}-error`);
 			const value = data[fieldName]?.toString().trim();
-			
+
 			if (!value) {
-				errors.push(`El campo ${fieldName === "name" ? "nombre" : fieldName === "email" ? "correo electrónico" : "mensaje"} es requerido`);
-				
+				const label =
+					fieldName === "name"
+						? formTexts.labelName
+						: fieldName === "email"
+							? formTexts.labelEmail
+							: formTexts.labelMessage;
+				errors.push(formTexts.requiredField.replace("{field}", label));
+
 				if (field) {
 					field.setAttribute("aria-invalid", "true");
 				}
 				if (errorDiv) {
-					errorDiv.textContent = `Este campo es requerido`;
+					errorDiv.textContent = formTexts.required;
 					errorDiv.classList.remove("hidden");
 				}
 			} else if (fieldName === "email" && !isValidEmail(value)) {
-				errors.push("El correo electrónico no es válido");
-				
+				errors.push(formTexts.emailInvalid);
+
 				if (field) {
 					field.setAttribute("aria-invalid", "true");
 				}
 				if (errorDiv) {
-					errorDiv.textContent = "Por favor, ingresa un correo electrónico válido";
+					errorDiv.textContent = formTexts.emailInvalid;
 					errorDiv.classList.remove("hidden");
 				}
 			}
 		});
-		
+
 		return errors;
 	}
 
-	function displayErrors(errors: string[]) {
+	function displayErrors(errors) {
 		const errorContainer = document.getElementById("form-errors");
 		const errorList = document.getElementById("error-list");
-		
+
 		if (errorContainer && errorList) {
-			errorList.innerHTML = errors.map(error => `<li>${error}</li>`).join("");
+			errorList.innerHTML = errors
+				.map((error) => `<li>${error}</li>`)
+				.join("");
 			errorContainer.classList.remove("hidden");
 			errorContainer.focus();
 		}
 	}
 
-	function isValidEmail(email: string): boolean {
+	function isValidEmail(email) {
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		return emailRegex.test(email);
 	}

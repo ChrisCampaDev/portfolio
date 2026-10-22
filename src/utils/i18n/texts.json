@@ -1,12 +1,23 @@
 {
 	"es": {
 		"nav": {
+			"home": "Inicio",
+			"experience": "Experiencia",
+			"skills": "Habilidades",
 			"projects": "Proyectos",
-			"about": "Quién soy",
+			"education": "Educación",
+			"testimonials": "Testimonios",
 			"contact": "Contacto",
+			"cv": "CV",
+			"theme": "Cambiar tema",
+			"menu_open": "Abrir menú principal",
+			"menu_close": "Cerrar menú principal",
+			"about": "Quién soy",
 			"switch": "English",
-			"switch_es": "Español"
+			"switch_es": "Español",
+			"aria": "Navegación principal"
 		},
+		"skip_link": "Ir al contenido principal",
 		"hero": {
 			"hello": "Hola, soy",
 			"name": "Christian Campa",
@@ -16,12 +27,15 @@
 			"company": "Compañía Alsoftpro",
 			"about": "He trabajado en diversos proyectos, estando vinculado a diferentes empresas dedicadas al desarrollo web. Me especializo en crear interfaces modernas y funcionales.",
 			"cta_projects": "Ver mis proyectos",
-			"cta_cv": "Descargar CV",
+			"cta_cv": "Ver CV",
+			"cta_contact": "Contáctame",
 			"connect": "Conecta conmigo",
-			"profileAlt": "Christian Campa - Desarrollador Frontend"
+			"profileAlt": "Christian Campa - Desarrollador Frontend",
+			"terminal_aria": "Terminal de presentación"
 		},
 		"experience": {
 			"title": "Experiencia Laboral",
+			"year_other": "Otros",
 			"labels": {
 				"role": "Cargo ocupado",
 				"skills": "Habilidades",
@@ -35,7 +49,11 @@
 			"tech_aria_prefix": "Tecnología",
 			"with_url": "Proyectos desplegados",
 			"without_url": "Proyectos en desarrollo",
-			"subtitle": "Explora los proyectos en los que he trabajado"
+			"in_dev": "En desarrollo",
+			"subtitle": "Explora los proyectos en los que he trabajado",
+			"filter_status": "Filtrando por:",
+			"filter_clear": "Quitar filtro",
+			"filter_empty": "No hay proyectos con este stack"
 		},
 		"contact": {
 			"title": "Contacto",
@@ -55,6 +73,7 @@
 				"sendWhatsApp": "Enviar por WhatsApp"
 			},
 			"subject": "Contacto desde tu Portafolio",
+			"email_body": "Hola Christian,",
 			"alertWhatsAppNotConfigured": "El número de WhatsApp no está configurado por el propietario del sitio.",
 			"formatted": {
 				"name": "Nombre",
@@ -73,7 +92,7 @@
 		"personal": {
 			"intro": "Soy Christian Campa Suarez,",
 			"role": "Desarrollador Frontend",
-			"description": "Como desarrollador, mi objetivo es crear experiencias web atractivas y funcionales para los usuarios. Utilizo tecnologías como HTML, CSS y TypeScript para diseñar y desarrollar interfaces de usuario interactivas y responsivas. Además, tengo experiencia en el uso de librerias y frameworks como React, Astro y Nextjs para construir aplicaciones web modernas y escalables."
+			"description": "Como desarrollador, mi objetivo es crear experiencias web atractivas y funcionales para los usuarios. Utilizo tecnologías como HTML, CSS y TypeScript para diseñar y desarrollar interfaces de usuario interactivas y responsivas. Además, tengo experiencia en el uso de librerias y frameworks como React, Astro y Next.js para construir aplicaciones web modernas y escalables."
 		},
 		"work": {
 			"current_position": "Puesto Actual",
@@ -86,10 +105,47 @@
 			"description": "Alsoftpro SRL es una empresa de desarrollo web cuya principal objetivo es en brindar soluciones personalizadas para empresas estatales y privadas de Cuba."
 		},
 		"skills": {
+			"title": "Habilidades",
 			"stack_tab": "Stack",
 			"tools_tab": "Herramientas",
-			"stack_description": "Lenguajes y Herramientas uso",
-			"tools_description": "Herramientas de productividad que he usado"
+			"languages_title": "Lenguajes",
+			"frameworks_title": "Frameworks & Librerías",
+			"stack_description": "Ecosistema React, tipado estricto en TypeScript, interfaces modernas, escalables y de alto rendimiento.",
+			"tools_title": "Herramientas & Metodologías",
+			"tools_description": "Herramientas del día a día con las que desarrollo, diseño y colaboro",
+			"filter_hint": "Tocá un stack para filtrar los proyectos",
+			"tools": {
+				"level_label": "Experiencia",
+				"names": {
+					"git": "Git & GitHub",
+					"figma": "Figma",
+					"trello": "Trello",
+					"slack": "Slack",
+					"ai": "Desarrollo asistido por IA",
+					"architecture": "Arquitectura Frontend",
+					"docs": "Documentación de Código",
+					"scrum": "Metodología Ágil"
+				},
+				"items": {
+					"git": "Control de versiones, Git Flow y Pull Requests",
+					"figma": "Diseño de interfaces",
+					"trello": "Gestión de tareas",
+					"slack": "Comunicación de equipo",
+					"taiga": "Gestión de proyectos y sprints",
+					"scrum": "Trabajo con marcos ágiles",
+					"ai": "Desarrollo asistido por IA",
+					"architecture": "Arquitectura Frontend",
+					"docs": "Documentación de código"
+				}
+			}
+		},
+		"education": {
+			"title": "Educación",
+			"subtitle": "Formación académica y cursos"
+		},
+		"testimonials": {
+			"title": "Testimonios",
+			"subtitle": "Lo que dicen quienes trabajaron conmigo"
 		},
 		"timeline": {
 			"projects_title": "Proyectos realizados"
@@ -97,6 +153,19 @@
 		"form": {
 			"validation_error": "Por favor, completa todos los campos.",
 			"send_by": "Enviar mensaje por:",
+			"success_toast": "¡Mensaje enviado correctamente!",
+			"send_help": "Al enviar este formulario, se abrirá WhatsApp con tu mensaje prellenado",
+			"whatsapp_message": "Hola, tengo una consulta:\n\nNombre: {name}\nEmail: {email}\nMensaje: {message}",
+			"popup_blocked_toast": "No se pudo abrir WhatsApp. Verifica que las ventanas emergentes estén permitidas o escríbeme por email.",
+			"errors": {
+				"summary": "Por favor, corrige los siguientes errores:",
+				"required_field": "El campo {field} es requerido",
+				"required": "Este campo es requerido",
+				"email_invalid": "Por favor, ingresa un correo electrónico válido",
+				"label_name": "nombre",
+				"label_email": "correo electrónico",
+				"label_message": "mensaje"
+			},
 			"placeholders": {
 				"name": "Nombre o empresa",
 				"email": "Correo",
@@ -107,16 +176,34 @@
 			"github": "Github",
 			"linkedin": "Linkendin",
 			"whatsapp": "Whatsapp"
+		},
+		"notfound": {
+			"title": "Error 404 - Página no encontrada",
+			"description": "Página no encontrada. Parece que te has perdido, pero aquí tienes cómo regresar.",
+			"heading": "¡Ups! Página no encontrada",
+			"text": "Parece que la página que buscas no existe o ha sido movida. No te preocupes, puedes regresar al inicio fácilmente.",
+			"button": "Volver al inicio"
 		}
 	},
 	"en": {
 		"nav": {
+			"home": "Home",
+			"experience": "Experience",
+			"skills": "Skills",
 			"projects": "Projects",
-			"about": "About me",
+			"education": "Education",
+			"testimonials": "Testimonials",
 			"contact": "Contact",
+			"cv": "CV",
+			"theme": "Toggle theme",
+			"menu_open": "Open main menu",
+			"menu_close": "Close main menu",
+			"about": "About me",
 			"switch": "Español",
-			"switch_es": "English"
+			"switch_es": "English",
+			"aria": "Main navigation"
 		},
+		"skip_link": "Skip to main content",
 		"hero": {
 			"hello": "Hi, I'm",
 			"name": "Christian Campa",
@@ -126,12 +213,15 @@
 			"company": "Alsoftpro Company",
 			"about": "I've worked on a variety of projects for different web development companies. I specialize in building modern, functional interfaces.",
 			"cta_projects": "View my projects",
-			"cta_cv": "Download CV",
+			"cta_cv": "View CV",
+			"cta_contact": "Contact me",
 			"connect": "Connect with me",
-			"profileAlt": "Christian Campa - Frontend Developer"
+			"profileAlt": "Christian Campa - Frontend Developer",
+			"terminal_aria": "Presentation terminal"
 		},
 		"experience": {
 			"title": "Work Experience",
+			"year_other": "Others",
 			"labels": {
 				"role": "Role",
 				"skills": "Skills",
@@ -145,7 +235,11 @@
 			"tech_aria_prefix": "Technology",
 			"with_url": "Deployed Projects",
 			"without_url": "Projects in development",
-			"subtitle": "Explore the projects I have worked on"
+			"in_dev": "In development",
+			"subtitle": "Explore the projects I have worked on",
+			"filter_status": "Filtering by:",
+			"filter_clear": "Clear filter",
+			"filter_empty": "No projects with this stack"
 		},
 		"contact": {
 			"title": "Contact",
@@ -165,6 +259,7 @@
 				"sendWhatsApp": "Send via WhatsApp"
 			},
 			"subject": "Contact from your Portfolio",
+			"email_body": "Hi Christian,",
 			"alertWhatsAppNotConfigured": "The WhatsApp number is not configured by the site owner.",
 			"formatted": {
 				"name": "Name",
@@ -183,7 +278,7 @@
 		"personal": {
 			"intro": "I'm Christian Campa Suarez,",
 			"role": "Frontend Developer",
-			"description": "As a developer, my goal is to create attractive and functional web experiences for users. I use technologies like HTML, CSS, and TypeScript to design and develop interactive and responsive user interfaces. Additionally, I have experience using libraries and frameworks like React, Astro, and Nextjs to build modern and scalable web applications."
+			"description": "As a developer, my goal is to create attractive and functional web experiences for users. I use technologies like HTML, CSS, and TypeScript to design and develop interactive and responsive user interfaces. Additionally, I have experience using libraries and frameworks like React, Astro, and Next.js to build modern and scalable web applications."
 		},
 		"work": {
 			"current_position": "Current Position",
@@ -196,10 +291,47 @@
 			"description": "Alsoftpro SRL is a web development company whose main objective is to provide customized solutions for state and private companies in Cuba."
 		},
 		"skills": {
+			"title": "Skills",
 			"stack_tab": "Stack",
 			"tools_tab": "Tools",
-			"stack_description": "Languages and Tools I use",
-			"tools_description": "Productivity tools I have used"
+			"languages_title": "Languages",
+			"frameworks_title": "Frameworks & Libraries",
+			"stack_description": "React ecosystem, strict TypeScript typing, modern, scalable and high-performance interfaces.",
+			"tools_title": "Tools & Methodologies",
+			"tools_description": "Day-to-day tools I use to develop, design and collaborate",
+			"filter_hint": "Click a stack to filter projects",
+			"tools": {
+				"level_label": "Experience",
+				"names": {
+					"git": "Git & GitHub",
+					"figma": "Figma",
+					"trello": "Trello",
+					"slack": "Slack",
+					"ai": "AI-Assisted Development",
+					"architecture": "Frontend Architecture",
+					"docs": "Code Documentation",
+					"scrum": "Agile Methodology"
+				},
+				"items": {
+					"git": "Version control, Git Flow and Pull Requests",
+					"figma": "Interface design",
+					"trello": "Task management",
+					"slack": "Team communication",
+					"taiga": "Project and sprint management",
+					"scrum": "Working with agile frameworks",
+					"ai": "AI-assisted development",
+					"architecture": "Frontend architecture",
+					"docs": "Code documentation"
+				}
+			}
+		},
+		"education": {
+			"title": "Education",
+			"subtitle": "Academic background and courses"
+		},
+		"testimonials": {
+			"title": "Testimonials",
+			"subtitle": "What people say about working with me"
 		},
 		"timeline": {
 			"projects_title": "Completed Projects"
@@ -207,6 +339,19 @@
 		"form": {
 			"validation_error": "Please, complete all fields.",
 			"send_by": "Send message by:",
+			"success_toast": "Message sent successfully!",
+			"send_help": "Submitting this form will open WhatsApp with your message pre-filled",
+			"whatsapp_message": "Hi, I have a question:\n\nName: {name}\nEmail: {email}\nMessage: {message}",
+			"popup_blocked_toast": "Could not open WhatsApp. Check that pop-ups are allowed or write to me by email.",
+			"errors": {
+				"summary": "Please fix the following errors:",
+				"required_field": "The {field} field is required",
+				"required": "This field is required",
+				"email_invalid": "Please enter a valid email address",
+				"label_name": "name",
+				"label_email": "email",
+				"label_message": "message"
+			},
 			"placeholders": {
 				"name": "Name or company",
 				"email": "Email",
@@ -217,6 +362,13 @@
 			"github": "Github",
 			"linkedin": "LinkedIn",
 			"whatsapp": "WhatsApp"
+		},
+		"notfound": {
+			"title": "Error 404 - Page not found",
+			"description": "Page not found. Looks like you got lost, but here is how to get back.",
+			"heading": "Oops! Page not found",
+			"text": "Looks like the page you are looking for does not exist or has been moved. Don't worry, you can easily go back to the home page.",
+			"button": "Back to home"
 		}
 	}
 }

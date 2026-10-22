@@ -1,65 +1,89 @@
 ---
-import React from "@/components/icons/tools/react.astro";
-import AstroIcon from "@/components/icons/tools/astro.astro";
-import Css from "@/components/icons/tools/css.astro";
-import Html from "@/components/icons/tools/html.astro";
-import Node from "@/components/icons/tools/node.astro";
-import Nextjs from "@/components/icons/tools/nexts.astro";
-import Tailwind from "@/components/icons/tools/tailwindcss.astro";
-import Ts from "@/components/icons/tools/ts.astro";
+import { getTexts } from "@/utils/i18n";
+import skills from "@/content/skills.json";
+
+const texts = getTexts(Astro);
+
+const groups = [
+	{ title: texts.skills.languages_title, items: skills.languages },
+	{ title: texts.skills.frameworks_title, items: skills.frameworks },
+].map((group, gi) => {
+	const offset = gi === 0 ? 0 : skills.languages.length;
+	return {
+		...group,
+		items: group.items.map((item, i) => ({
+			...item,
+			number: String(offset + i + 1).padStart(2, "0"),
+		})),
+	};
+});
 ---
 
-<div
-	class="flex flex-wrap justify-center gap-3 sm:gap-5 p-2 sm:p-4 md:p-6 border bg-white/40 border-blue-950 dark:border-white dark:bg-stone-900 rounded-2xl"
-	role="list"
-	aria-label="Tecnologías y herramientas de desarrollo"
->
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<React class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<AstroIcon class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<Nextjs class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<Css class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<Html class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<Node class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<Tailwind class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
-	<div
-		class="size-12 sm:size-16 md:size-18 flex items-center justify-center"
-		role="listitem"
-	>
-		<Ts class="w-8 h-8 sm:w-12 sm:h-12" aria-hidden="true" />
-	</div>
+<div class="flex flex-col gap-12" aria-label={texts.skills.stack_tab}>
+	{
+		groups.map((group) => (
+			<div>
+				<h3 class="mb-5 text-sm font-semibold text-foreground">{group.title}</h3>
+				<div class="grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2" role="list" aria-label={group.title}>
+					{group.items.map((stack) => (
+						<button
+							type="button"
+							class="group flex items-baseline gap-4 border-b border-border pb-3 text-left transition-colors hover:border-foreground/40 data-[active=true]:border-foreground"
+							data-stack-button
+							data-stack-id={stack.id}
+							data-stack-name={stack.name}
+							data-stack-match={stack.match.join(" ")}
+							aria-pressed="false"
+							aria-label={stack.name}
+							role="listitem"
+						>
+							<span
+								class="shrink-0 font-mono text-xs text-muted-foreground"
+								aria-hidden="true"
+							>
+								{stack.number}
+							</span>
+							<span class="text-base font-medium text-foreground transition-colors group-data-[active=true]:text-muted-foreground sm:text-lg">
+								{stack.name}
+							</span>
+						</button>
+					))}
+				</div>
+			</div>
+		))
+	}
 </div>
+
+<script>
+	const buttons = Array.from(
+		document.querySelectorAll("[data-stack-button]"),
+	);
+
+	function setActive(id) {
+		for (const button of buttons) {
+			const isActive = id !== null && button.dataset.stackId === id;
+			button.dataset.active = String(isActive);
+			button.setAttribute("aria-pressed", String(isActive));
+		}
+	}
+
+	buttons.forEach((button) => {
+		button.addEventListener("click", () => {
+			const next = button.dataset.active === "true" ? null : button.dataset.stackId;
+			window.dispatchEvent(
+				new CustomEvent("stack:filter", {
+					detail: {
+						id: next,
+						name: next === null ? undefined : button.dataset.stackName,
+						match: next === null ? undefined : (button.dataset.stackMatch || "").split(" ").filter(Boolean),
+					},
+				}),
+			);
+		});
+	});
+
+	window.addEventListener("stack:filter", (event) => {
+		const detail = event.detail || {};
+		setActive(detail.id == null ? null : detail.id);
+	});
+</script>

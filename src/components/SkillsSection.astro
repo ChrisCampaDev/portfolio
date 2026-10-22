@@ -1,0 +1,20 @@
+---
+import StackSection from "@/components/sections/Skills/StackSection.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import { getTexts } from "@/utils/i18n";
+
+const texts = getTexts(Astro);
+---
+
+<section id="skills" class="scroll-mt-24 py-12 sm:py-16" aria-labelledby="skills-heading">
+	<div class="mx-auto max-w-6xl px-4">
+		<SectionHeader id="skills-heading" title={texts.skills.title} comment="skills" />
+		<p class="mb-8 max-w-xl text-muted-foreground">
+			{texts.skills.stack_description}
+		</p>
+		<StackSection />
+		<p class="mt-4 text-xs text-muted-foreground">
+			{texts.skills.filter_hint}
+		</p>
+	</div>
+</section>

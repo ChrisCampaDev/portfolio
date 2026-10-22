@@ -1,0 +1,18 @@
+{
+	"es": [
+		{
+			"institution": "Centro Universitario José Antonio Echeverría",
+			"degree": "Ingeniería Informática",
+			"date": "2021-2024",
+			"description": "Curso."
+		}
+	],
+	"en": [
+		{
+			"institution": "Centro Universitario José Antonio Echeverría",
+			"degree": "Computer Science Engineering",
+			"date": "2021-2024",
+			"description": "Course."
+		}
+	]
+}

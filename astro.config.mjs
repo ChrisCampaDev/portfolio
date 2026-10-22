@@ -17,7 +17,17 @@ export default defineConfig({
 		defaultLocale: "es",
 	},
 
-	integrations: [sitemap()],
+	integrations: [
+		sitemap({
+			i18n: {
+				defaultLocale: "es",
+				locales: {
+					es: "es",
+					en: "en",
+				},
+			},
+		}),
+	],
 	site: "https://chriscampadev.github.io",
 	base: "/portfolio",
 });

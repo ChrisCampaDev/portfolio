@@ -1,0 +1,37 @@
+---
+import SectionHeader from "@/components/SectionHeader.astro";
+import { getTexts } from "@/utils/i18n";
+import skills from "@/content/skills.json";
+
+const texts = getTexts(Astro);
+
+const textFor = (tool: (typeof skills.tools)[number]): string | undefined =>
+	(texts.skills.tools.items as Record<string, string> | undefined)?.[tool.id];
+
+const nameFor = (tool: (typeof skills.tools)[number]): string =>
+	(texts.skills.tools.names as Record<string, string> | undefined)?.[tool.id] || tool.name;
+---
+
+<section id="tools" class="scroll-mt-24 py-12 sm:py-16" aria-labelledby="tools-heading">
+	<div class="mx-auto max-w-6xl px-4">
+		<SectionHeader id="tools-heading" title={texts.skills.tools_title} comment="tools" />
+		<p class="mb-8 max-w-xl text-muted-foreground">
+			{texts.skills.tools_description}
+		</p>
+		<ul class="grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2" role="list">
+			{
+				skills.tools.map((tool) => (
+					<li
+						class="flex flex-wrap items-baseline gap-x-3 border-b border-border pb-3"
+						role="listitem"
+					>
+						<span class="text-sm font-medium text-foreground">{nameFor(tool)}</span>
+						{textFor(tool) && (
+							<span class="text-xs text-muted-foreground">{textFor(tool)}</span>
+						)}
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

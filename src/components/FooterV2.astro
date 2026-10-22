@@ -1,0 +1,71 @@
+---
+import GitHubIcon from "@/components/icons/social/GitHubIcon.astro";
+import LinkedInIcon from "@/components/icons/social/LinkedInIcon.astro";
+import WhatsAppIcon from "@/components/icons/social/WhatsAppIcon.astro";
+import { getContact } from "@/content/profile";
+import { getTexts } from "@/utils/i18n";
+
+const texts = getTexts(Astro);
+const contact = getContact();
+---
+
+<footer class="border-t border-coder-edge bg-card/50">
+	<div class="mx-auto max-w-6xl px-4 py-12">
+		<div class="grid grid-cols-1 gap-10 md:grid-cols-3">
+			<div>
+				<p class="mb-3 text-sm font-medium text-foreground">
+					ChrisCampaDev
+				</p>
+				<p class="max-w-xs text-sm leading-relaxed text-muted-foreground">
+					{texts.footer.description}
+				</p>
+			</div>
+
+			<div>
+				<h2 class="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
+					{texts.nav.contact}
+				</h2>
+				<ul class="flex flex-col gap-2 text-sm">
+					<li>
+						<a
+							href={`mailto:${contact.email}`}
+							class="break-all text-muted-foreground transition-colors hover:text-foreground"
+						>
+							{contact.email}
+						</a>
+					</li>
+					<li>
+						<a
+							href={`https://wa.me/${contact.whatsapp}`}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-muted-foreground transition-colors hover:text-foreground"
+						>
+							+{contact.whatsapp}
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div>
+				<h2 class="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
+					{texts.footer.developed_by}
+				</h2>
+				<p class="text-sm text-foreground">ChrisCampaDev</p>
+				<div class="mt-4 flex items-center gap-2.5">
+					<GitHubIcon href={contact.github} />
+					<LinkedInIcon href={contact.linkedin} />
+					<WhatsAppIcon href={`https://wa.me/${contact.whatsapp}`} />
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="mt-10 flex flex-col items-center justify-between gap-2 border-t border-coder-edge pt-6 sm:flex-row"
+		>
+			<p class="text-xs text-muted-foreground">
+				© 2026 ChrisCampaDev — {texts.footer.rights}
+			</p>
+		</div>
+	</div>
+</footer>
