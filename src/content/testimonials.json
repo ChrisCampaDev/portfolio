@@ -1,10 +1,10 @@
 {
 	"es": [
 		{
-			"quote": "Escribí aquí qué dijo esta persona sobre trabajar con vos.",
+			"quote": "Destaco la solidez técnica de Christian en React y TypeScript, su disciplina en la escritura de código limpio y su capacidad para diseñar interfaces adaptativas con gran fidelidad. Sobresale por su trabajo colaborativo, resolución proactiva de incidencias y cumplimiento con los plazos. Será una excelente incorporación para cualquier equipo que busque un desarrollador frontend de alto nivel.",
 			"author": "Yendri",
 			"role": "Presidente ",
-			"company": "Alsoftpro"
+			"company": "Alsoftpro S.U.R.L"
 		}
 	],
 	"en": [
@@ -13,12 +13,6 @@
 			"author": "(To complete) Name",
 			"role": "(To complete) Role",
 			"company": "(To complete) Company"
-		},
-		{
-			"quote": "(To complete) Another example testimonial.",
-			"author": "(To complete)",
-			"role": "(To complete)",
-			"company": "(To complete)"
 		}
 	]
 }

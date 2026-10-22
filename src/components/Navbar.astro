@@ -44,17 +44,18 @@ const linkClass =
 			class="text-base font-semibold text-foreground"
 			aria-label="Home"
 		>
-			<span class="text-coder-accent" aria-hidden="true">~</span>chriscampadev
+			<span class="text-coder-accent" aria-hidden="true">
+				~
+			</span>
+			chriscampadev
 		</a>
 
 		<div class="hidden items-center gap-1 md:flex">
-			{
-				links.map((link) => (
-					<a href={link.href} class={linkClass}>
-						{link.label}
-					</a>
-				))
-			}
+			{links.map((link) => (
+				<a href={link.href} class={linkClass}>
+					{link.label}
+				</a>
+			))}
 		</div>
 
 		<div class="flex items-center gap-1.5">
@@ -131,18 +132,16 @@ const linkClass =
 
 	<div id="mobile-menu" class="hidden border-t border-coder-edge md:hidden">
 		<ul class="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3">
-			{
-				links.map((link) => (
-					<li>
-						<a
-							href={link.href}
-							class="block rounded px-2 py-2 text-sm text-foreground transition-colors hover:text-muted-foreground"
-						>
-							{link.label}
-						</a>
-					</li>
-				))
-			}
+			{links.map((link) => (
+				<li>
+					<a
+						href={link.href}
+						class="block rounded px-2 py-2 text-sm text-foreground transition-colors hover:text-muted-foreground"
+					>
+						{link.label}
+					</a>
+				</li>
+			))}
 			<li class="pt-2">
 				<a
 					href={contact.cv}
@@ -157,7 +156,13 @@ const linkClass =
 	</div>
 </nav>
 
-<script is:inline define:vars={{ menuOpenText: texts.nav.menu_open, menuCloseText: texts.nav.menu_close }}>
+<script
+	is:inline
+	define:vars={{
+		menuOpenText: texts.nav.menu_open,
+		menuCloseText: texts.nav.menu_close,
+	}}
+>
 	function syncThemeIcons() {
 		const sunIcon = document.getElementById("theme-toggle-light-icon");
 		const moonIcon = document.getElementById("theme-toggle-dark-icon");
@@ -175,9 +180,13 @@ const linkClass =
 			syncThemeIcons();
 			if (themeBtn) {
 				themeBtn.addEventListener("click", function () {
-					const isDark = document.documentElement.classList.contains("dark");
+					const isDark =
+						document.documentElement.classList.contains("dark");
 					const next = isDark ? "light" : "dark";
-					document.documentElement.classList.toggle("dark", next === "dark");
+					document.documentElement.classList.toggle(
+						"dark",
+						next === "dark",
+					);
 					localStorage.setItem("colorTheme", next);
 					syncThemeIcons();
 				});

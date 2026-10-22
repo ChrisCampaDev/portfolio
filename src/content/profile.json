@@ -1,8 +1,8 @@
 {
 	"contact": {
 		"email": "christiancampa546@gmail.com",
-		"phone": "55",
-		"whatsapp": "55",
+		"phone": "5595971741569",
+		"whatsapp": "5595971741569",
 		"github": "https://github.com/ChrisCampaDev",
 		"linkedin": "https://www.linkedin.com/in/christian-campa-su%C3%A1rez-40551b268/",
 		"location": "La Habana, Cuba",
@@ -10,9 +10,9 @@
 	},
 	"es": {
 		"name": "Christian Campa",
-		"role": "Frontend Developer",
+		"role": "Desarrollador Frontend",
 		"tagline": "apasionado por crear experiencias web excepcionales.",
-		"about": "He trabajado en diversos proyectos, estando vinculado a diferentes empresas dedicadas al desarrollo web. Me especializo en crear interfaces modernas y funcionales.",
+		"about": "Desarrollador Web con 3 años de experiencia en la creación de interfaces modernas, escalables y de alto rendimiento. Especializado en el ecosistema de React (React.js, Next.js) y en el desarrollo móvil con React Native / Expo. Experiencia liderando equipos técnicos, estandarizando buenas prácticas de desarrollo y capacitando talento. Enfocado en la optimización de la experiencia de usuario (UX/UI), arquitectura de software y rendimiento web.",
 		"availability": "Disponible para proyectos",
 		"status": "open to work",
 		"stack": ["React", "TypeScript"]
