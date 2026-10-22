@@ -17,7 +17,7 @@
 		{
 			"company": "AlsoftPro",
 			"title": "Transitoria",
-			"description": "Plataforma web para la gestion de inventario de una empresaa",
+			"description": "Plataforma web para la gestión de inventario de una empresa",
 			"url": "",
 			"technologies": ["React", "Tailwind CSS", "Vite"]
 		},
@@ -33,21 +33,21 @@
 			"title": "Tammys Cake",
 			"description": "Sitio web para una pastelería",
 			"url": "",
-			"technologies": ["NextJS"]
+			"technologies": ["Next.js"]
 		},
 		{
 			"company": "Medialityc",
 			"title": "REDIPIES",
 			"description": "Sitio web para una red de universidades iberoamericanas",
 			"url": "",
-			"technologies": ["NextJS"]
+			"technologies": ["Next.js"]
 		},
 		{
 			"company": "Medialityc",
 			"title": "D'Concepto",
 			"description": "Sitio web para tienda de moda conceptual",
 			"url": "",
-			"technologies": ["NextJS", "shardcn", "Tailwind CSS"]
+			"technologies": ["Next.js", "shadcn", "Tailwind CSS"]
 		},
 		{
 			"company": "Freelancer",
@@ -63,19 +63,26 @@
 			"title": "ALCOM",
 			"description": "Web application for water service management in Havana",
 			"url": "",
-			"technologies": ["Astro", "React", "TypeScript"]
+			"technologies": ["Material UI", "React", "TypeScript"]
 		},
 		{
 			"company": "AlsoftPro",
 			"title": "Digital Office",
-			"description": "Multiplataform portal for service payments",
+			"description": "Cross-platform web app for paying services",
 			"url": "",
-			"technologies": ["Astro", "Tailwind CSS", "React Native"]
+			"technologies": ["React", "Tailwind CSS", "React Native", "Expo"]
 		},
 		{
 			"company": "AlsoftPro",
-			"title": "Oficial Web",
-			"description": "Web official",
+			"title": "Transitoria",
+			"description": "Web platform for managing a company's inventory",
+			"url": "",
+			"technologies": ["React", "Tailwind CSS", "Vite"]
+		},
+		{
+			"company": "AlsoftPro",
+			"title": "Official Website",
+			"description": "Official company website",
 			"url": "",
 			"technologies": ["React", "Tailwind CSS"]
 		},
@@ -84,26 +91,26 @@
 			"title": "Tammys Cake",
 			"description": "Website for a bakery",
 			"url": "",
-			"technologies": ["NextJS"]
+			"technologies": ["Next.js"]
 		},
 		{
 			"company": "Medialityc",
 			"title": "REDIPIES",
 			"description": "Website for a network of Ibero-American universities",
 			"url": "",
-			"technologies": ["NextJS"]
+			"technologies": ["Next.js"]
 		},
 		{
 			"company": "Medialityc",
 			"title": "D'Concepto",
 			"description": "Website for a conceptual fashion store",
 			"url": "",
-			"technologies": ["NextJS", "shardcn", "Tailwind CSS"]
+			"technologies": ["Next.js", "shadcn", "Tailwind CSS"]
 		},
 		{
 			"company": "Freelancer",
 			"title": "Finance Wise",
-			"description": "Official website for small business",
+			"description": "Official website for a small business",
 			"url": "",
 			"technologies": ["Astro", "Tailwind CSS"]
 		}

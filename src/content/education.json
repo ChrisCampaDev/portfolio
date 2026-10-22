@@ -1,7 +1,7 @@
 {
 	"es": [
 		{
-			"institution": "Centro Universitario Jose Antionio Echeverria",
+			"institution": "Centro Universitario José Antonio Echeverría",
 			"degree": "Ingeniería Informática",
 			"date": "2021-2024",
 			"description": "Curso."
@@ -9,10 +9,10 @@
 	],
 	"en": [
 		{
-			"institution": "Centro Universitario Jose Antionio Echeverria",
-			"degree": "Computer Science Engineering ",
+			"institution": "Centro Universitario José Antonio Echeverría",
+			"degree": "Computer Science Engineering",
 			"date": "2021-2024",
-			"description": "(To complete) Add a short description of your academic background here."
+			"description": "Course."
 		}
 	]
 }
